@@ -21,6 +21,24 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+    public function hospitalityandmanagement(){
+
+        $this->load->view('welcome_message_hoandrec');
+    }
+    public function foodandresturant(){
+
+        $this->load->view('welcome_message_foodandrest');
+    }
+    public function csr(){
+
+        $this->load->view('welcome_message_csr');
+    }
+    public function other(){
+
+        $this->load->view('welcome_message_oth');
+    }
+
 }
 
 /* End of file welcome.php */

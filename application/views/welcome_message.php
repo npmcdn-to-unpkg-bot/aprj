@@ -65,7 +65,7 @@
             }
 
             .sizer{
-                //width: 12%;
+                width: 12%;
             }
             #wrapper {
                 width: 95%;
@@ -75,7 +75,7 @@
 
             #columns {
                 //background: #EEE;
-                object-position:  center;
+               // object-position:  center;
                // max-width: 1200px;
                 
               }
@@ -330,12 +330,21 @@
 
         <script type="text/javascript">
             $('.pin').Am2_SimpleSlider();
+            $('#wrapper').imagesLoaded()
+                .always( function( instance ) {
+                    console.log('all images loaded');
+                })
+                .done( function( instance ) {
+                    console.log('all images successfully loaded');
+                });
+
         </script>
 
         <script>
             var ads;
             var ad_count = 0;
             var isSearchResult = false;
+            console.log("ADS");
             function getAds() {
                 $.ajax({
                     url: "advertisement/getAllAds",
@@ -344,6 +353,13 @@
                         console.log("getAllads");
                         console.log(data);
                         console.log("/getAllAds");
+                        var allpins=$(".pin");
+
+                        $.each( allpins, function( key, value ) {
+                            //alert( key + ": " + value );
+                            //     console.log(value);
+                        });
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
@@ -393,6 +409,7 @@
                             if (limit == 0) {
                                 limit = 10;
                             }
+                            console.log("MORE ARTICLES");
                             $.ajax({
                                 url: 'article/loadMoreArticles',
                                 data: {
@@ -450,6 +467,9 @@
                                         fitImages($pin);
                                         $($pin).find('img').load(function (){
                                             $grid.append(this.parentElement).masonry('appended', this.parentElement);
+                                            $grid.masonry();
+                                            $grid.masonry('layout');
+                                            $grid.masonry('reloadItems');
                                             //alert('oadd');
                                         });
                                         //$grid.append( $pin ).masonry( 'appended', $pin );
@@ -475,6 +495,8 @@
                                             $($ad).find('img').load(function (){
                                                 $grid.append(this.parentElement).masonry('appended', this.parentElement);
                                                 //alert('oadd');
+                                                $grid.masonry('layout');
+                                                $grid.masonry('reloadItems');
                                             });
                                             //$grid.append( $ad ).masonry( 'appended', $ad );
                                         }
@@ -504,6 +526,7 @@
                             if (limit == 0) {
                                 limit = 10;
                             }
+                            console.log("MORE ARTCICLES 2");
                             $.ajax({
                                 url: 'article/loadMoreArticles',
                                 data: {
@@ -560,6 +583,8 @@
                                                 $($pin).find('img').load(function (){
                                                     $grid.append(this.parentElement).masonry('appended', this.parentElement);
                                                     //alert('oadd');
+                                                    $grid.masonry('layout');
+                                                    $grid.masonry('reloadItems');
                                                 });
                                                 //$grid.append( $pin ).masonry( 'appended', $pin );
                                                 if (i % 5 === 0) {
@@ -583,6 +608,8 @@
                                                     $($ad).find('img').load(function (){
                                                         $grid.append(this.parentElement).masonry('appended', this.parentElement);
                                                        // alert('oadd');
+                                                        $grid.masonry('layout');
+                                                        $grid.masonry('reloadItems');
                                                     });
                                                     //$grid.append( $ad ).masonry( 'appended', $ad );
                                                 }
@@ -625,6 +652,7 @@
                         $($pin).css('background','#FEFEFE');
                     }
                     $($pin).css('margin-top','10px');
+                    //$($pin).css('top','0px');
                     $($pin).find('img').css('width','100%');
                     $($pin).find('h3').css('width','100%');
                     $($pin).find('p').css('width','100%');
@@ -643,12 +671,13 @@
                 $grid = $('#columns').masonry({
                     columnWidth: ('.sizer'),
                     itemSelector: '.pin',
-                    percentPosition: true,
+                    percentPosition: true
                     //gutter : 5,
                      //initLayout: true
                   });
                 //$grid.masonry( 'reloadItems' );
                 //$grid.masonry();
+                console.log("SEARCH ARTICLES");
                 $.ajax({
                     url: 'article/searchArticlesBar',
                     data: {
@@ -696,6 +725,7 @@
                                 'display_date': data[i].date
                             });
                             var $pin = $elems[0].children[0];
+
                             fitImages($pin);
                             $($pin).find('img').load(function (){
                                 $grid.append(this.parentElement).masonry('appended', this.parentElement);
@@ -741,7 +771,49 @@
             }
 
             function  getArticles(categoryId) {
-                //if(categoryId !== 'ALL')
+
+                var test=window.location.href;
+                if (categoryId == '2|#ff7973') {
+
+                    if (test.indexOf("welcome/hospitalityandmanagement") ==-1) {
+
+                        window.location = "welcome/hospitalityandmanagement";
+                    }
+
+                }
+                if (categoryId == '1|#26dcc2') {
+
+
+                        window.location = "http://localhost/aprj/";
+
+
+                }
+                if (categoryId == '3|#ae4fff') {
+                    if (test.indexOf("welcome/foodandresturant") ==-1) {
+
+                        window.location = "welcome/foodandresturant";
+                    }
+
+
+                }
+                if (categoryId == '4|#fb73dd') {
+                    if (test.indexOf("welcome/csr") ==-1) {
+
+                        window.location = "welcome/csr";
+                    }
+
+
+                }
+                if (categoryId == '5|#ffc24f') {
+                    if (test.indexOf("welcome/other") ==-1) {
+
+                        window.location = "welcome/other";
+                    }
+
+
+                }
+
+
                 //{
                 limit = 0;
                 ad_count = 0;
@@ -762,6 +834,7 @@
                   });
                 console.log("categoryId:- ");
                 console.log(categoryId);
+                console.log("GET ARTICLES");
                 $.ajax({
                     url: 'article/getArticles',
                     data: {
@@ -810,6 +883,7 @@
                                 'display_content': data[i].display_content,
                                 'display_date': Date.parse(data[i].date).toString('MMMM dS, yyyy')
                             });
+                            $elems.css('top', 0);
                             var $pin = $elems[0].children[0];
                             fitImages($pin);
                             $($pin).find('img').load(function (){
@@ -843,9 +917,15 @@
                                       
                                 //$grid.append( $ad ).masonry( 'appended', $ad );
                             }
-                        }
-
-                        ;
+                        };
+                        var allpins=$(".pinads");
+                        console.log(allpins.length);
+                        $.each( allpins, function( key, value ) {
+                            //alert( key + ": " + value );
+                       //     console.log(value);
+                        });
+                        console.log("The grid");
+                        //console.log($grid.children('.pin').css('top',0));
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         //alert('answer add fails');
@@ -924,6 +1004,7 @@
                 }
 
                 $('.ui.positive.right.labeled.icon.button').on('click', function () {
+                    console.log("SUBSCRIBE");
                     $.ajax({
                         url: 'article/subscribeNewsletter',
                         data: {
@@ -1046,7 +1127,7 @@
                         ;
                 getAds();
                 getArticles('ALL');
-
+                console.log("GET CATEGORIES");
                 $.ajax({
                     url: 'article/getCategories',
                     success: function (data) {
@@ -1066,7 +1147,12 @@
 
                         }
                         setMenuColour();
-
+                        var allpins=$(".pin");
+                        console.log(allpins.length);
+                        $.each( allpins, function( key, value ) {
+                            //alert( key + ": " + value );
+                            //     console.log(value);
+                        });
                         $('#menuControl').slicknav({
                             prependTo: '#mobileMenu',
                             closeOnClick: true
@@ -1116,6 +1202,7 @@
                     window.open(article_id.split("|")[1]);
                 }
                 $('#moreArticleInfoControl').empty();
+                console.log("GET ARCTICKES");
                 $.ajax({
                     url: 'article/getArticles',
                     data: {
@@ -1323,7 +1410,7 @@
                 //alert(currentRating + ' ' + currentArticleId);
                 //alert(rating.initialRating);
 
-
+                console.log("SET RATINGS");
                 $.ajax({
                     url: 'article/setRating',
                     data: {
@@ -1375,10 +1462,10 @@
 -->
     <style type="text/css">
         @-moz-document url-prefix() {
-            .menuheight { height: 19%; }
+            .menuheight { height: 7.5%; }
         }
         @media screen and (-webkit-min-device-pixel-ratio:0) {
-            .menuheight { height: 19%; }
+            .menuheight { height: 7.5%; }
         }
     </style>
 
@@ -1577,7 +1664,46 @@
                     <i class="search icon"></i>
                 </button>
             </div>
-        </div> 
+        </div>
 
     </body>
 </html>
+
+<script>
+
+    function myPeriodicMethod() {
+        var i=0;
+        console.log("--------------");
+        var x = $("#columns .pin");
+        var firsttop,lowtop,hightop;
+        $.each(x, function (key, value) {
+            //alert( key + ": " + value );
+            if(i==0){
+
+                firsttop=$(value).offset().top;
+                lowtop=firsttop+100;
+                hightop=firsttop-100;
+
+                if(firsttop=='0px'){
+                    return;
+                }
+            }
+            if(i<5) {
+
+                console.log($(value).offset().top);
+                var mytop=$(value).offset().top;
+                if(mytop>hightop){
+                    if(mytop<lowtop){
+                        console.log("Doing it");
+                        $(value).css({top: '0px'});
+                    }
+                }
+                else{
+
+                }
+            }
+            i=i+1;
+        });
+    }
+    //setInterval(myPeriodicMethod, 500);
+</script>
