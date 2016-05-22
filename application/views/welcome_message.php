@@ -773,11 +773,19 @@
             function  getArticles(categoryId) {
 
                 var test=window.location.href;
+
+
                 if (categoryId == '2|#ff7973') {
 
                     if (test.indexOf("welcome/hospitalityandmanagement") ==-1) {
 
                         window.location = "welcome/hospitalityandmanagement";
+                    }
+                    else{
+                        if($("#reldtimes").text()!="0"){
+                            return;
+                            location.reload();
+                        }
                     }
 
                 }
@@ -793,6 +801,12 @@
 
                         window.location = "welcome/foodandresturant";
                     }
+                    else{
+                        if($("#reldtimes").text()!="0"){
+                            return;
+                            location.reload();
+                        }
+                    }
 
 
                 }
@@ -801,7 +815,12 @@
 
                         window.location = "welcome/csr";
                     }
-
+                    else{
+                        if($("#reldtimes").text()!="0"){
+                            return;
+                            location.reload();
+                        }
+                    }
 
                 }
                 if (categoryId == '5|#ffc24f') {
@@ -809,9 +828,15 @@
 
                         window.location = "welcome/other";
                     }
-
+                    else{
+                        if($("#reldtimes").text()!="0"){
+                            return;
+                            location.reload();
+                        }
+                    }
 
                 }
+                $("#reldtimes").text(1);
 
 
                 //{
@@ -895,6 +920,9 @@
                             if (i % 5 === 0) {
                             //add ad
                                 if($.browser.mozilla){
+                                    if(typeof ads == 'undefined'){
+                                        return;
+                                    }
                                     var x = ads[ad_count].main_ad_image.toString();
                                     ads[ad_count].main_ad_image = x.replace(/\\/g,"/");
                                     //alert(x +' | '+data[i].thumbnail);
@@ -1444,6 +1472,7 @@
         </script>
     </head>
     <body>
+    <div id="reldtimes" hidden>0</div>
     <!--
 <br>
 <br>
