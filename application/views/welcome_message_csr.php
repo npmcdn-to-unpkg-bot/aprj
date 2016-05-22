@@ -780,7 +780,7 @@ function  getArticles(categoryId) {
     if (categoryId == '2|#ff7973') {
 
         if (test.indexOf("welcome/hospitalityandmanagement") ==-1) {
-
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
             window.location = "welcome/hospitalityandmanagement";
         }
         else{
@@ -793,14 +793,14 @@ function  getArticles(categoryId) {
     }
     if (categoryId == '1|#26dcc2') {
 
-
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         window.location = "http://localhost/aprj/";
 
 
     }
     if (categoryId == '3|#ae4fff') {
         if (test.indexOf("welcome/foodandresturant") ==-1) {
-
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
             window.location = "welcome/foodandresturant";
         }
         else{
@@ -814,7 +814,7 @@ function  getArticles(categoryId) {
     }
     if (categoryId == '4|#fb73dd') {
         if (test.indexOf("welcome/csr") ==-1) {
-
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
             window.location = "welcome/csr";
         }
         else{
@@ -827,7 +827,7 @@ function  getArticles(categoryId) {
     }
     if (categoryId == '5|#ffc24f') {
         if (test.indexOf("welcome/other") ==-1) {
-
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
             window.location = "welcome/other";
         }
         else{
