@@ -38,11 +38,23 @@
     <!-- Bootstrap JS file -->
     <script src="newjscss/bootstrap.min.js"></script>
 
+    <script src="newjscss/jquery.bpopup.min.js"></script>
 
 </head>
 
 <body>
-<button>HELLLOOOOOOOOOOOOOOOOO</button>
+<style>
+    .white-popup {
+        position: relative;
+        background: #FFF;
+        padding: 20px;
+        width: auto;
+        max-width: 1000px;
+        margin: 20px auto;
+    }
+
+</style>
+<button onclick="onclickcontent(this);">HELLLOOOOOOOOOOOOOOOOO</button>
 <!-- The searching text field -->
 <input type="text" id="search" class="media-boxes-search" placeholder="Search By Title">
 
@@ -108,6 +120,7 @@
         "<div class=\"media-box $catname\">".
 
         "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\">
+
         <div class=\"media-box-image\">".
             "<div data-thumbnail=\" $thumbnail.\"></div>".
 
@@ -273,11 +286,19 @@
         });
 
     </script>
+
 <script>
     function onclickcontent(elem){
 
-        alert("PPPPPPPPPP"+elem);
+        $('button').magnificPopup({
+            items: {
+                src: '<div class="white-popup">Dynamically created popup</div>',
+                type: 'inline'
+            }
+        });
     }
+
+
     $('.ajax-popup-link').magnificPopup({
         type: 'iframe'
     });
