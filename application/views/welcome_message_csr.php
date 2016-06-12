@@ -347,7 +347,7 @@ var isSearchResult = false;
 console.log("ADS");
 function getAds() {
     $.ajax({
-        url: "advertisement/getAllAds",
+        url: "Advertisement/getAllAds",
         success: function (data) {
             ads = jQuery.parseJSON(data);
             console.log("getAllads");

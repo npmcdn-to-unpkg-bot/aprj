@@ -2,6 +2,7 @@
 
 class Welcome extends CI_Controller {
 
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -37,6 +38,16 @@ class Welcome extends CI_Controller {
     public function other(){
 
         $this->load->view('welcome_message_oth');
+    }
+
+    public function abcD(){
+        //echo "DoneP";
+        $this->load->view('welcome_message_test');
+    }
+
+    public function abcE(){
+        //echo "DoneP";
+        $this->load->view('welcometest2');
     }
 
 }

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Loud Horn Marketing</title>
-        <base href="http://localhost/aprj/">
+        <base href="http://localhost/aprj2/">
         <script src=" js/jquery.min.js" language="JavaScript"></script>
         <script src="js/jquery-1.8.2.js" language="JavaScript"></script>
         <script type="text/javascript" src="html5gallery/html5gallery.js"></script>
@@ -86,7 +86,7 @@
                 display: block;
                 clear: both;
               }
-                //display: block;
+                /*display: block;*/
                 /*                -webkit-column-count: 3;
                                 -webkit-column-gap: 8px;
                                 -webkit-column-fill: auto;
@@ -405,7 +405,7 @@
                             is_loading = true;
                             // display the waiting loader
                             $('#loader').show();
-                            // execute an ajax query to load more statments
+                            // execute ann ajax query to load more statments
                             if (limit == 0) {
                                 limit = 10;
                             }
