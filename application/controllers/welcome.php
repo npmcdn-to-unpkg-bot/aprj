@@ -45,9 +45,23 @@ class Welcome extends CI_Controller {
         $this->load->view('welcome_message_test');
     }
 
-    public function abcE(){
+    public function abcE($cat=NULL){
         //echo "DoneP";
-        $this->load->view('welcometest2');
+        $this->load->model("advertisement_m");
+        $this->load->model("article_m");
+        $data["alldata"]=$this->article_m->getArticleToView($cat);
+
+        $this->load->view('welcometest2',$data);
+    }
+
+    public function article($arid){
+        //echo "DoneP";
+        //$this->load->model("advertisement_m");
+        $this->load->model("article_m");
+        $data["alldata"]=$this->article_m->getArticleById($arid);
+        $data["arid"]=$arid;
+        //echo "-------------";
+        $this->load->view('articledata',$data);
     }
 
 }

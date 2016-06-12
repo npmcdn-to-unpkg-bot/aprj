@@ -1,5 +1,5 @@
 <head>
-    <base href="http://localhost/aprj2/">
+    <base href="http://localhost/aprj/">
     <meta charset="UTF-8">
     <title>Media Boxes</title>
 

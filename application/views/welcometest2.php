@@ -1,261 +1,287 @@
-<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Loud Horn Marketing</title>
-<base href="http://localhost/aprj/">
-<script src=" js/jquery.min.js" language="JavaScript"></script>
-<script src="js/jquery-1.8.2.js" language="JavaScript"></script>
-<script type="text/javascript" src="html5gallery/html5gallery.js"></script>
-<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
-<script src="js/jquery.loadTemplate-1.4.4.js" type="text/javascript"></script>
-<script src="js/semantic.js" type="text/javascript"></script>
-<script src="js/jquery.slicknav.min.js" type="text/javascript"></script>
-<script src="js/masonry.pkgd.min.js" type="text/javascript"></script>
-<script src="js/date.js" type="text/javascript"></script>
-<link href="css/semantic.css" rel="stylesheet" type="text/css"/>
-<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<link href="css/SimpleSlider.css" rel="stylesheet" type="text/css">
-<link href="css/slicknav.css" rel="stylesheet" type="text/css">
+    <base href="http://localhost/aprj/">
+    <meta charset="UTF-8">
+    <title>Media Boxes</title>
 
-<script src="js/Am2_SimpleSlider.js" type="text/javascript"></script>
+    <link rel="icon" href="img/favicon.ico" type="image/png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"> <!-- needed for mobile devices -->
+
+    <!-- Import font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+
+    <!-- Media Boxes CSS files -->
+    <link rel="stylesheet" href="newjscss/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="newjscss/mediaBoxes.css">
+
+
+    <!-- jQuery 1.8+ -->
+    <script src="newjscss/jquery-1.10.2.min.js"></script>
+
+    <!-- Style for Bootstrap -->
+    <link rel="stylesheet" href="newjscss/bootstrap.min.css">
+
+
+    <!-- Media Boxes JS files -->
+    <script src="newjscss/jquery.isotope.min.js"></script>
+    <script src="newjscss/jquery.imagesLoaded.min.js"></script>
+    <script src="newjscss/jquery.transit.min.js"></script>
+    <script src="newjscss/jquery.easing.js"></script>
+    <script src="newjscss/waypoints.min.js"></script>
+    <script src="newjscss/modernizr.custom.min.js"></script>
+    <script src="newjscss/jquery.magnific-popup.min.js"></script>
+    <script src="newjscss/jquery.mediaBoxes.js"></script>
+
+    <!-- Bootstrap JS file -->
+    <script src="newjscss/bootstrap.min.js"></script>
+
+
 </head>
 
 <body>
-<script>
-    $(document).scroll(function () {
-        if(loadByScrolling){
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                if ($(document).scrollTop() + $(window).height() <= $(document).height()) {
-                    if (is_loading == false) { // stop loading many times for the same page
-                        // set is_loading to true to refuse new loading
-                        is_loading = true;
-                        // display the waiting loader
-                        $('#loader').show();
-                        // execute an ajax query to load more statments
-                        if (limit == 0) {
-                            limit = 10;
-                        }
-                        console.log("MORE ARTICLES");
-                        $.ajax({
-                            url: 'article/loadMoreArticles',
-                            data: {
-                                id: lastCategoryId,
-                                type: 'CATEGORY',
-                                articleId: lastArticleId,
-                                limit: limit
-                            },
-                            success: function (data) {
-                                console.log("loadMoreArticles");
-                                console.log(data);
-                                console.log("/loadMoreArticles");
-                                // now we have the response, so hide the loader
-                                $('#loader').hide();
-                                // append: add the new statments to the existing data
-
-                                var data = jQuery.parseJSON(data);
-                                for (var i in data){
-                                    /*$("#columns").loadTemplate($("#pin"),
-                                     {
-                                     'article_id': data[i].article_id,
-                                     'articleImage': data[i].thumbnail,
-                                     'title': data[i].title,
-                                     'display_content': data[i].display_content,
-                                     'display_date': data[i].date
-                                     }, {append: true});
-                                     if (i % 5 === 0) {
-                                     //add ad
-                                     $("#columns").loadTemplate($("#pinads"),
-                                     {
-                                     'article_id': ads[ad_count].ad_id + "|" + ads[ad_count].ad_url,
-                                     'articleImage': ads[ad_count].main_ad_image,
-                                     'title': '',
-                                     'display_content': '',
-                                     'url_': ads[ad_count].ad_url
-                                     }, {append: true});
-                                     ad_count += 1;
-                                     }*/
-
-                                    if($.browser.mozilla){
-                                        var x = data[i].thumbnail.toString();
-                                        data[i].thumbnail = x.replace(/\\/g,"/");
-                                        //alert(x +' | '+data[i].thumbnail);
-                                    }
-                                    console.log(data[i]);
-                                    var $elems = $('<div/>').loadTemplate($("#pin"),
-                                        {
-                                            'article_id': data[i].article_id,
-                                            'articleImage': data[i].thumbnail,
-                                            'title': data[i].title,
-                                            'display_content': data[i].display_content,
-                                            'display_date': data[i].date
-                                        });
-                                    var $pin = $elems[0].children[0];
-                                    fitImages($pin);
-                                    $($pin).find('img').load(function (){
-                                        $grid.append(this.parentElement).masonry('appended', this.parentElement);
-                                        $grid.masonry();
-                                        $grid.masonry('layout');
-                                        $grid.masonry('reloadItems');
-                                        //alert('oadd');
-                                    });
-                                    //$grid.append( $pin ).masonry( 'appended', $pin );
-                                    if (i % 5 === 0) {
-                                        //add ad
-                                        if($.browser.mozilla){
-                                            var x = ads[ad_count].main_ad_image.toString();
-                                            ads[ad_count].main_ad_image = x.replace(/\\/g,"/");
-                                            //alert(x +' | '+data[i].thumbnail);
-                                        }
-                                        console.log(ads);
-                                        var $elems = $('<div/>').loadTemplate($("#pinads"),
-                                            {
-                                                'article_id': ads[ad_count].ad_id + "|" + ads[ad_count].ad_url,
-                                                'articleImage': ads[ad_count].main_ad_image,
-                                                'title': '',
-                                                'display_content': '',
-                                                'url_': ads[ad_count].ad_url
-                                            }, {append: true});
-                                        ad_count += 1;
-                                        var $ad = $elems[0].children[0];
-                                        fitImages($ad);
-                                        $($ad).find('img').load(function (){
-                                            $grid.append(this.parentElement).masonry('appended', this.parentElement);
-                                            //alert('oadd');
-                                            $grid.masonry('layout');
-                                            $grid.masonry('reloadItems');
-                                        });
-                                        //$grid.append( $ad ).masonry( 'appended', $ad );
-                                    }
-                                }
-
-                                ;
+<button>HELLLOOOOOOOOOOOOOOOOO</button>
+<!-- The searching text field -->
+<input type="text" id="search" class="media-boxes-search" placeholder="Search By Title">
 
 
-                                // set is_loading to false to accept new loading
-                                is_loading = false;
-                                limit = limit + 10;
-                            },
-                            async: true,
-                            type: 'GET'
-                        });
-                    }
-                }
-            }
-            else {
-                if ($(document).scrollTop() + $(window).height() == $(document).height()) {
-                    if (is_loading == false) { // stop loading many times for the same page
-                        // set is_loading to true to refuse new loading
-                        is_loading = true;
-                        // display the waiting loader
-                        $('#loader').show();
-                        // execute an ajax query to load more statments
-                        if (limit == 0) {
-                            limit = 10;
-                        }
-                        console.log("MORE ARTCICLES 2");
-                        $.ajax({
-                            url: 'article/loadMoreArticles',
-                            data: {
-                                id: lastCategoryId,
-                                type: 'CATEGORY',
-                                articleId: lastArticleId,
-                                limit: limit
-                            },
-                            success: function (data) {
-                                // console.log("loadMoreArticles2");
-                                // console.log(data);
-                                // console.log("/loadMoreArticles2");
-                                // now we have the response, so hide the loader
-                                $('#loader').hide();
-                                // append: add the new statments to the existing data
+<!-- The filter bar -->
+<ul class="media-boxes-filter" id="filter">
+    <li><a class="selected" href="#" data-filter="*">All</a></li>
+    <li><a href="#" data-filter=".category1">Category 1</a></li>
+    <li><a href="#" data-filter=".category2">Category 2</a></li>
+    <li><a href="#" data-filter=".category3">Category 3</a></li>
+    <li><a href="#" data-filter=".category4">Category 4</a></li>
+</ul>
 
-                                var data = jQuery.parseJSON(data);
-                                for (var i in data){
-                                    /*  $("#columns").loadTemplate($("#pin"),
-                                     {
-                                     'article_id': data[i].article_id,
-                                     'articleImage': data[i].thumbnail,
-                                     'title': data[i].title,
-                                     'display_content': data[i].display_content,
-                                     'display_date': data[i].date
-                                     }, {append: true});
-                                     if (i % 5 === 0) {
-                                     //add ad
-                                     $("#columns").loadTemplate($("#pinads"),
-                                     {
-                                     'article_id': ads[ad_count].ad_id + "|" + ads[ad_count].ad_url,
-                                     'articleImage': ads[ad_count].main_ad_image,
-                                     'title': '',
-                                     'display_content': '',
-                                     'url_': ads[ad_count].ad_url
-                                     }, {append: true});
-                                     ad_count += 1;
-                                     }*/
-                                    if($.browser.mozilla){
-                                        var x = data[i].thumbnail.toString();
-                                        data[i].thumbnail = x.replace(/\\/g,"/");
-                                        //alert(x +' | '+data[i].thumbnail);
-                                    }
-                                    var $elems = $('<div/>').loadTemplate($("#pin"),
-                                        {
-                                            'article_id': data[i].article_id,
-                                            'articleImage': data[i].thumbnail,
-                                            'title': data[i].title,
-                                            'display_content': data[i].display_content,
-                                            'display_date': Date.parse(data[i].date).toString('MMMM dS, yyyy')
-                                        });
-                                    var $pin = $elems[0].children[0];
-                                    fitImages($pin);
-                                    $($pin).find('img').load(function (){
-                                        $grid.append(this.parentElement).masonry('appended', this.parentElement);
-                                        //alert('oadd');
-                                        $grid.masonry('layout');
-                                        $grid.masonry('reloadItems');
-                                    });
-                                    //$grid.append( $pin ).masonry( 'appended', $pin );
-                                    if (i % 5 === 0) {
-                                        //add ad
-                                        if($.browser.mozilla){
-                                            var x = ads[ad_count].main_ad_image.toString();
-                                            ads[ad_count].main_ad_image = x.replace(/\\/g,"/");
-                                            //alert(x +' | '+data[i].thumbnail);
-                                        }
-                                        var $elems = $('<div/>').loadTemplate($("#pinads"),
-                                            {
-                                                'article_id': ads[ad_count].ad_id + "|" + ads[ad_count].ad_url,
-                                                'articleImage': ads[ad_count].main_ad_image,
-                                                'title': '',
-                                                'display_content': '',
-                                                'url_': ads[ad_count].ad_url
-                                            }, {append: true});
-                                        ad_count += 1;
-                                        var $ad = $elems[0].children[0];
-                                        fitImages($ad);
-                                        $($ad).find('img').load(function (){
-                                            $grid.append(this.parentElement).masonry('appended', this.parentElement);
-                                            // alert('oadd');
-                                            $grid.masonry('layout');
-                                            $grid.masonry('reloadItems');
-                                        });
-                                        //$grid.append( $ad ).masonry( 'appended', $ad );
-                                    }
-                                }
-
-                                ;
+<!-- The sorting drop down -->
+<div class="media-boxes-drop-down" id="sort">
+    <div class="media-boxes-drop-down-header">
+    </div>
+    <ul class="media-boxes-drop-down-menu">
+        <li><a class="selected" href="#" data-sort-by="title">Original Order</a></li>
+        <li><a href="#" data-sort-by="title">Sort by Title</a></li>
+        <li><a href="#" data-sort-by="text">Sort by Text</a></li>
+    </ul>
+</div>
 
 
-                                // set is_loading to false to accept new loading
-                                is_loading = false;
-                                limit = limit + 10;
-                            },
-                            async: true,
-                            type: 'GET'
-                        });
-                    }
-                }
-            }
+<!-- The grid with media boxes -->
+<div id="grid">
+
+    <?php
+    //echo var_dump($alldata);
+
+    foreach ($alldata as $row) {
+        $catid= rand ( 1 , 4 );
+        $catname="category".$catid;
+        $titallowelen=50;
+        $strsize=strlen($row->title);
+        if($strsize>$titallowelen){
+            $title=substr ($row->title , 0,$titallowelen );
         }
+        else{
+
+            $title=$row->title;
+            $rem=$titallowelen-$strsize;
+            $title=str_pad($title, $titallowelen," A");
+        }
+
+        $allowelen=200;
+        $strsize=strlen($row->display_content);
+        if($strsize>$allowelen){
+            $summery=substr ($row->display_content , 0,$allowelen );
+        }
+        else{
+
+            $summery=$row->display_content;
+            $rem=$allowelen-$strsize;
+            $summery=str_pad($summery, $allowelen,"-");
+        }
+        $thumbnail=str_replace ( "\\" , "/" , $row->thumbnail );
+        //$thumbnail= $row->thumbnail ;
+
+       //echo var_dump($row);
+        echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
+        "<div class=\"media-box $catname\">".
+
+        "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\">
+        <div class=\"media-box-image\">".
+            "<div data-thumbnail=\" $thumbnail.\"></div>".
+
+        "</div></a>".
+            "<div class=\"mytitle\"><h3>$title</h3></div>".
+        "<div style=\"background-color: #aaaaaa\">".
+            $summery.
+        "</div>".
+
+    "</div>";
+
+
+    }
+    ?>
+
+
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">1</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
+
+        </div>
+        <div style="background-color: #aaaaaa">
+            1 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">2</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/54.jpg"></div>
+
+        </div>
+        <div style="background-color: #aaaaaa">
+            2  Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">3</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/55.jpg"></div>
+
+        </div>
+        <div style="background-color: #aaaaaa">
+            3 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">4</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/56.jpg"></div>
+        </div>
+        <div style="background-color: #aaaaaa">
+            4 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">5</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/58.jpg"></div>
+        </div>
+        <div style="background-color: #aaaaaa">
+            5 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+
+    <!-------------->
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">6</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
+        </div>
+        <div style="background-color: #aaaaaa">
+            6 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">7</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
+        </div>
+        <div style="background-color: #aaaaaa">
+            7  Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">8</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/78.jpg"></div>
+        </div>
+        <div style="background-color: #aaaaaa">
+            8 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">9</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/80.jpg"></div>
+        </div>
+        <div style="background-color: #aaaaaa">
+            9 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+    <!-- --------- MEDIA BOX MARKUP
+    <div class="media-box category1">
+        <div class="mytitle">10</div>
+        <div class="media-box-image">
+            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
+        </div>
+        <div style="background-color: #aaaaaa">
+            10 Here goes some content that belong to category 2 Here goes some content that belong to category 2
+        </div>
+
+    </div>
+    --------- -->
+</div>
+
+    <script>
+
+        var $grid = $('#grid').mediaBoxes({columns:6});
+
+
+
+        $('button').on('click', function(){
+            var box =   '<div class="media-box category1">'+
+
+                '<div class="media-box-image">'+
+            '<div data-thumbnail="http://goo.gl/nzRWqf"></div>'+
+            '<div data-type="iframe" data-popup="http://dimsemenov.com/plugins/magnific-popup/documentation.html"></div>'+
+'<div style="background-color: #aaaaaa">'+
+            '6 Here goes some content that belong to category 2 Here goes some content that belong to category 2'+
+            '</div>'+
+            '<div class="thumbnail-overlay">'+
+            '<i class="fa fa-plus mb-open-popup">HI</i>'+
+            '</div>'+
+            '</div>'+
+
+            '</div>';
+
+
+            $grid.isotopeMB( 'insert', $(box).hide(), function(){
+                // alert('Boxes Added!');
+            });
+        });
+
+    </script>
+<script>
+    function onclickcontent(elem){
+
+        alert("PPPPPPPPPP"+elem);
+    }
+    $('.ajax-popup-link').magnificPopup({
+        type: 'iframe'
     });
 </script>
+
 
 </body>

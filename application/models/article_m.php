@@ -118,10 +118,10 @@ class article_m extends CI_Model {
             $res = $this->db->get('article',10,0);
 
             $allData = array();
-            foreach ($res->result_array() as $row) {
-                $allData[] = $row;
-            }
-            return $allData;
+            //foreach ($res->result_array() as $row) {
+            //    $allData[] = $row;
+            //}
+            return $res->result();
         }
         
         else if ($type == 'ADMIN')
@@ -577,6 +577,18 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
         }
         return $allData;
         
+    }
+
+    ///////////////////////////////////////
+
+    function getArticleToView($cat_id=NULL){
+        $this->db->select('article_id, title, display_content, content, image, original_url, creator, status, date, category_id,thumbnail');
+        if($cat_id!=NULL) {
+            $this->db->where(array('category_id' => $cat_id));
+        }
+        $this->db->where(array('status' => 'Approve'));
+        $res = $this->db->get('article');
+        return $res->result();
     }
     
 }
