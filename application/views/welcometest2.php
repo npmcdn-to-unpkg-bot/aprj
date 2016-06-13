@@ -42,7 +42,7 @@
 
 </head>
 
-<body>
+<body background="bgimages/tiledBg.png">
 <style>
     .white-popup {
         position: relative;
@@ -57,16 +57,21 @@
 
 <!--<!-- The searching text field -->
 <!--<input type="text" id="search" class="media-boxes-search" placeholder="Search By Title">-->
+<div style="background-color: #a9d5de">
+    <div style="display: inline"><img src="bgimages/logo.png" style="cursor: pointer; cursor: hand; width:5em; display: inline"></div>
+<div style="display: inline;align-items: center"><!-- The filter bar -->
+    <ul class="media-boxes-filter" id="filter" style="display: inline">
+        <li><a class="selected" href="#" data-filter="*">All</a></li>
+        <li><a href="#" data-filter=".category1">Category 1</a></li>
+        <li><a href="#" data-filter=".category2">Category 2</a></li>
+        <li><a href="#" data-filter=".category3">Category 3</a></li>
+        <li><a href="#" data-filter=".category4">Category 4</a></li>
+    </ul></div>
+<div style="display: inline"><button>Search</button><button>LearnMore</button><button>Login</button></div>
+</div>
+<br>
 
 
-<!-- The filter bar -->
-<ul class="media-boxes-filter" id="filter">
-    <li><a class="selected" href="#" data-filter="*">All</a></li>
-    <li><a href="#" data-filter=".category1">Category 1</a></li>
-    <li><a href="#" data-filter=".category2">Category 2</a></li>
-    <li><a href="#" data-filter=".category3">Category 3</a></li>
-    <li><a href="#" data-filter=".category4">Category 4</a></li>
-</ul>
 
 <!--<!-- The sorting drop down -->
 <!--<div class="media-boxes-drop-down" id="sort">-->
@@ -82,6 +87,7 @@
 
 <!-- The grid with media boxes -->
 <div style="justify-content: center">
+
 <div id="grid" style="width: auto;">
 
     <?php
@@ -118,15 +124,15 @@
 
        //echo var_dump($row);
         echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
-        "<div class=\"media-box $catname white-popup-block\">".
+        "<div class=\"media-box $catname\"style=\"background-image:bgimages/logo.png\" >".
 
-        "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link white-popup-block\">
+        "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\" style=\"background-color: white\" >
 
-        <div class=\"media-box-image\">".
-            "<div data-thumbnail=\" $thumbnail.\"></div>".
+        <div class=\"media-box-image\" style=\"background-color: white\">".
+            "<div data-thumbnail=\" $thumbnail.\" style=\"background-color: white\"></div>".
 
         "</div></a>".
-            "<div class=\"mytitle\"><h3>$title</h3></div>".
+            "<div class=\"mytitle\"><h3 style=\"background-color: white;margin:0px\">$title</h3></div>".
         "<div style=\"background-color: #aaaaaa\">".
             $summery.
         "</div>".
@@ -263,8 +269,30 @@
 
     <script>
 
-        var $grid = $('#grid').mediaBoxes({columns:5});
-
+        var $grid = $('#grid').mediaBoxes({
+            columns:6,
+            resolutions:[
+                {
+                    maxWidth: 960,
+                    columnWidth: 'auto',
+                    columns: 3
+                },
+                {
+                    maxWidth: 650,
+                    columnWidth: 'auto',
+                    columns: 2
+                },
+                {
+                    maxWidth: 450,
+                    columnWidth: 'auto',
+                    columns: 1
+                },
+            ]
+        });
+        $(function(){
+            $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
+            $("html, body").animate({ scrollTop: 0 }, 1);
+        });
 
 
         $('button').on('click', function(){
@@ -310,6 +338,8 @@
         closeOnBgClick:false,
         closeBtnInside: false
     });
+
+
     function abc(){
         var magnificPopup = $.magnificPopup('close');
         console.log(magnificPopup);
