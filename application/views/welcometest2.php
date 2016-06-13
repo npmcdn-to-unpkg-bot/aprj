@@ -55,8 +55,8 @@
 
 </style>
 
-<!-- The searching text field -->
-<input type="text" id="search" class="media-boxes-search" placeholder="Search By Title">
+<!--<!-- The searching text field -->
+<!--<input type="text" id="search" class="media-boxes-search" placeholder="Search By Title">-->
 
 
 <!-- The filter bar -->
@@ -68,20 +68,21 @@
     <li><a href="#" data-filter=".category4">Category 4</a></li>
 </ul>
 
-<!-- The sorting drop down -->
-<div class="media-boxes-drop-down" id="sort">
-    <div class="media-boxes-drop-down-header">
-    </div>
-    <ul class="media-boxes-drop-down-menu">
-        <li><a class="selected" href="#" data-sort-by="title">Original Order</a></li>
-        <li><a href="#" data-sort-by="title">Sort by Title</a></li>
-        <li><a href="#" data-sort-by="text">Sort by Text</a></li>
-    </ul>
-</div>
-
+<!--<!-- The sorting drop down -->
+<!--<div class="media-boxes-drop-down" id="sort">-->
+<!--    <div class="media-boxes-drop-down-header">-->
+<!--    </div>-->
+<!--    <ul class="media-boxes-drop-down-menu">-->
+<!--        <li><a class="selected" href="#" data-sort-by="title">Original Order</a></li>-->
+<!--        <li><a href="#" data-sort-by="title">Sort by Title</a></li>-->
+<!--        <li><a href="#" data-sort-by="text">Sort by Text</a></li>-->
+<!--    </ul>-->
+<!--</div>-->
+<!---->
 
 <!-- The grid with media boxes -->
-<div id="grid">
+<div style="justify-content: center">
+<div id="grid" style="width: auto;">
 
     <?php
     //echo var_dump($alldata);
@@ -256,10 +257,13 @@
     </div>
     --------- -->
 </div>
+<!-----------------------------End of GRID-------------------->
+</div>
+
 
     <script>
 
-        var $grid = $('#grid').mediaBoxes({columns:6});
+        var $grid = $('#grid').mediaBoxes({columns:5});
 
 
 
