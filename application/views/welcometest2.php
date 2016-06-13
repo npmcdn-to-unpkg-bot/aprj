@@ -54,7 +54,7 @@
     }
 
 </style>
-<button onclick="onclickcontent(this);">HELLLOOOOOOOOOOOOOOOOO</button>
+
 <!-- The searching text field -->
 <input type="text" id="search" class="media-boxes-search" placeholder="Search By Title">
 
@@ -117,9 +117,9 @@
 
        //echo var_dump($row);
         echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
-        "<div class=\"media-box $catname\">".
+        "<div class=\"media-box $catname white-popup-block\">".
 
-        "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\">
+        "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link white-popup-block\">
 
         <div class=\"media-box-image\">".
             "<div data-thumbnail=\" $thumbnail.\"></div>".
@@ -293,15 +293,25 @@
         $('button').magnificPopup({
             items: {
                 src: '<div class="white-popup">Dynamically created popup</div>',
-                type: 'inline'
+                type: 'ajax'
             }
         });
     }
 
 
     $('.ajax-popup-link').magnificPopup({
-        type: 'iframe'
+        type: 'ajax',
+
+
+        closeOnBgClick:false,
+        closeBtnInside: false
     });
+    function abc(){
+        var magnificPopup = $.magnificPopup('close');
+        console.log(magnificPopup);
+        //$.magnificPopup.close();
+        //$('.ajax-popup-link').magnificPopup('close');
+    }
 </script>
 
 
