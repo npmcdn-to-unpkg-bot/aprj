@@ -35,7 +35,6 @@
 (function( window, $, undefined ){
 
     var MediaBoxes = function(container, options){
-        console.error("++++++++++");
         
     /* ====================================================================== *
             [1] SETUP
@@ -515,7 +514,6 @@
         /* ****** Extending Isotope so when you insert items they got the right settings (like columnWidth, staticDimensions, convertDivsIntoImages, etc.) ****** */
         $.extend( IsotopeMB.prototype, {
             insert : function( elems, callback ) {
-                console.log("TEST");
                 var items = this.addItems( elems );
                 if ( !items.length ) {
                   return;
@@ -528,14 +526,10 @@
                 var i, item;
                 var len = items.length;
                 for ( i=0; i < len; i++ ) {
-
-
                   item = items[i];
                   if(firstHiddenBox != undefined){
-                      console.log("Data ");
                     this.element.insertBefore( item.element, firstHiddenBox );
                   }else{
-                      console.log("Data else");
                     this.element.appendChild( item.element );
                   }
                 } 
@@ -1101,7 +1095,7 @@
                     if( effect == 'direction-aware-fade' ){
                         thumbnailOverlay.fadeOut(700);
                     }else{
-                        thumbnailOverlay.stop()[animation]({ 'left' : cssPos.from, 'top' : cssPos.to }, settings.overlaySpeed, settings.overlayEasing );
+                        thumbnailOverlay.stop()[animation]({ 'left' : cssPos.from, 'top' : cssPos.to }, settings.overlaySpeed, settings.overlayEasing ); 
                     }
                 }
             }
