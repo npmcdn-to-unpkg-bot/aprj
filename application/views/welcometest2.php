@@ -1,7 +1,7 @@
 <head>
     <base href="http://localhost/aprj/">
     <meta charset="UTF-8">
-    <title>Media Boxes</title>
+    <title>Loud Horn Marketing</title>
 
     <link rel="icon" href="img/favicon.ico" type="image/png">
 
@@ -16,6 +16,8 @@
     <!-- Media Boxes CSS files -->
     <link rel="stylesheet" href="newjscss/magnific-popup.css">
     <link rel="stylesheet" type="text/css" href="newjscss/mediaBoxes.css">
+    <link href="css/semantic.css" rel="stylesheet" type="text/css"/>
+
 
 
     <!-- jQuery 1.8+ -->
@@ -57,17 +59,87 @@
 
 <!--<!-- The searching text field -->
 <!--<input type="text" id="search" class="media-boxes-search" placeholder="Search By Title">-->
-<div style="background-color: #a9d5de">
-    <div style="display: inline"><img src="bgimages/logo.png" style="cursor: pointer; cursor: hand; width:5em; display: inline"></div>
-<div style="display: inline;align-items: center"><!-- The filter bar -->
-    <ul class="media-boxes-filter" id="filter" style="display: inline">
-        <li><a class="selected" href="#" data-filter="*">All</a></li>
-        <li><a href="#" data-filter=".category1">Category 1</a></li>
-        <li><a href="#" data-filter=".category2">Category 2</a></li>
-        <li><a href="#" data-filter=".category3">Category 3</a></li>
-        <li><a href="#" data-filter=".category4">Category 4</a></li>
-    </ul></div>
-<div style="display: inline"><button>Search</button><button>LearnMore</button><button>Login</button></div>
+<!--<div style="background-color: #a9d5de">-->
+<!--    <div style="display: inline"><img src="bgimages/logo.png" style="cursor: pointer; cursor: hand; width:5em; display: inline"></div>-->
+<!--<div style="display: inline;align-items: center"><!-- The filter bar -->-->
+<!--    <ul class="media-boxes-filter" id="filter" style="display: inline">-->
+<!--        <li><a class="selected" href="#" data-filter="*">All</a></li>-->
+<!--        <li><a href="#" data-filter=".category1">Category 1</a></li>-->
+<!--        <li><a href="#" data-filter=".category2">Category 2</a></li>-->
+<!--        <li><a href="#" data-filter=".category3">Category 3</a></li>-->
+<!--        <li><a href="#" data-filter=".category4">Category 4</a></li>-->
+<!--    </ul></div>-->
+<!--<div style="display: inline"><button>Search</button><button>LearnMore</button><button>Login</button></div>-->
+<!--</div>-->
+<script type="text/javascript">
+    function mouseOver(item_)
+    {
+        // border-top:3px solid #ff0000;
+        colour_ = ($(item_).attr('value')).split("|")[1];
+        //alert(colour_);
+
+        $(item_).css('background-color', colour_);
+        $(item_).css('color', 'white');
+    }
+
+    function mouseOut(item_)
+    {
+        $(item_).css('background-color', '');
+        $(item_).css('color', 'grey');
+    }
+</script>
+<div class="ui fixed borderless menu menuheight" >
+    <div class="item" style="margin-left: 2%;">
+        <img onClick="getArticles('ALL')" src="bgimages/logo.png" style = "cursor: pointer; cursor: hand; width:5em">
+    </div>
+    <div class="grid_9">
+        <div class="align-right">
+
+            <div class="left menu" id="menuControl" style="margin-left: 5%;">
+
+                <a class="selected item itemBar" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey;" href="#" data-filter="*">All</a>
+                <a href="#" data-filter=".category1" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2">Category 1</a>
+                <a href="#" data-filter=".category2" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(255, 121, 115);" value="2|#ff7973">Category 2</a>
+                <a href="#" data-filter=".category3" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(174, 79, 255);" value="3|#ae4fff">Category 3</a>
+                <a href="#" data-filter=".category4" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#fb73dd">Category 4</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="right item" style="margin-right: 2%;" >
+
+        <div class="item" >
+            <div id="search_article" class="ui blue button" style="width: 100%" >
+                Search
+            </div>
+        </div>
+
+        <div class="item" >
+            <div id="learn_more" class="ui blue button" style="width: 100%" >
+                Learn More
+            </div>
+        </div>
+
+        <?php
+        if ($this->session->userdata('username') != NULL) {
+            ?>
+            <div id="logged_in" class="ui grey button" style="width: 100%" >
+                Admin Panel
+            </div>
+            <?php
+        } else {
+            ?>
+            <div id="show_login_content" class="ui grey button" style="width: 100%" >
+                Login
+            </div>
+            <?php
+        }
+        ?>
+
+
+    </div>
+    <div class="item" id="mobileMenu"></div>
 </div>
 <br>
 
