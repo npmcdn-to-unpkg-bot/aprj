@@ -130,7 +130,7 @@
 
         <div class=\"media-box-image\" style=\"background-color: white\">".
             "<div data-thumbnail=\" $thumbnail.\" style=\"background-color: white\"></div>".
- 
+
         "</div></a>".
             "<div class=\"mytitle\"><h3 style=\"background-color: white;margin:0px\">$title</h3></div>".
         "<div style=\"background-color: #aaaaaa\">".
