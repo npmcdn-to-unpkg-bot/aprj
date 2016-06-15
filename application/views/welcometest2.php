@@ -54,6 +54,25 @@
         max-width: 1000px;
         margin: 20px auto;
     }
+    .mytitle h3 {
+        font: bold 22px/22px Calibri, sans-serif;
+        color: grey;
+        margin: 0;
+        padding: 10px;
+        padding-bottom: 5px;
+        word-break: break-all;
+        display:block;
+    //width:250px;
+    }
+    .mytitle p {
+        font: 12px/18px Arial, sans-serif;
+        color: grey;
+        margin: 0;
+        padding: 10px;
+        padding-bottom: 15px;
+        display: block;
+    }
+
 
 </style>
 
@@ -201,13 +220,13 @@
         "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\" style=\"background-color: white\" >
 
         <div class=\"media-box-image\" style=\"background-color: white\">".
-            "<div data-thumbnail=\" $thumbnail.\" style=\"background-color: white\"></div>".
+            "<div data-thumbnail=\" $thumbnail\" style=\"background-color: white\"></div>".
 
         "</div></a>".
-            "<div class=\"mytitle\"><h3 style=\"background-color: white;margin:0px\">$title</h3></div>".
-        "<div style=\"background-color: #aaaaaa\">".
+            "<div class=\"mytitle\"><h3 >$title</h3></div>".
+        "<div class=\"mytitle\"><p>".
             $summery.
-        "</div>".
+        "</p></div>".
 
     "</div>";
 
