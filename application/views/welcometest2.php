@@ -177,7 +177,7 @@
 <!---->
 
 <!-- The grid with media boxes -->
-<div style="justify-content: center">
+<div style="justify-content: center;position: relative;">
 
 <div id="grid" style="width: auto;">
 
