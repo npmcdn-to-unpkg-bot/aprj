@@ -8,6 +8,7 @@
     <script type="application/javascript" src="newjscss/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="newjscss/bootstrap.min.css">
+<!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
 </head>
 <style>
 
@@ -29,15 +30,27 @@
         padding-bottom: 15px;
         display: block;
     }
+    .myButton{
+        background-image: url('bgimages/social/fb-like.png');
+        cursor:pointer;
+        border:none;
+        width:50px;
+        height:50px;
+    }
+
+    .myButton:active  /* use Dot here */
+    {
+        background-color: blue;
+    }
 
 
 </style>
 <body bgcolor="black;">
 
-<div style='background-color: #ffffff;width:90%; margin:0 auto; height: 90%; padding: 1%'>
+<div style='background-color: #ffffff;width:90%; margin:0 auto; height: auto; padding: 1%'>
 
 <?php
-var_dump($alldata);
+//var_dump($alldata);
 /**
  * Created by PhpStorm.
  * User: NRV
@@ -54,7 +67,7 @@ var_dump($alldata);
 //}
 
 echo "<div class=\"modal-body row\">";
-echo "<div class=\"col-lg-4 col-md-4 col-sm-4\">";
+echo "<div class=\"col-lg-5 col-md-5 col-sm-5\">";
 echo "<div style=\"display:none;\" class=\"html5gallery\" data-responsive=\"true\" data-skin=\"light\">";
 
 if($alldata[0]["image"]!=""){
@@ -113,10 +126,14 @@ if($alldata[0]["video"]!=""){
 -->
 
 </div>
-<div style="background-color: #0000FF">PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPP</div>
+<br>
+<br>
+Share this article on,
+<br><br>
+<div><button class="btn btn-primary" style="width: 24%"><i class="fa fa-facebook"></i>&nbsp;Facebook</button> <button class="btn btn-info" style="width: 24%"><i class="fa fa-twitter"></i>&nbsp;Twitter</button> <button class="btn btn-danger" style="width: 24%"><i class="fa fa-google-plus"></i>&nbsp;Google+</button> <button class="btn btn-warning" style="width: 24%"><i class="fa fa-envelope"></i>&nbsp;Email</button></div>
 </div>
 
-<div class="col-lg-8 col-md-8 col-sm-8">
+<div class="col-lg-7 col-md-7 col-sm-7 readContent">
     <?php
     if(isset($alldata[0]["title"])){
 
@@ -132,8 +149,9 @@ if($alldata[0]["video"]!=""){
         <!-- Your second column here -->
     </div>
     </div>
-</div>
 
+
+</div>
 </div>
 </body>
 </html>
