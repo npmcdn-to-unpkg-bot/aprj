@@ -10,18 +10,34 @@
     <link rel="stylesheet" href="newjscss/bootstrap.min.css">
 </head>
 <style>
-    h1 {
-        display: table-cell;
 
-        text-align:center;
+    h1 {
+        font: bold 28px/28px Calibri, sans-serif;
+        color: grey;
+        margin: 0;
+        padding: 10px;
+        padding-bottom: 5px;
+        word-break: break-all;
+        display:block;
+    //width:250px;
     }
+    .readContent {
+        font: 16px/22px Arial, sans-serif;
+        color: grey;
+        margin: 0;
+        padding: 10px;
+        padding-bottom: 15px;
+        display: block;
+    }
+
+
 </style>
 <body bgcolor="black;">
 
-
-<div style='background-color: #e7e7e7;width:75%'>
+<div style='background-color: #ffffff;width:90%; margin:0 auto; height: 90%; padding: 1%'>
 
 <?php
+var_dump($alldata);
 /**
  * Created by PhpStorm.
  * User: NRV
@@ -31,15 +47,15 @@
 
 
 //var_dump($alldata[0]);
-if(isset($alldata[0]["title"])){
-
-    echo "<h1>".$alldata[0]["title"]."</h1>";
-
-}
+//if(isset($alldata[0]["title"])){
+//
+//    echo "<h1>".$alldata[0]["title"]."</h1>";
+//
+//}
 
 echo "<div class=\"modal-body row\">";
-echo "<div class=\"col-lg-6 col-md-6 col-sm-6\">";
-echo "<div style=\"display:none;\" class=\"html5gallery\" data-skin=\"light\" data-width=\"360\" data-height=\"204\">";
+echo "<div class=\"col-lg-4 col-md-4 col-sm-4\">";
+echo "<div style=\"display:none;\" class=\"html5gallery\" data-responsive=\"true\" data-skin=\"light\">";
 
 if($alldata[0]["image"]!=""){
     $thumbnail=str_replace ( "\\" , "/" , $alldata[0]["image"] );
@@ -100,8 +116,15 @@ if($alldata[0]["video"]!=""){
 <div style="background-color: #0000FF">PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPP</div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6">
-    <div style="overflow-y:scroll;height: 100%">
+<div class="col-lg-8 col-md-8 col-sm-8">
+    <?php
+    if(isset($alldata[0]["title"])){
+
+    echo "<h1>".$alldata[0]["title"]."</h1>";
+    }
+    ?>
+
+    <div class="readContent" style="overflow-y:scroll;height: 85%">
     <?php
 //hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
     echo $alldata[0]["content"];

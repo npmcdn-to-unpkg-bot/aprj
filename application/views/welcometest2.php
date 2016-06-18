@@ -44,7 +44,7 @@
 
 </head>
 
-<body background="bgimages/tiledBg.png">
+<body style="background-image: url('bgimages/tiledBg.png')">
 <style>
     .white-popup {
         position: relative;
@@ -164,22 +164,11 @@
 
 
 
-<!--<!-- The sorting drop down -->
-<!--<div class="media-boxes-drop-down" id="sort">-->
-<!--    <div class="media-boxes-drop-down-header">-->
-<!--    </div>-->
-<!--    <ul class="media-boxes-drop-down-menu">-->
-<!--        <li><a class="selected" href="#" data-sort-by="title">Original Order</a></li>-->
-<!--        <li><a href="#" data-sort-by="title">Sort by Title</a></li>-->
-<!--        <li><a href="#" data-sort-by="text">Sort by Text</a></li>-->
-<!--    </ul>-->
-<!--</div>-->
-<!---->
 
 <!-- The grid with media boxes -->
 <div style="justify-content: center;position: relative;">
 
-<div id="grid" style="width: auto;">
+<div id="grid" style="width: auto; margin-top: 40px;">
 
     <?php
     //echo var_dump($alldata);
@@ -235,124 +224,7 @@
     ?>
 
 
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">1</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
 
-        </div>
-        <div style="background-color: #aaaaaa">
-            1 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">2</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/54.jpg"></div>
-
-        </div>
-        <div style="background-color: #aaaaaa">
-            2  Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">3</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/55.jpg"></div>
-
-        </div>
-        <div style="background-color: #aaaaaa">
-            3 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">4</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/56.jpg"></div>
-        </div>
-        <div style="background-color: #aaaaaa">
-            4 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">5</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/58.jpg"></div>
-        </div>
-        <div style="background-color: #aaaaaa">
-            5 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-
-    <!-------------->
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">6</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
-        </div>
-        <div style="background-color: #aaaaaa">
-            6 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">7</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
-        </div>
-        <div style="background-color: #aaaaaa">
-            7  Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">8</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/78.jpg"></div>
-        </div>
-        <div style="background-color: #aaaaaa">
-            8 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">9</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/80.jpg"></div>
-        </div>
-        <div style="background-color: #aaaaaa">
-            9 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-    <!-- --------- MEDIA BOX MARKUP
-    <div class="media-box category1">
-        <div class="mytitle">10</div>
-        <div class="media-box-image">
-            <div data-thumbnail="ArticleImages/mainImages/0.jpg"></div>
-        </div>
-        <div style="background-color: #aaaaaa">
-            10 Here goes some content that belong to category 2 Here goes some content that belong to category 2
-        </div>
-
-    </div>
-    --------- -->
 </div>
 <!-----------------------------End of GRID-------------------->
 </div>
@@ -361,7 +233,7 @@
     <script>
 
         var $grid = $('#grid').mediaBoxes({
-            columns:6,
+            columns:5,
             resolutions:[
                 {
                     maxWidth: 960,
@@ -430,7 +302,8 @@
         closeBtnInside: false
     });
 
-
+    $("#grid").css("margin-left",'-10px');
+//    $("#grid").css("margin-right",'1px');
     function abc(){
         var magnificPopup = $.magnificPopup('close');
         console.log(magnificPopup);

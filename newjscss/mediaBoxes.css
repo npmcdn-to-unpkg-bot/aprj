@@ -691,6 +691,7 @@
     overflow: hidden;
     position:relative;
 	z-index:1;
+    background-color: white;
   }
 
   .media-box-container:hover{
