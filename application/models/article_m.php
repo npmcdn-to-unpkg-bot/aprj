@@ -551,7 +551,7 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
     }
     public function getArticleById($art_id) {
         //$this->output->enable_profiler(TRUE);
-        $this->db->select('title, image, image1, image2, image3, image4, video, display_content, content, thumbnail, original_url, category_id');
+        $this->db->select('title, image, image1, image2, image3, image4, video, display_content, content,article_id, thumbnail, original_url, category_id');
         $this->db->where('article_id', $art_id);
         $res = $this->db->get('article');
         $allData = array();
@@ -582,13 +582,35 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
     ///////////////////////////////////////
 
     function getArticleToView($cat_id=NULL){
-        $this->db->select('article_id, title, display_content, content, image, original_url, creator, status, date, category_id,thumbnail');
+        $this->db->select('article_id, title, display_content, image, original_url, creator, status, date, category_id,thumbnail');
         if($cat_id!=NULL) {
             $this->db->where(array('category_id' => $cat_id));
+
+        }
+        else{
+            //$this->db->where(array('status' => 'Approve'))->limit(100, 1);
+            $this->db->where(array('status' => 'Approve'));
         }
         $this->db->where(array('status' => 'Approve'));
+
+        //$this->db->limit(0, 20);
+
         $res = $this->db->get('article');
+
         return $res->result();
+    }
+
+    function getOtherArticles(){
+        $this->db->select('article_id, title, display_content, image, original_url, creator, status, date, category_id,thumbnail');
+
+        $this->db->where(array('status' => 'Approve'))->limit(1000, 10);
+
+        //$this->db->limit(0, 20);
+
+        $res = $this->db->get('article');
+
+        return $res->result();
+
     }
     
 }

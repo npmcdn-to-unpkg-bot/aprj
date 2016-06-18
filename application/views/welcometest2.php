@@ -308,6 +308,10 @@
 
     $("#grid").css("margin-left",'-10px');
 //    $("#grid").css("margin-right",'1px');
+    $grid.isotopeMB( 'insert', $(box).hide(), function(){
+        // alert('Boxes Added!');
+    });
+
     function abc(){
         var magnificPopup = $.magnificPopup('close');
         console.log(magnificPopup);

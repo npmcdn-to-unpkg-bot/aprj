@@ -233,6 +233,12 @@ echo "
 */
     }
 
+    public function loadotherdata(){
+        $this->load->model("article_m");
+        $data["alldata"]=$this->article_m->getOtherArticles();
+        echo json_encode($data);
+    }
+
 }
 
 /* End of file welcome.php */
