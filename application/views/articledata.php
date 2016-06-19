@@ -63,6 +63,8 @@
     }
 
 
+
+
 </script>
 
 
@@ -159,7 +161,7 @@ echo "<a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter
     <div id="fb"><button onclick="javascript:fbsahre();">Facebook</button></div>
     <div id="fb"><button onclick="javascript:gplusshare();">Google</button></div>
     <?php
-    echo "<div id=\"fb\"><button onclick=\"javascript:tweetclick();\"><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\">Tweet</a>
+    echo "<div id=\"fb\"><button><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\">Tweet</a>
             </button></div>";
     echo "<div id=\"fb\"><button onclick=\"javascript:x();\"><a href=\"whatsapp://send\" data-text=\"Take a look at this awesome website:\" data-href=\"$base\" class=\"wa_btn wa_btn_s\">WhatsApp</a></button></div>";
     ?>
