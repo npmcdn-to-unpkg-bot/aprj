@@ -74,7 +74,22 @@
         padding-bottom: 15px;
         display: block;
     }
+    #search {
 
+
+        display: none;
+        position: fixed;
+        top: 8%;
+        left: 50%;
+        z-index: 999;
+        background: #fff;
+        background-image: linear-gradient(top, #fff, #eee);
+        padding: 15px;
+        box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+        border-radius: 3px 0 3px 3px;
+        width: 35%;
+
+    }
 
 </style>
 
@@ -108,6 +123,9 @@
         $(item_).css('background-color', '');
         $(item_).css('color', 'grey');
     }
+    function togglesearch(){
+        $("#search").toggle();
+    }
 </script>
 <div class="ui fixed borderless menu menuheight" >
     <div class="item" style="margin-left: 2%;">
@@ -129,15 +147,17 @@
                     </div>
             </div>
         </div>
+
     </div>
 
 
     <div class="right item" style="margin-right: 2%;" >
 
         <div class="item" >
-            <div id="search_article" class="ui blue button" style="width: 100%" >
+            <div id="search_article" class="ui blue button" style="width: 100%" onclick="javascript:togglesearch();">
                 Search
             </div>
+            <input type="text" id="search" class="media-boxes-search" placeholder="Search By Title/Content" hidden>
         </div>
 
         <div class="item" >
@@ -218,8 +238,8 @@
             "<div data-thumbnail=\" $thumbnail\" style=\"background-color: white\"></div>".
 
         "</div></a>".
-            "<div class=\"mytitle\"><h3 >$title</h3></div>".
-        "<div class=\"mytitle\"><p>".
+            "<div class=\"media-box-title mytitle\"><h3 >$title</h3></div>".
+        "<div class=\"media-box-title mytitle\"><p>".
             $summery.
         "</p></div>".
 
@@ -256,7 +276,9 @@
                     columnWidth: 'auto',
                     columns: 1
                 },
-            ]
+            ],
+            search: '#search',
+            searchTarget: '.media-box-title'
         });
         $(function(){
            // $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
