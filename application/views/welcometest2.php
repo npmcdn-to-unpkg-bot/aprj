@@ -259,8 +259,8 @@
             ]
         });
         $(function(){
-            $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
-            $("html, body").animate({ scrollTop: 0 }, 1);
+           // $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
+           // $("html, body").animate({ scrollTop: 0 }, 1);
         });
 
 
@@ -310,10 +310,15 @@
     });
 
     $("#grid").css("margin-left",'-10px');
+    $("#grid").css("width",'103%');
+    setTimeout(changewidth, 1000);
+    function changewidth() {
+        $("#grid").css("width", 'auto');
+    }
 //    $("#grid").css("margin-right",'1px');
-    $grid.isotopeMB( 'insert', $(box).hide(), function(){
+    /*$grid.isotopeMB( 'insert', $(box).hide(), function(){
         // alert('Boxes Added!');
-    });
+    });*/
 
     function abc(){
         var magnificPopup = $.magnificPopup('close');
