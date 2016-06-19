@@ -44,6 +44,7 @@
 
     <script src="newjscss/jquery.bpopup.min.js"></script>
 
+    <script src="js/date.js" type="text/javascript"></script>
 </head>
 
 <body style="background-image: url('bgimages/tiledBg.png')">
@@ -305,7 +306,7 @@
             "<div class=\"media-box-title mytitle\"><h3 >$title</h3></div>".
         "<div class=\"media-box-title mytitle\"><p>".
             $summery.
-        "</p></div>".
+        "</p><h6 class=\"articledate\">$row->date</h6></div>".
 
     "</div>";
         if (in_array($currentrow, $adsrowno) && !$isadplaeced && ($currentpostno%5)==$nextadin_colum) {
@@ -472,6 +473,13 @@
     function changewidth() {
         $("#grid").css("width", 'auto');
     }
+    $('.articledate').each(function(i, obj) {
+        //test
+        //console.log($(obj).text());
+        $(obj).text(Date.parse($(obj).text()).toString('MMMM dS, yyyy'))
+    });
+
+//    Date.parse(data[i].date).toString('MMMM dS, yyyy');
 //    $("#grid").css("margin-right",'1px');
     /*$grid.isotopeMB( 'insert', $(box).hide(), function(){
         // alert('Boxes Added!');

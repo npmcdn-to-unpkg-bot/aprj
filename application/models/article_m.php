@@ -592,7 +592,7 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
             $this->db->where(array('status' => 'Approve'));
         }
         $this->db->where(array('status' => 'Approve'));
-
+        $this->db->order_by("date", "DESC");
         //$this->db->limit(0, 20);
 
         $res = $this->db->get('article');
