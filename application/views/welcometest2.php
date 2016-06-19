@@ -246,8 +246,23 @@
 <div id="grid" style="width: auto; margin-top: 40px;">
 
     <?php
-    //echo var_dump($alldata);
+    echo sizeof($alldata);
+    //function randomGen($min, $max, $quantity) {
+        $numbers = range(0, sizeof($alldata)/5);
+        shuffle($numbers);
+        $adsrowno=array_slice($numbers, 0, sizeof($allads));
+        //var_dump($adsrowno);
+        //$numbers = range(0, 4);
 
+
+    //}
+
+    //echo var_dump($alldata);
+    $currentrow=0;
+    $currentpostno=0;
+    $adpointer=0;
+    $isadplaeced=false;
+    $nextadin_colum=rand(0, 4);
     foreach ($alldata as $row) {
         $catid= rand ( 1 , 4 );
         $catname="category".$catid;
@@ -293,8 +308,36 @@
         "</p></div>".
 
     "</div>";
+        if (in_array($currentrow, $adsrowno) && !$isadplaeced && ($currentpostno%5)==$nextadin_colum) {
+            //echo $currentpostno;
+            $currentpostno=$currentpostno+1;
+            $isadplaeced=true;
+            //var_dump($allads[$adpointer]);
+            $adpointer=$adpointer+1;
+            $thumb=$allads[$adpointer]["main_ad_image"];
+            $adurl=$allads[$adpointer]["ad_url"];
 
+           echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
+                "<div class=\"media-box \"style=\"background-image:bgimages/logo.png\" >".
 
+                "<a href=\"$adurl\"  style=\"background-color: white\" >
+
+        <div class=\"media-box-image\" style=\"background-color: white\">".
+                "<div data-thumbnail=\" $thumb \" style=\"background-color: white\"></div>".
+
+                "</div></a>".
+                "<div class=\"media-box-title\"></div>".
+                "<div class=\"media-box-title\"></div>".
+
+                "</div>";
+        }
+
+        $currentpostno=$currentpostno+1;
+        if($currentpostno%5==0){
+            $currentrow=$currentrow+1;
+            $isadplaeced=false;
+            $nextadin_colum=rand(0, 4);
+        }
     }
     ?>
 

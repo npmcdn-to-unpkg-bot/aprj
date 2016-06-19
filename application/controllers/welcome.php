@@ -50,6 +50,7 @@ class Welcome extends CI_Controller {
         $this->load->model("advertisement_m");
         $this->load->model("article_m");
         $data["alldata"]=$this->article_m->getArticleToView($cat);
+        $data["allads"]=$this->advertisement_m->getAds($cat);
 
         $this->load->view('welcometest2',$data);
     }
