@@ -204,12 +204,18 @@ Share this article on,
 
     <div class="readContent" style="overflow-y:scroll;height: 85%">
     <?php
+
 //hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
     echo $alldata[0]["content"];
 ?>
         <!-- Your second column here -->
+
+    </div>
+    <div><a href="<?php echo $ad['ad_url'] ?>"><img src="<?php echo "AdvertisementImages/ad2Main.jpg";//$ad['main_ad_image']?>" width="auto" height="50px"></a>
+
     </div>
     </div>
+
 
 
 </div>

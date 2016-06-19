@@ -59,8 +59,12 @@ class Welcome extends CI_Controller {
         //echo "DoneP";
         //$this->load->model("advertisement_m");
         $this->load->model("article_m");
+        $this->load->model("advertisement_m");
         $data["alldata"]=$this->article_m->getArticleById($arid);
         $data["arid"]=$arid;
+
+        $data["ad"]=$this->advertisement_m->getAds()[0];
+
         //echo "-------------";
         $this->load->view('articledata',$data);
     }

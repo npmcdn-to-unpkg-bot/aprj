@@ -355,6 +355,9 @@
         var $grid = $('#grid').mediaBoxes({
             columns:5,
             boxesToLoad:10,
+            deepLinking:false ,
+            showOnlyLoadedBoxesInPopup:true,
+            waitForAllThumbsNoMatterWhat:true,
             resolutions:[
                 {
                     maxWidth: 960,
