@@ -199,9 +199,9 @@
         <?php
         if ($this->session->userdata('username') != NULL) {
             ?>
-            <div id="logged_in" class="ui grey button" style="width: 100%">
+            <a href="auth/authenticate"><div id="logged_in" class="ui grey button" style="width: 100%">
                 Admin Panel
-            </div>
+            </div></a>
             <?php
         } else {
             ?>
