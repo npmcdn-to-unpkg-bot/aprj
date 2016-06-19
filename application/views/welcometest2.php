@@ -199,7 +199,7 @@
         <?php
         if ($this->session->userdata('username') != NULL) {
             ?>
-            <div id="logged_in" class="ui grey button" style="width: 100%" >
+            <div id="logged_in" class="ui grey button" style="width: 100%">
                 Admin Panel
             </div>
             <?php
@@ -221,7 +221,7 @@
 
                         <!--<label><input type="checkbox" checked="checked"> Keep me signed in</label>-->
                     </fieldset>
-                    <div class="ui red small message" id="login_error_msg" style="display: none;">
+                    <div class="ui red small message" id="login_error_msg" hidden>
                         Invalid Username / Password
                     </div>
                 </form>
@@ -351,13 +351,12 @@
                             console.log(data);
                             $("#subbtn").click();
                             $("#login-content").toggle();
-                            //$("#login-content-form").submit();
-                            //$("#subbtn").click();
-                            //setTimeout(redirect, 1000);
 
+                        }
+                        else{
 
-
-
+                            $("#login_error_msg").append("Invalid Username or Password");
+                            $("#login_error_msg").show();
                         }
 
 
