@@ -90,6 +90,19 @@
         width: 35%;
 
     }
+    #login-content {
+        display: none;
+        position: fixed;
+        top: 8%;
+        right: 0;
+        z-index: 999;
+        background: #fff;
+        background-image: linear-gradient(top, #fff, #eee);
+        padding: 15px;
+        box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+        border-radius: 3px 0 3px 3px;
+    }
+
 
 </style>
 
@@ -131,9 +144,18 @@
         else{
             $("#grid").css("width", 'auto');
         }
-        
+
 
     }
+
+    function togglelogin(){
+        $("#login-content").toggle();
+    }
+
+
+
+
+
 </script>
 <div class="ui fixed borderless menu menuheight" >
     <div class="item" style="margin-left: 2%;">
@@ -183,9 +205,28 @@
             <?php
         } else {
             ?>
-            <div id="show_login_content" class="ui grey button" style="width: 100%" >
+            <div id="show_login_content" class="ui grey button" style="width: 100%" onclick="javascript:togglelogin();" >
                 Login
             </div>
+            <div id="login-content">
+
+                <form action="auth/authenticate" method="POST" class="ui form" id="login-content-form">
+                    <fieldset id="inputs">
+                        <input  id="uname" name="uname" type="text" placeholder="username">
+                        <input id="pword" name="pword" type="password" placeholder="password">
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="button" id="submit" value="Log in" class="ui button large fluid grey">
+                        <input type="submit" id="subbtn"  hidden>
+
+                        <!--<label><input type="checkbox" checked="checked"> Keep me signed in</label>-->
+                    </fieldset>
+                    <div class="ui red small message" id="login_error_msg" style="display: none;">
+                        Invalid Username / Password
+                    </div>
+                </form>
+            </div>
+
             <?php
         }
         ?>
@@ -291,8 +332,50 @@
         $(function(){
            // $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
            // $("html, body").animate({ scrollTop: 0 }, 1);
+            $('#submit').on('click', function(e){
+
+                e.preventDefault();
+
+                var euname=$("#uname").val();
+                var epwd=$("#pword").val();
+                console.log("===="+euname+" "+epwd);
+                $.ajax({
+                    url: 'auth/preauthenticate',
+                    type: 'POST',
+                    dataType:"json",
+                    data: {uname:euname,pword:epwd},
+                    success: function (data, status)
+                    {
+                        console.log(data);
+                        if(data.type==true){
+                            console.log(data);
+                            $("#subbtn").click();
+                            $("#login-content").toggle();
+                            //$("#login-content-form").submit();
+                            //$("#subbtn").click();
+                            //setTimeout(redirect, 1000);
+
+
+
+
+                        }
+
+
+                    }
+                });
+
+                console.log("------------");
+
+            });
+
+
         });
 
+        function redirect() {
+            document.location="auth/authenticate";
+            self.location="auth/authenticate";
+            window.navigate("auth/authenticate");
+        }
 
         $('button').on('click', function(){
             var box =   '<div class="media-box category1">'+

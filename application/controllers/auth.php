@@ -102,6 +102,7 @@ class Auth extends CI_Controller {
     public function authenticate() {
         $username = $this->input->post('uname');
         $password = $this->input->post('pword');
+
         if($this->isLoggedIn() === false){
             $user = $this->authlib->login($username, $password);
             if ($user !== false) {
@@ -257,6 +258,28 @@ class Auth extends CI_Controller {
         $arrayResult = $this->user->getUserDetails($username);
         
         echo json_encode($arrayResult); 
+    }
+
+    function preauthenticate(){
+        $uname = $this->input->post("uname");
+        $pword = $this->input->post("pword");
+        //var_dump($_POST);
+        $res=$this->user_m->login($uname,$pword);
+        $sendres=array();
+        $sendres["u"]=$uname;
+        $sendres["p"]=$pword;
+        if($res===false || count($res)==0){
+
+            $sendres["type"]=false;
+            $sendres["res"]=$res;
+        }
+        else{
+            $sendres["type"]=true;
+        }
+
+        echo json_encode($sendres);
+
+
     }
 
 

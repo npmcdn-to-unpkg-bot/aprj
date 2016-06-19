@@ -66,6 +66,8 @@ class User_m extends CI_Model {
         return $res->row_array();
     }
 
+
+
     /**
     * logout from system
     */
