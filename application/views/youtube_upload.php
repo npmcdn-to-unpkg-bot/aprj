@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-      <base href="http://localhost/aprj/">
+      <base href=<?php echo base_url();?>>
     <meta charset="utf-8">
     <title>Upload to YouTube</title>
     <link rel="stylesheet" href="upload_video.css">

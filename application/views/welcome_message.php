@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Loud Horn Marketing</title>
-        <base href="http://localhost/aprj/">
+        <base href=<?php echo base_url();?>>
         <script src=" js/jquery.min.js" language="JavaScript"></script>
         <script src="js/jquery-1.8.2.js" language="JavaScript"></script>
         <script type="text/javascript" src="html5gallery/html5gallery.js"></script>

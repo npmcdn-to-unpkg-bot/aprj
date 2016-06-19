@@ -1,4 +1,4 @@
-<base href="http://localhost/aprj/">
+<base href=<?php echo base_url();?>>
 
 <table border="1" align="center">
     <tbody>

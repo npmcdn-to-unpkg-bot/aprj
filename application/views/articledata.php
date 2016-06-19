@@ -1,7 +1,7 @@
 <html><head>
 
 
-    <base href="http://localhost/aprj/">
+    <base href=<?php echo base_url();?>>
     <script src="newjscss/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="newjscss/jquery.js"></script>
     <script type="text/javascript" src="newjscss/html5gallery.js"></script>

@@ -1,5 +1,5 @@
 <head>
-    <base href="http://localhost/aprj/">
+    <base href=<?php echo base_url();?>>
     <meta charset="UTF-8">
     <title>Media Boxes</title>
 
