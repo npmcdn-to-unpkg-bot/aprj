@@ -247,7 +247,7 @@
 <div id="grid" style="width: auto; margin-top: 40px;">
 
     <?php
-    echo sizeof($alldata);
+
     //function randomGen($min, $max, $quantity) {
         $numbers = range(0, sizeof($alldata)/5);
         shuffle($numbers);
@@ -265,7 +265,8 @@
     $isadplaeced=false;
     $nextadin_colum=rand(0, 4);
     foreach ($alldata as $row) {
-        $catid= rand ( 1 , 4 );
+
+        $catid= $row->category_id;
         $catname="category".$catid;
         $titallowelen=50;
         $strsize=strlen($row->title);
@@ -353,6 +354,7 @@
 
         var $grid = $('#grid').mediaBoxes({
             columns:5,
+            boxesToLoad:10,
             resolutions:[
                 {
                     maxWidth: 960,
@@ -376,6 +378,12 @@
         $(function(){
            // $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
            // $("html, body").animate({ scrollTop: 0 }, 1);
+
+            $('.filterlinks').on('click', function(e){
+                $("#grid").css("width",'103%');
+                setTimeout(changewidth, 1000);
+
+            });
             $('#submit').on('click', function(e){
 
                 e.preventDefault();
