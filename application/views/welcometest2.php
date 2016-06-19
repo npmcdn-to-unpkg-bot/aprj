@@ -125,6 +125,14 @@
     }
     function togglesearch(){
         $("#search").toggle();
+        if($("#search").is(":visible")){
+            $("#grid").css("width",'103%');
+        }
+        else{
+            $("#grid").css("width", 'auto');
+        }
+        
+
     }
 </script>
 <div class="ui fixed borderless menu menuheight" >
