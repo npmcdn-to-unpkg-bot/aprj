@@ -8,6 +8,7 @@
     <script type="application/javascript" src="newjscss/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="newjscss/bootstrap.min.css">
+<!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
 </head>
 <style>
 
@@ -28,6 +29,18 @@
         padding: 10px;
         padding-bottom: 15px;
         display: block;
+    }
+    .myButton{
+        background-image: url('bgimages/social/fb-like.png');
+        cursor:pointer;
+        border:none;
+        width:50px;
+        height:50px;
+    }
+
+    .myButton:active  /* use Dot here */
+    {
+        background-color: blue;
     }
 
 
@@ -63,17 +76,19 @@
     }
 
 
-
-
 </script>
 
 
 <body bgcolor="black;">
 
-<div style='background-color: #ffffff;width:90%; margin:0 auto; height: 90%; padding: 1%'>
+<div style='background-color: #ffffff;width:90%; margin:0 auto; height: auto; padding: 1%'>
 
 <?php
-echo json_encode($alldata);
+//<<<<<<< HEAD
+////var_dump($alldata);
+//=======
+//echo json_encode($alldata);
+//>>>>>>> 79756445930e9657e9571088720e77c7a5c79b57
 /**
  * Created by PhpStorm.
  * User: NRV
@@ -95,7 +110,7 @@ echo "<a id=\"gplusshare\" href=\"https://plus.google.com/share?url=$base\" oncl
   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img
         src=\"https://www.gstatic.com/images/icons/gplus-64.png\" alt=\"Share on Google+\" hidden/></a>";
 echo "<div class=\"modal-body row\">";
-echo "<div class=\"col-lg-4 col-md-4 col-sm-4\">";
+echo "<div class=\"col-lg-5 col-md-5 col-sm-5\">";
 echo "<div style=\"display:none;\" class=\"html5gallery\" data-responsive=\"true\" data-skin=\"light\">";
 
 if($alldata[0]["image"]!=""){
@@ -154,23 +169,32 @@ if($alldata[0]["video"]!=""){
 -->
 
 </div>
-<?php
-echo "<a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\">Tweet</a>";
-?>
-<div style="background-color: #0000FF">PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPP
-    <div id="fb"><button onclick="javascript:fbsahre();">Facebook</button></div>
-    <div id="fb"><button onclick="javascript:gplusshare();">Google</button></div>
+<!--<<<<<<< HEAD-->
+<!--<br>-->
+<!--<br>-->
+<!--Share this article on,-->
+<!--<br><br>-->
+<!--<div><button class="btn btn-primary" style="width: 24%"><i class="fa fa-facebook"></i>&nbsp;Facebook</button> <button class="btn btn-info" style="width: 24%"><i class="fa fa-twitter"></i>&nbsp;Twitter</button> <button class="btn btn-danger" style="width: 24%"><i class="fa fa-google-plus"></i>&nbsp;Google+</button> <button class="btn btn-warning" style="width: 24%"><i class="fa fa-envelope"></i>&nbsp;Email</button></div>-->
+<!--=======-->
+
+<br>
+Share this article on,
+<br><br>
+<!--<br>-->
+<div>
+    <button onclick="javascript:fbsahre();" class="btn btn-primary" style="width: 19%"><i class="fa fa-facebook"></i>&nbsp;Facebook</button> <button onclick="javascript:gplusshare();" class="btn btn-danger" style="width: 19%"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
     <?php
-    echo "<div id=\"fb\"><button><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\">Tweet</a>
-            </button></div>";
-    echo "<div id=\"fb\"><button onclick=\"javascript:x();\"><a href=\"whatsapp://send\" data-text=\"Take a look at this awesome website:\" data-href=\"$base\" class=\"wa_btn wa_btn_s\">WhatsApp</a></button></div>";
+    echo " <button onclick=\"javascript:tweetclick();\" class=\"btn btn-info\" style=\"width: 19%\"><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\"><i class=\"fa fa-twitter\"></i>&nbsp;Twitter</a>
+            </button>";
+    echo " <button onclick=\"javascript:x();\" class=\"btn btn-success\" style=\"width: 19%\"><a href=\"whatsapp://send\" data-text=\"Take a look at this awesome website:\" data-href=\"$base\" class=\"wa_btn wa_btn_s\">WhatsApp</a></button>";
     ?>
-    <div id="fb"><button onclick="javascript:sendemail();">Email</button></div>
+    <button onclick="javascript:sendemail();" class="btn btn-warning" style="width: 19%"><i class="fa fa-envelope"></i>&nbsp;Email</button>
 
 </div>
+<!-- 79756445930e9657e9571088720e77c7a5c79b57-->
 </div>
 
-<div class="col-lg-8 col-md-8 col-sm-8">
+<div class="col-lg-7 col-md-7 col-sm-7 readContent">
     <?php
     if(isset($alldata[0]["title"])){
 
@@ -186,8 +210,9 @@ echo "<a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter
         <!-- Your second column here -->
     </div>
     </div>
-</div>
 
+
+</div>
 </div>
 </body>
 </html>
