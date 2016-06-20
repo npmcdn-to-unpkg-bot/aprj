@@ -200,14 +200,14 @@
     <div class="right item" style="margin-right: 2%;" >
 
         <div class="item" >
-            <div id="search_article" class="ui blue button" style="width: 100%" onclick="javascript:togglesearch();">
+            <div id="search_article" class="btn btn-primary" style="width: 100%" onclick="javascript:togglesearch();">
                 Search
             </div>
             <input type="text" id="search" class="media-boxes-search" placeholder="Search By Title/Content" hidden>
         </div>
 
         <div class="item" >
-            <div id="learn_more" class="ui blue button" style="width: 100%" >
+            <div id="learn_more" class="btn btn-primary" style="width: 100%" >
                 Learn More
             </div>
         </div>
@@ -221,7 +221,7 @@
             <?php
         } else {
             ?>
-            <div id="show_login_content" class="ui grey button" style="width: 100%" onclick="javascript:togglelogin();" >
+            <div id="show_login_content" class="btn btn-primary" style="width: 100%; background-color: #767676" onclick="javascript:togglelogin();" >
                 Login
             </div>
             <div id="login-content">
