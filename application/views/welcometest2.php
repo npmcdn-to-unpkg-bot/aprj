@@ -49,6 +49,7 @@
 
 <body style="background-image: url('bgimages/tiledBg.png')">
 <style>
+
     .white-popup {
         position: relative;
         background: #FFF;
@@ -63,9 +64,9 @@
         margin: 0;
         padding: 10px;
         padding-bottom: 5px;
-        word-break: break-all;
+        line-height: 1.1 !important;
         display:block;
-    //width:250px;
+    /*//width:250px;*/
     }
     .mytitle p {
         font: 12px/18px Arial, sans-serif;
@@ -74,6 +75,7 @@
         padding: 10px;
         padding-bottom: 15px;
         display: block;
+
     }
     .mytitle h6 {
         font: 12px/18px Arial, sans-serif;
@@ -320,8 +322,8 @@
             "<div data-thumbnail=\" $thumbnail\" style=\"background-color: white\"></div>".
 
         "</div></a>".
-            "<div class=\"media-box-title mytitle\"><h3 >$title</h3></div>".
-        "<div class=\"media-box-title mytitle\"><p>".
+            "<div class=\"media-box-title mytitle\"><h3>$title</h3></div>".
+        "<div class=\"media-box-text mytitle\"><p>".
             $summery.
         "</p><h6 class=\"articledate\">$row->date</h6></div>".
 
