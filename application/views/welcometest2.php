@@ -167,15 +167,15 @@
 
             <div class="left menu" id="menuControl">
                 <div style="display: inline;align-items: center" id="filter">
-                <ul class="media-boxes-filter" id="filter">
-               <li><a class="selected item itemBar" href="#" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2" data-filter="*">All</a></li>
-                    <li><a href="#" data-filter=".category1" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2">Corporate</a></li>
-                    <li><a href="#" data-filter=".category2" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(255, 121, 115);" value="2|#ff7973">Hospitality & Recreation</a></li>
-                    <li><a href="#" data-filter=".category3" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(174, 79, 255);" value="3|#ae4fff">Food & Restaurants</a></li>
-                    <li><a href="#" data-filter=".category4" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#fb73dd">CSR</a></li>
-                    <li><a href="#" data-filter=".category5" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#ffc24f">Other</a></li>
-                </ul>
-                    </div>
+                    <ul class="media-boxes-filter" id="filter">
+                        <li><a class="selected item itemBar" href="#" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2" data-filter="*">All</a></li>
+                        <li><a href="#" data-filter=".category1" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2">Corporate</a></li>
+                        <li><a href="#" data-filter=".category2" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(255, 121, 115);" value="2|#ff7973">Hospitality & Recreation</a></li>
+                        <li><a href="#" data-filter=".category3" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(174, 79, 255);" value="3|#ae4fff">Food & Restaurants</a></li>
+                        <li><a href="#" data-filter=".category4" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#fb73dd">CSR</a></li>
+                        <li><a href="#" data-filter=".category5" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#ffc24f">Other</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -201,8 +201,8 @@
         if ($this->session->userdata('username') != NULL) {
             ?>
             <a href="auth/authenticate"><div id="logged_in" class="ui grey button" style="width: 100%">
-                Admin Panel
-            </div></a>
+                    Admin Panel
+                </div></a>
             <?php
         } else {
             ?>
@@ -244,11 +244,11 @@
 <!-- The grid with media boxes -->
 <div style="justify-content: center;position: relative;">
 
-<div id="grid" style="width: auto; margin-top: 40px;">
+    <div id="grid" style="width: 100%; margin-top: 40px;">
 
-    <?php
+        <?php
 
-    //function randomGen($min, $max, $quantity) {
+        //function randomGen($min, $max, $quantity) {
         $numbers = range(0, sizeof($alldata)/5);
         shuffle($numbers);
         $adsrowno=array_slice($numbers, 0, sizeof($allads));
@@ -256,190 +256,193 @@
         //$numbers = range(0, 4);
 
 
-    //}
+        //}
 
-    //echo var_dump($alldata);
-    $currentrow=0;
-    $currentpostno=0;
-    $adpointer=0;
-    $isadplaeced=false;
-    $nextadin_colum=rand(0, 4);
-    foreach ($alldata as $row) {
+        //echo var_dump($alldata);
+        $currentrow=0;
+        $currentpostno=0;
+        $adpointer=0;
+        $isadplaeced=false;
+        $nextadin_colum=rand(0, 4);
+        foreach ($alldata as $row) {
 
-        $catid= $row->category_id;
-        $catname="category".$catid;
-        $titallowelen=50;
-        $strsize=strlen($row->title);
-        if($strsize>$titallowelen){
-            $title=substr ($row->title , 0,$titallowelen );
-        }
-        else{
+            $catid= $row->category_id;
+            $catname="category".$catid;
+            $titallowelen=50;
+            $strsize=strlen($row->title);
+            if($strsize>$titallowelen){
+                $title=substr ($row->title , 0,$titallowelen );
+            }
+            else{
 
-            $title=$row->title;
-            $rem=$titallowelen-$strsize;
-            $title=str_pad($title, $titallowelen," A");
-        }
+                $title=$row->title;
+                $rem=$titallowelen-$strsize;
+                $title=str_pad($title, $titallowelen," A");
+            }
 
-        $allowelen=200;
-        $strsize=strlen($row->display_content);
-        if($strsize>$allowelen){
-            $summery=substr ($row->display_content , 0,$allowelen );
-        }
-        else{
+            $allowelen=200;
+            $strsize=strlen($row->display_content);
+            if($strsize>$allowelen){
+                $summery=substr ($row->display_content , 0,$allowelen );
+            }
+            else{
 
-            $summery=$row->display_content;
-            $rem=$allowelen-$strsize;
-            $summery=str_pad($summery, $allowelen,"-");
-        }
-        $thumbnail=str_replace ( "\\" , "/" , $row->thumbnail );
-        //$thumbnail= $row->thumbnail ;
+                $summery=$row->display_content;
+                $rem=$allowelen-$strsize;
+                $summery=str_pad($summery, $allowelen,"-");
+            }
+            $thumbnail=str_replace ( "\\" , "/" , $row->thumbnail );
+            //$thumbnail= $row->thumbnail ;
 
-       //echo var_dump($row);
-        echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
-        "<div class=\"media-box $catname\"style=\"background-image:bgimages/logo.png\" >".
+            //echo var_dump($row);
+            echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
+                "<div class=\"media-box $catname\"style=\"background-image:bgimages/logo.png\" >".
 
-        "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\" style=\"background-color: white\" >
-
-        <div class=\"media-box-image\" style=\"background-color: white\">".
-            "<div data-thumbnail=\" $thumbnail\" style=\"background-color: white\"></div>".
-
-        "</div></a>".
-            "<div class=\"media-box-title mytitle\"><h3 >$title</h3></div>".
-        "<div class=\"media-box-title mytitle\"><p>".
-            $summery.
-        "</p><h6 class=\"articledate\">$row->date</h6></div>".
-
-    "</div>";
-        if (in_array($currentrow, $adsrowno) && !$isadplaeced && ($currentpostno%5)==$nextadin_colum) {
-            //echo $currentpostno;
-            $currentpostno=$currentpostno+1;
-            $isadplaeced=true;
-            //var_dump($allads[$adpointer]);
-            $adpointer=$adpointer+1;
-            $thumb=$allads[$adpointer]["main_ad_image"];
-            $adurl=$allads[$adpointer]["ad_url"];
-
-           echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
-                "<div class=\"media-box \"style=\"background-image:bgimages/logo.png\" >".
-
-                "<a href=\"$adurl\"  style=\"background-color: white\" >
+                "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\" style=\"background-color: white\" >
 
         <div class=\"media-box-image\" style=\"background-color: white\">".
-                "<div data-thumbnail=\" $thumb \" style=\"background-color: white\"></div>".
+                "<div data-thumbnail=\" $thumbnail\" style=\"background-color: white\"></div>".
 
                 "</div></a>".
-                "<div class=\"media-box-title\"></div>".
-                "<div class=\"media-box-title\"></div>".
+                "<div class=\"media-box-title mytitle\"><h3 >$title</h3></div>".
+                "<div class=\"media-box-title mytitle\"><p>".
+                $summery.
+                "</p><h6 class=\"articledate\">$row->date</h6></div>".
 
                 "</div>";
+            if (in_array($currentrow, $adsrowno) && !$isadplaeced && ($currentpostno%5)==$nextadin_colum) {
+                //echo $currentpostno;
+                $currentpostno=$currentpostno+1;
+                $isadplaeced=true;
+                //var_dump($allads[$adpointer]);
+                $adpointer=$adpointer+1;
+                $thumb=$allads[$adpointer]["main_ad_image"];
+                $adurl=$allads[$adpointer]["ad_url"];
+
+                echo "<!-- --------- MEDIA BOX MARKUP --------- -->".
+                    "<div class=\"media-box \"style=\"background-image:bgimages/logo.png\" >".
+
+                    "<a href=\"$adurl\"  style=\"background-color: white\" >
+
+        <div class=\"media-box-image\" style=\"background-color: white\">".
+                    "<div data-thumbnail=\" $thumb \" style=\"background-color: white\"></div>".
+
+                    "</div></a>".
+                    "<div class=\"media-box-title\"></div>".
+                    "<div class=\"media-box-title\"></div>".
+
+                    "</div>";
+            }
+
+            $currentpostno=$currentpostno+1;
+            if($currentpostno%5==0){
+                $currentrow=$currentrow+1;
+                $isadplaeced=false;
+                $nextadin_colum=rand(0, 4);
+            }
         }
-
-        $currentpostno=$currentpostno+1;
-        if($currentpostno%5==0){
-            $currentrow=$currentrow+1;
-            $isadplaeced=false;
-            $nextadin_colum=rand(0, 4);
-        }
-    }
-    ?>
+        ?>
 
 
 
-</div>
-<!-----------------------------End of GRID-------------------->
+    </div>
+    <!-----------------------------End of GRID-------------------->
 </div>
 
 
-    <script>
+<script>
 
-        var $grid = $('#grid').mediaBoxes({
-            columns:5,
-            boxesToLoad:10,
-            deepLinking:false ,
-            showOnlyLoadedBoxesInPopup:true,
-            waitForAllThumbsNoMatterWhat:true,
-            resolutions:[
-                {
-                    maxWidth: 960,
-                    columnWidth: 'auto',
-                    columns: 3
-                },
-                {
-                    maxWidth: 650,
-                    columnWidth: 'auto',
-                    columns: 2
-                },
-                {
-                    maxWidth: 450,
-                    columnWidth: 'auto',
-                    columns: 1
-                },
-            ],
-            search: '#search',
-            searchTarget: '.media-box-title'
+    var $grid = $('#grid').mediaBoxes({
+        columns:5,
+        boxesToLoadStart:10,
+        boxesToLoad:10,
+        deepLinking:false ,
+        showOnlyLoadedBoxesInPopup:true,
+        //waitForAllThumbsNoMatterWhat:true,
+        //waitUntilThumbLoads:false,
+        resolutions:[
+            {
+                maxWidth: 960,
+                columnWidth: 'auto',
+                columns: 5
+            },
+            {
+                maxWidth: 650,
+                columnWidth: 'auto',
+                columns: 2
+            },
+            {
+                maxWidth: 450,
+                columnWidth: 'auto',
+                columns: 1
+            },
+        ],
+        search: '#search',
+        searchTarget: '.media-box-title'
+    });
+    console.log($grid);
+    $(function(){
+        // $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
+        // $("html, body").animate({ scrollTop: 0 }, 1);
+
+        $('.filterlinks').on('click', function(e){
+            $("#grid").css("width",'108%');
+            setTimeout(changewidth, 1000);
+
         });
-        $(function(){
-           // $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
-           // $("html, body").animate({ scrollTop: 0 }, 1);
+        $('#submit').on('click', function(e){
 
-            $('.filterlinks').on('click', function(e){
-                $("#grid").css("width",'108%');
-                setTimeout(changewidth, 1000);
+            e.preventDefault();
 
-            });
-            $('#submit').on('click', function(e){
-
-                e.preventDefault();
-
-                var euname=$("#uname").val();
-                var epwd=$("#pword").val();
-                console.log("===="+euname+" "+epwd);
-                $.ajax({
-                    url: 'auth/preauthenticate',
-                    type: 'POST',
-                    dataType:"json",
-                    data: {uname:euname,pword:epwd},
-                    success: function (data, status)
-                    {
+            var euname=$("#uname").val();
+            var epwd=$("#pword").val();
+            console.log("===="+euname+" "+epwd);
+            $.ajax({
+                url: 'auth/preauthenticate',
+                type: 'POST',
+                dataType:"json",
+                data: {uname:euname,pword:epwd},
+                success: function (data, status)
+                {
+                    console.log(data);
+                    if(data.type==true){
                         console.log(data);
-                        if(data.type==true){
-                            console.log(data);
-                            $("#subbtn").click();
-                            $("#login-content").toggle();
-
-                        }
-                        else{
-
-                            $("#login_error_msg").append("Invalid Username or Password");
-                            $("#login_error_msg").show();
-                        }
-
+                        $("#subbtn").click();
+                        $("#login-content").toggle();
 
                     }
-                });
+                    else{
 
-                console.log("------------");
+                        $("#login_error_msg").append("Invalid Username or Password");
+                        $("#login_error_msg").show();
+                    }
 
+
+                }
             });
-            $('.filterlinks').on('click', function(e){
-                $("html, body").animate({ scrollTop: 0 }, 1);
-            });
+
+            console.log("------------");
 
         });
+        $('.filterlinks').on('click', function(e){
+            $("html, body").animate({ scrollTop: 0 }, 1);
+        });
 
-        function redirect() {
-            document.location="auth/authenticate";
-            self.location="auth/authenticate";
-            window.navigate("auth/authenticate");
-        }
+    });
 
-        $('button').on('click', function(){
-            var box =   '<div class="media-box category1">'+
+    function redirect() {
+        document.location="auth/authenticate";
+        self.location="auth/authenticate";
+        window.navigate("auth/authenticate");
+    }
 
-                '<div class="media-box-image">'+
+    $('button').on('click', function(){
+        var box =   '<div class="media-box category1">'+
+
+            '<div class="media-box-image">'+
             '<div data-thumbnail="http://goo.gl/nzRWqf"></div>'+
             '<div data-type="iframe" data-popup="http://dimsemenov.com/plugins/magnific-popup/documentation.html"></div>'+
-'<div style="background-color: #aaaaaa">'+
+            '<div style="background-color: #aaaaaa">'+
             '6 Here goes some content that belong to category 2 Here goes some content that belong to category 2'+
             '</div>'+
             '<div class="thumbnail-overlay">'+
@@ -450,12 +453,12 @@
             '</div>';
 
 
-            $grid.isotopeMB( 'insert', $(box).hide(), function(){
-                // alert('Boxes Added!');
-            });
+        $grid.isotopeMB( 'insert', $(box).hide(), function(){
+            // alert('Boxes Added!');
         });
+    });
 
-    </script>
+</script>
 
 <script>
     function onclickcontent(elem){
@@ -480,11 +483,13 @@
 
     $("#grid").css("margin-left",'-10px');
     $("#grid").css("width",'108%');
-    setTimeout(changewidth, 1000);
+    setTimeout(changewidth, 2500);
     function changewidth() {
         $("#grid").css("width", 'auto');
-         $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
-         $("html, body").animate({ scrollTop: 0 }, 1);
+        $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
+        //alert("Patta");
+        setTimeout($("html, body").animate({ scrollTop: 0 }, 1), 1000);
+
     }
     $('.articledate').each(function(i, obj) {
         //test
@@ -492,11 +497,11 @@
         $(obj).text(Date.parse($(obj).text()).toString('MMMM dS, yyyy'))
     });
 
-//    Date.parse(data[i].date).toString('MMMM dS, yyyy');
-//    $("#grid").css("margin-right",'1px');
+    //    Date.parse(data[i].date).toString('MMMM dS, yyyy');
+    //    $("#grid").css("margin-right",'1px');
     /*$grid.isotopeMB( 'insert', $(box).hide(), function(){
-        // alert('Boxes Added!');
-    });*/
+     // alert('Boxes Added!');
+     });*/
 
     function abc(){
         var magnificPopup = $.magnificPopup('close');
