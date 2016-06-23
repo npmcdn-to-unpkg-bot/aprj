@@ -49,6 +49,7 @@
 
 <body style="background-image: url('bgimages/tiledBg.png')">
 <style>
+
     .white-popup {
         position: relative;
         background: #FFF;
@@ -63,11 +64,20 @@
         margin: 0;
         padding: 10px;
         padding-bottom: 5px;
-        word-break: break-all;
+        line-height: 1.1 !important;
         display:block;
-    //width:250px;
+    /*//width:250px;*/
     }
     .mytitle p {
+        font: 12px/18px Arial, sans-serif;
+        color: grey;
+        margin: 0;
+        padding: 10px;
+        padding-bottom: 15px;
+        display: block;
+
+    }
+    .mytitle h6 {
         font: 12px/18px Arial, sans-serif;
         color: grey;
         margin: 0;
@@ -102,6 +112,12 @@
         padding: 15px;
         box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
         border-radius: 3px 0 3px 3px;
+    },
+    @-moz-document url-prefix() {
+        .menuheight { height: 7.5%; }
+    }
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        .menuheight { height: 7.5%; }
     }
 
 
@@ -167,15 +183,15 @@
 
             <div class="left menu" id="menuControl">
                 <div style="display: inline;align-items: center" id="filter">
-                    <ul class="media-boxes-filter" id="filter">
-                        <li><a class="selected item itemBar" href="#" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2" data-filter="*">All</a></li>
-                        <li><a href="#" data-filter=".category1" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2">Corporate</a></li>
-                        <li><a href="#" data-filter=".category2" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(255, 121, 115);" value="2|#ff7973">Hospitality & Recreation</a></li>
-                        <li><a href="#" data-filter=".category3" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(174, 79, 255);" value="3|#ae4fff">Food & Restaurants</a></li>
-                        <li><a href="#" data-filter=".category4" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#fb73dd">CSR</a></li>
-                        <li><a href="#" data-filter=".category5" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#ffc24f">Other</a></li>
-                    </ul>
-                </div>
+                <ul class="media-boxes-filter" id="filter">
+               <li><a class="selected item itemBar" href="#" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2" data-filter="*">All</a></li>
+                    <li><a href="#" data-filter=".category1" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2">CORPORATE</a></li>
+                    <li><a href="#" data-filter=".category2" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(255, 121, 115);" value="2|#ff7973">HOSPITALITY & RECREATION</a></li>
+                    <li><a href="#" data-filter=".category3" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(174, 79, 255);" value="3|#ae4fff">FOOD & RESTAURANTS</a></li>
+                    <li><a href="#" data-filter=".category4" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#fb73dd">CSR</a></li>
+                    <li><a href="#" data-filter=".category5" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(251, 115, 221);" value="4|#ffc24f">OTHER</a></li>
+                </ul>
+                    </div>
             </div>
         </div>
 
@@ -185,14 +201,14 @@
     <div class="right item" style="margin-right: 2%;" >
 
         <div class="item" >
-            <div id="search_article" class="ui blue button" style="width: 100%" onclick="javascript:togglesearch();">
+            <div id="search_article" class="btn btn-primary" style="width: 100%" onclick="javascript:togglesearch();">
                 Search
             </div>
             <input type="text" id="search" class="media-boxes-search" placeholder="Search By Title/Content" hidden>
         </div>
 
         <div class="item" >
-            <div id="learn_more" class="ui blue button" style="width: 100%" >
+            <div id="learn_more" class="btn btn-primary" style="width: 100%" >
                 Learn More
             </div>
         </div>
@@ -201,12 +217,12 @@
         if ($this->session->userdata('username') != NULL) {
             ?>
             <a href="auth/authenticate"><div id="logged_in" class="ui grey button" style="width: 100%">
-                    Admin Panel
-                </div></a>
+                Admin Panel
+            </div></a>
             <?php
         } else {
             ?>
-            <div id="show_login_content" class="ui grey button" style="width: 100%" onclick="javascript:togglelogin();" >
+            <div id="show_login_content" class="btn btn-primary" style="width: 100%; background-color: #767676" onclick="javascript:togglelogin();" >
                 Login
             </div>
             <div id="login-content">
@@ -234,6 +250,7 @@
 
 
     </div>
+
     <div class="item" id="mobileMenu"></div>
 </div>
 <br>
@@ -248,7 +265,7 @@
 
         <?php
 
-        //function randomGen($min, $max, $quantity) {
+    //function randomGen($min, $max, $quantity) {
         $numbers = range(0, sizeof($alldata)/5);
         shuffle($numbers);
         $adsrowno=array_slice($numbers, 0, sizeof($allads));
@@ -256,7 +273,7 @@
         //$numbers = range(0, 4);
 
 
-        //}
+    //}
 
         //echo var_dump($alldata);
         $currentrow=0;
@@ -345,12 +362,12 @@
 
 
 
-    </div>
-    <!-----------------------------End of GRID-------------------->
+</div>
+<!-----------------------------End of GRID-------------------->
 </div>
 
 
-<script>
+    <script>
 
     var $grid = $('#grid').mediaBoxes({
         columns:5,
