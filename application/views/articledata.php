@@ -18,7 +18,7 @@
         margin: 0;
         padding: 10px;
         padding-bottom: 5px;
-        word-break: break-all;
+        line-height: 1.1 !important;
         display:block;
     //width:250px;
     }
@@ -31,11 +31,12 @@
         display: block;
     }
     .myButton{
-        background-image: url('bgimages/social/fb-like.png');
-        cursor:pointer;
-        border:none;
-        width:50px;
-        height:50px;
+        font-size: 12px;
+    }
+
+    .myButton a{
+        text-decoration: none;
+        color: #ffffff;
     }
 
     .myButton:active  /* use Dot here */
@@ -181,15 +182,16 @@ if($alldata[0]["video"]!=""){
 Share this article on,
 <br><br>
 <!--<br>-->
-<div>
-    <button onclick="javascript:fbsahre();" class="btn btn-primary" style="width: 19%"><i class="fa fa-facebook"></i>&nbsp;Facebook</button> <button onclick="javascript:gplusshare();" class="btn btn-danger" style="width: 19%"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
+<div class="col-lg-12" >
+    <div style="float:left;">
+    <button onclick="javascript:fbsahre();" class="btn btn-primary myButton"><i class="fa fa-facebook"></i>&nbsp;Facebook</button> <button onclick="javascript:gplusshare();" class="btn btn-danger myButton"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
     <?php
-    echo " <button onclick=\"javascript:tweetclick();\" class=\"btn btn-info\" style=\"width: 19%\"><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\"><i class=\"fa fa-twitter\"></i>&nbsp;Twitter</a>
+    echo " <button onclick=\"javascript:tweetclick();\" class=\"btn btn-info myButton\" ><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\"><i class=\"fa fa-twitter\"></i>&nbsp;Twitter</a>
             </button>";
-    echo " <button onclick=\"javascript:x();\" class=\"btn btn-success\" style=\"width: 19%\"><a href=\"whatsapp://send\" data-text=\"Take a look at this awesome website:\" data-href=\"$base\" class=\"wa_btn wa_btn_s\">WhatsApp</a></button>";
+    echo " <button onclick=\"javascript:x();\" class=\"btn btn-success myButton\" ><a href=\"whatsapp://send\" data-text=\"Take a look at this awesome website:\" data-href=\"$base\" class=\"wa_btn wa_btn_s\">WhatsApp</a></button>";
     ?>
-    <button onclick="javascript:sendemail();" class="btn btn-warning" style="width: 19%"><i class="fa fa-envelope"></i>&nbsp;Email</button>
-
+    <button onclick="javascript:sendemail();" class="btn btn-warning myButton"><i class="fa fa-envelope"></i>&nbsp;Email</button>
+</div>
 </div>
 <!-- 79756445930e9657e9571088720e77c7a5c79b57-->
 </div>
@@ -202,7 +204,7 @@ Share this article on,
     }
     ?>
 
-    <div class="readContent" style="overflow-y:scroll;height: 85%">
+    <div class="readContent" style="overflow-y:scroll;height: 70%">
     <?php
 
 //hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
@@ -211,6 +213,7 @@ Share this article on,
         <!-- Your second column here -->
 
     </div>
+    <br>
     <div><a href="<?php echo $ad['ad_url'] ?>"><img src="<?php echo "AdvertisementImages/ad2Main.jpg";//$ad['main_ad_image']?>" width="auto" height="50px"></a>
 
     </div>

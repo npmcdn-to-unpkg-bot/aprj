@@ -114,10 +114,10 @@
         border-radius: 3px 0 3px 3px;
     },
     @-moz-document url-prefix() {
-        .menuheight { height: 7.5%; }
+        .menuheight { height: 50px; }
     }
     @media screen and (-webkit-min-device-pixel-ratio:0) {
-        .menuheight { height: 7.5%; }
+        .menuheight { height: 50px; }
     }
 
 
@@ -174,14 +174,15 @@
 
 
 </script>
+
 <div class="ui fixed borderless menu menuheight" >
     <div class="item" style="margin-left: 2%;">
-        <img onClick="getArticles('ALL')" src="bgimages/logo.png" style = "cursor: pointer; cursor: hand; width:5em">
+        <a data-filter="*"><img onClick="getArticles('ALL')" src="bgimages/logo.png" style = "cursor: pointer; cursor: hand; height: 45px; width: 76px;"></a>
     </div>
     <div class="grid_9">
         <div class="align-right">
 
-            <div class="left menu" id="menuControl">
+            <div class="left menu" id="menuControl" style="width: 735px">
                 <div style="display: inline;align-items: center" id="filter">
                 <ul class="media-boxes-filter" id="filter">
                <li><a class="selected item itemBar" href="#" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2" data-filter="*">All</a></li>
@@ -261,9 +262,9 @@
 <!-- The grid with media boxes -->
 <div style="justify-content: center;position: relative;">
 
-    <div id="grid" style="width: 100%; margin-top: 40px;">
+<div id="grid" style="width: auto; margin-top: 40px; margin-right: 35px;">
 
-        <?php
+    <?php
 
     //function randomGen($min, $max, $quantity) {
         $numbers = range(0, sizeof($alldata)/5);
@@ -498,9 +499,9 @@
         closeBtnInside: false
     });
 
-    $("#grid").css("margin-left",'-10px');
-    $("#grid").css("width",'108%');
-    setTimeout(changewidth, 2500);
+    $("#grid").css("margin-left",'30px');
+    $("#grid").css("width",'100%');
+    setTimeout(changewidth, 1000);
     function changewidth() {
         $("#grid").css("width", 'auto');
         $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
