@@ -201,14 +201,14 @@
 
     <div class="right item"  >
 
-        <div class="item" >
+        <div style="margin-left: 10px" >
             <div id="search_article" class="btn btn-primary" style="width: 100%" onclick="javascript:togglesearch();">
                 Search
             </div>
             <input type="text" id="search" class="media-boxes-search" placeholder="Search By Title/Content" hidden>
         </div>
 
-        <div class="item" >
+        <div style="margin-left: 10px" >
             <div id="learn_more" class="btn btn-primary" style="width: 100%" >
                 Learn More
             </div>
@@ -223,8 +223,10 @@
             <?php
         } else {
             ?>
+        <div style="margin-left: 10px" >
             <div id="show_login_content" class="btn btn-primary" style="width: 100%; background-color: #767676" onclick="javascript:togglelogin();" >
                 Login
+            </div>
             </div>
             <div id="login-content">
 
