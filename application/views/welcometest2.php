@@ -182,7 +182,7 @@
     <div class="grid_9">
         <div class="align-right">
 
-            <div class="left menu" id="menuControl">
+            <div class="left menu" id="menuControl" style="width: 735px">
                 <div style="display: inline;align-items: center" id="filter">
                 <ul class="media-boxes-filter" id="filter">
                <li><a class="selected item itemBar" href="#" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2" data-filter="*">All</a></li>
