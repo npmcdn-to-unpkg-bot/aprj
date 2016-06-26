@@ -262,7 +262,7 @@
 <!-- The grid with media boxes -->
 <div style="justify-content: center;position: relative;">
 
-<div id="grid" style="width: auto; margin-top: 40px;">
+<div id="grid" style="width: auto; margin-top: 40px; margin-right: 35px;">
 
     <?php
 
@@ -496,8 +496,8 @@
         closeBtnInside: false
     });
 
-    $("#grid").css("margin-left",'-10px');
-    $("#grid").css("width",'108%');
+    $("#grid").css("margin-left",'30px');
+    $("#grid").css("width",'100%');
     setTimeout(changewidth, 1000);
     function changewidth() {
         $("#grid").css("width", 'auto');
