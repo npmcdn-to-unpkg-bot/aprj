@@ -114,10 +114,10 @@
         border-radius: 3px 0 3px 3px;
     },
     @-moz-document url-prefix() {
-        .menuheight { height: 7.5%; }
+        .menuheight { height: 50px; }
     }
     @media screen and (-webkit-min-device-pixel-ratio:0) {
-        .menuheight { height: 7.5%; }
+        .menuheight { height: 50px; }
     }
 
 
@@ -177,7 +177,7 @@
 
 <div class="ui fixed borderless menu menuheight" >
     <div class="item" style="margin-left: 2%;">
-        <img onClick="getArticles('ALL')" src="bgimages/logo.png" style = "cursor: pointer; cursor: hand; width:5em">
+        <a data-filter="*"><img onClick="getArticles('ALL')" src="bgimages/logo.png" style = "cursor: pointer; cursor: hand; height: 45px; width: 76px;"></a>
     </div>
     <div class="grid_9">
         <div class="align-right">
