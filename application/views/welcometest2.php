@@ -175,14 +175,14 @@
 
 </script>
 
-<div class="ui fixed borderless menu menuheight" >
+<div class="ui fixed borderless menu menuheight" style="height: 50px">
     <div class="item" style="margin-left: 2%;">
         <a data-filter="*"><img onClick="getArticles('ALL')" src="bgimages/logo.png" style = "cursor: pointer; cursor: hand; height: 45px; width: 76px;"></a>
     </div>
     <div class="grid_9">
         <div class="align-right">
 
-            <div class="left menu" id="menuControl" style="width: 735px">
+            <div class="left menu" id="menuControl" style="width: 800px">
                 <div style="display: inline;align-items: center" id="filter">
                 <ul class="media-boxes-filter" id="filter">
                <li><a class="selected item itemBar" href="#" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)" class="item itemBar filterlinks" style="font-weight: bold; font-family: calibri; font-size: 16px; color: grey; border-top-width: 3px; border-top-style: solid; border-top-color: rgb(38, 220, 194);" value="1|#26dcc2" data-filter="*">All</a></li>
@@ -199,7 +199,7 @@
     </div>
 
 
-    <div class="right item" style="margin-right: 2%;" >
+    <div class="right item"  >
 
         <div class="item" >
             <div id="search_article" class="btn btn-primary" style="width: 100%" onclick="javascript:togglesearch();">
