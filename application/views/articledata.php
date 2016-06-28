@@ -95,7 +95,7 @@
 
 <body bgcolor="black;">
 
-<div style='background-color: #ffffff;width:90%; margin:0 auto; height: auto; padding: 1%'>
+<div style='background-color: #ffffff;width:90%; margin:0 auto; height: 90%; padding: 1%'>
 
 <?php
 //<<<<<<< HEAD
