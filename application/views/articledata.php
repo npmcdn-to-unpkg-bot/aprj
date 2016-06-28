@@ -6,6 +6,8 @@
     <script type="text/javascript" src="newjscss/jquery.js"></script>
     <script type="text/javascript" src="newjscss/html5gallery.js"></script>
     <script type="application/javascript" src="newjscss/bootstrap.min.js"></script>
+    <script type="application/javascript" src="newjscss/clipboard.min.js"></script>
+    <script type="application/javascript" src="newjscss/notify.min.js"></script>
 
     <link rel="stylesheet" href="newjscss/bootstrap.min.css">
 <!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
@@ -52,6 +54,17 @@
 
 <script src="//cdn.jsdelivr.net/whatsapp-sharing/1.3.3/whatsapp-button.js"></script>
 <script>
+    var clipboard = new Clipboard('.clipboarddata');
+
+    clipboard.on('success', function(e) {
+        $(".clipboarddata").notify(
+            "Link copied to your clipboard",
+            "success"
+
+        );
+        e.clearSelection();
+    });
+
     function fbsahre() {
         var pth=$("#selflink").attr("href");
         console.log(pth);
@@ -105,6 +118,7 @@
 //
 //}
 $arid=$alldata[0]["article_id"];
+//var_dump($alldata);
 $base="http://ajax.vivawebhost.com/~loudhorn/"."welcome/article/".$arid;
 echo "<a href=\"$base\" id='selflink' hidden></a>";
 echo "<a id=\"gplusshare\" href=\"https://plus.google.com/share?url=$base\" onclick=\"javascript:window.open(this.href,
@@ -191,6 +205,16 @@ Share this article on,
     echo " <button onclick=\"javascript:x();\" class=\"btn btn-success myButton\" ><a href=\"whatsapp://send\" data-text=\"Take a look at this awesome website:\" data-href=\"$base\" class=\"wa_btn wa_btn_s\">WhatsApp</a></button>";
     ?>
     <button onclick="javascript:sendemail();" class="btn btn-warning myButton"><i class="fa fa-envelope"></i>&nbsp;Email</button>
+        <!-- Target -->
+        <input type="text" id="clipboarddataactual" value="<?php echo $alldata[0]["original_url"]; ?>" size="40">
+
+        <!-- Trigger -->
+        <button class="clipboarddata" data-clipboard-target="#clipboarddataactual">
+            CC
+        </button>
+        <a href="<?php echo $alldata[0]["original_url"]; ?>" target="_blank"> <button >
+            GO
+        </button></a>
 </div>
 </div>
 <!-- 79756445930e9657e9571088720e77c7a5c79b57-->

@@ -45,6 +45,8 @@
     <script src="newjscss/jquery.bpopup.min.js"></script>
 
     <script src="js/date.js" type="text/javascript"></script>
+
+    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.js"></script>
 </head>
 
 <body style="background-image: url('bgimages/tiledBg.png')">
@@ -382,9 +384,9 @@
         //waitUntilThumbLoads:false,
         resolutions:[
             {
-                maxWidth: 960,
+                maxWidth: 1000,
                 columnWidth: 'auto',
-                columns: 5
+                columns: 3
             },
             {
                 maxWidth: 650,
@@ -501,9 +503,26 @@
         closeBtnInside: false
     });
 
+    $('#grid').imagesLoaded()
+        .always( function( instance ) {
+            console.log('all images loaded');
+            changewidth();
+        })
+        .done( function( instance ) {
+            console.log('all images successfully loaded');
+
+        })
+        .fail( function() {
+            console.log('all images loaded, at least one is broken');
+        })
+        .progress( function( instance, image ) {
+            var result = image.isLoaded ? 'loaded' : 'broken';
+            console.log( 'image is ' + result + ' for ' + image.img.src );
+        });
+
     $("#grid").css("margin-left",'30px');
     $("#grid").css("width",'100%');
-    setTimeout(changewidth, 1000);
+    //setTimeout(changewidth, 10000);
     function changewidth() {
         $("#grid").css("width", 'auto');
         $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
