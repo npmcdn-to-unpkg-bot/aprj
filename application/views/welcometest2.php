@@ -154,7 +154,7 @@
         $(item_).css('color', 'grey');
     }
     function togglesearch(){
-        $("#search").toggle();
+        $("#search").toggle('show');
         if($("#search").is(":visible")){
             $("#grid").css("width",'108%');
         }
@@ -168,6 +168,7 @@
     function togglelogin(){
         $("#login-content").toggle();
     }
+
 
 
 
@@ -500,6 +501,13 @@
 
     $("#grid").css("margin-left",'30px');
     $("#grid").css("width",'100%');
+    $('html').click(function(){
+        if($("#search").is(":visible")) {
+            window.alert("***");
+            $("#search").hide();
+        }
+    });
+
     setTimeout(changewidth, 1000);
     function changewidth() {
         $("#grid").css("width", 'auto');
