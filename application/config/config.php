@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://10.22.40.172/aprj/';
+$config['base_url']	= 'http://localhost/aprj/';
 
 /*
 |--------------------------------------------------------------------------

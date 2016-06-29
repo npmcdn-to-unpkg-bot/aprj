@@ -425,25 +425,24 @@
                 type: 'POST',
                 dataType:"json",
                 data: {uname:euname,pword:epwd},
-                success: function (data, status)
-                {
+                success: function (data, status) {
                     console.log(data);
-                    if(data.type==true){
+                    if (data.type == true) {
                         console.log(data);
                         $("#subbtn").click();
                         $("#login-content").toggle();
 
                     }
-                    else{
+                    else {
 
                         $("#login_error_msg").append("Invalid Username or Password");
                         $("#login_error_msg").show();
                     }
-                });
-
-                console.log("------------");
 
                 }
+
+
+
             });
 
             console.log("------------");
