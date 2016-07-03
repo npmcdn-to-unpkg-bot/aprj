@@ -1,4 +1,4 @@
-<html><head>
+<html xmlns="http://www.w3.org/1999/html"><head>
 
 
     <base href=<?php echo base_url();?>>
@@ -95,7 +95,7 @@
 
 <body bgcolor="black;">
 
-<div style='background-color: #ffffff;width:90%; margin:0 auto; height: 90%; padding: 1%'>
+<div style='background-color: #ffffff;width:90%; margin:0 auto; min-height: 80%; padding: 1%;'>
 
 <?php
 //<<<<<<< HEAD
@@ -228,7 +228,7 @@ Share this article on,
     }
     ?>
 
-    <div class="readContent" style="overflow-y:scroll;height: 70%">
+    <div class="readContent" style="overflow-y:scroll; height: 60%">
     <?php
 
 //hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
@@ -238,7 +238,7 @@ Share this article on,
 
     </div>
     <br>
-    <div><a href="<?php echo $ad['ad_url'] ?>"><img src="<?php echo "AdvertisementImages/ad2Main.jpg";//$ad['main_ad_image']?>" width="auto" height="50px"></a>
+    <div><a href="<?php echo $ad['ad_url'] ?>"><img src="<?php echo "AdvertisementImages/ad2Main.jpg";//$ad['main_ad_image']?>" class="img-responsive" width="auto" height="50px"></a>
 
     </div>
     </div>
