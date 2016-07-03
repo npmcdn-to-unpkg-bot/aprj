@@ -95,7 +95,7 @@
 
 <body bgcolor="black;">
 
-<div style='background-color: #ffffff;width:90%; margin:0 auto; min-height: 80%; padding: 1%;'>
+<div style='background-color: #ffffff;width:90%; margin:0 auto; min-height: 70%; padding: 1%;'>
 
 <?php
 //<<<<<<< HEAD
@@ -193,28 +193,29 @@ if($alldata[0]["video"]!=""){
 <!--=======-->
 
 <br>
-Share this article on,
-<br><br>
+
 <!--<br>-->
 <div class="col-lg-12" >
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">Article URL: </span>
+        <input type="text" id="clipboarddataactual" class="form-control" value="<?php echo $alldata[0]["original_url"]; ?>" aria-describedby="basic-addon3">
+    </div>
+    <br>
+    Share this article on,
+
     <div style="float:left;">
+
     <button onclick="javascript:fbsahre();" class="btn btn-primary myButton"><i class="fa fa-facebook"></i>&nbsp;Facebook</button> <button onclick="javascript:gplusshare();" class="btn btn-danger myButton"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
     <?php
     echo " <button onclick=\"javascript:tweetclick();\" class=\"btn btn-info myButton\" ><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\"><i class=\"fa fa-twitter\"></i>&nbsp;Twitter</a>
             </button>";
-    echo " <button onclick=\"javascript:x();\" class=\"btn btn-success myButton\" ><a href=\"whatsapp://send\" data-text=\"Take a look at this awesome website:\" data-href=\"$base\" class=\"wa_btn wa_btn_s\">WhatsApp</a></button>";
+    echo " <button onclick=\"javascript:x();\" class=\"btn btn-success myButton clipboarddata\" data-clipboard-target=\"#clipboarddataactual\">Copy Url</button>";
     ?>
-    <button onclick="javascript:sendemail();" class="btn btn-warning myButton"><i class="fa fa-envelope"></i>&nbsp;Email</button>
+    <button onclick="javascript:sendemail();" class="btn btn-warning myButton"> <a href="<?php echo $alldata[0]["original_url"]; ?>" target="_blank">Orginal</a></button>
         <!-- Target -->
-        <input type="text" id="clipboarddataactual" value="<?php echo $alldata[0]["original_url"]; ?>" size="40">
 
-        <!-- Trigger -->
-        <button class="clipboarddata" data-clipboard-target="#clipboarddataactual">
-            CC
-        </button>
-        <a href="<?php echo $alldata[0]["original_url"]; ?>" target="_blank"> <button >
-            GO
-        </button></a>
+
+
 </div>
 </div>
 <!-- 79756445930e9657e9571088720e77c7a5c79b57-->
@@ -228,7 +229,7 @@ Share this article on,
     }
     ?>
 
-    <div class="readContent" style="overflow-y:scroll; height: 60%">
+    <div class="readContent" style="overflow-y:scroll; height: 50%">
     <?php
 
 //hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
