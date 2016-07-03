@@ -156,6 +156,7 @@
         $(item_).css('color', 'grey');
     }
     function togglesearch(){
+        $("#login-content").hide();
         $("#search").toggle('show');
         if($("#search").is(":visible")){
             $("#grid").css("width",'108%');
@@ -171,11 +172,22 @@
         $("#login-content").toggle();
     }
 
+</script>
 
+<script>
+    $(document).ready(function(){
 
+        $("html").click(function(e){
 
+            if(!$(e.target).hasClass('searchclass')) {
+                $("#search").hide();
+            }
+            if(!$(e.target).hasClass('loginclass')) {
+                $("#login-content").hide();
+            }
 
-
+        });
+    });
 </script>
 
 <div class="ui fixed borderless menu menuheight" id="filter" style="height: 50px">
@@ -204,11 +216,11 @@
 
     <div class="right item"  >
 
-        <div style="margin-left: 10px" >
-            <div id="search_article" class="btn btn-primary" style="width: 100%" onclick="javascript:togglesearch();">
+        <div class="searchclass" style="margin-left: 10px"  >
+            <div  id="search_article" class="btn btn-primary searchclass" style="width: 100%" onclick="javascript:togglesearch();">
                 Search
             </div>
-            <input type="text" id="search" class="media-boxes-search" placeholder="Search By Title/Content" hidden>
+            <input type="text" id="search" class="media-boxes-search searchclass" placeholder="Search By Title/Content" hidden>
         </div>
 
         <div style="margin-left: 10px" >
@@ -226,25 +238,25 @@
             <?php
         } else {
             ?>
-        <div style="margin-left: 10px" >
-            <div id="show_login_content" class="btn btn-primary" style="width: 100%; background-color: #767676" onclick="javascript:togglelogin();" >
+        <div style="margin-left: 10px" class="loginclass" >
+            <div id="show_login_content" class="btn btn-primary loginclass" style="width: 100%; background-color: #767676" onclick="javascript:togglelogin();" >
                 Login
             </div>
             </div>
-            <div id="login-content">
+            <div id="login-content" class="loginclass">
 
-                <form action="auth/authenticate" method="POST" class="ui form" id="login-content-form">
+                <form action="auth/authenticate" method="POST" class="ui form loginclass" id="login-content-form">
                     <fieldset id="inputs">
-                        <input  id="uname" name="uname" type="text" placeholder="username">
-                        <input id="pword" name="pword" type="password" placeholder="password">
+                        <input class="loginclass" id="uname" name="uname" type="text" placeholder="username">
+                        <input class="loginclass" id="pword" name="pword" type="password" placeholder="password">
                     </fieldset>
                     <fieldset id="actions">
-                        <input type="button" id="submit" value="Log in" class="ui button large fluid grey">
-                        <input type="submit" id="subbtn"  hidden>
+                        <input type="button" id="submit" value="Log in" class="ui button large fluid grey loginclass">
+                        <input type="submit" id="subbtn" hidden>
 
                         <!--<label><input type="checkbox" checked="checked"> Keep me signed in</label>-->
                     </fieldset>
-                    <div class="ui red small message" id="login_error_msg" hidden>
+                    <div class="ui red small message loginclass" id="login_error_msg" hidden>
                         Invalid Username / Password
                     </div>
                 </form>
@@ -525,12 +537,7 @@
     $("#grid").css("margin-left",'30px');
     $("#grid").css("width",'100%');
     //setTimeout(changewidth, 10000);
-    $('html').click(function(){
-        if($("#search").is(":visible")) {
-            window.alert("***");
-            $("#search").hide();
-        }
-    });
+
 
     setTimeout(changewidth, 1000);
     function changewidth() {

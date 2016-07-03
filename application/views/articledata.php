@@ -10,6 +10,10 @@
     <script type="application/javascript" src="newjscss/notify.min.js"></script>
 
     <link rel="stylesheet" href="newjscss/bootstrap.min.css">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="When Great Minds Don’t Think Alike" />
+    <meta property="og:description" content="How much does culture influence creative thinking?" />
 <!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
 </head>
 <style>
@@ -67,10 +71,15 @@
 
     function fbsahre() {
         var pth=$("#selflink").attr("href");
+        var title = $("#caption").text();
+        var des = $("#des").text();
+
         console.log(pth);
         FB.ui({
             method: 'share',
             href: pth,//'https://developers.facebook.com/docs/',
+            title: title,
+            description:des
         }, function(response){
             console.log(response);
         });
@@ -95,7 +104,7 @@
 
 <body bgcolor="black;">
 
-<div style='background-color: #ffffff;width:90%; margin:0 auto; min-height: 70%; padding: 1%;'>
+<div style='background-color: #ffffff;width:90%;min-width: 50%; margin:0 auto; min-height: 70%; padding: 1%;'>
 
 <?php
 //<<<<<<< HEAD
@@ -196,27 +205,28 @@ if($alldata[0]["video"]!=""){
 
 <!--<br>-->
 <div class="col-lg-12" >
-    <div class="input-group">
+    <div class="input-group" style="margin-bottom: 1%">
         <span class="input-group-addon" id="basic-addon3">Article URL: </span>
         <input type="text" id="clipboarddataactual" class="form-control" value="<?php echo $alldata[0]["original_url"]; ?>" aria-describedby="basic-addon3">
     </div>
+    <button onclick="javascript:x();" class="btn btn-success myButton clipboarddata" style="margin-right: 1%;margin-bottom: 2%" data-clipboard-target="#clipboarddataactual">Copy Url</button>
+
+    <button class="btn btn-warning myButton" style="margin-bottom: 2%"> <a href="<?php echo $alldata[0]["original_url"]; ?>" target="_blank">Orginal</a></button>
+
     <br>
     Share this article on,
 
-    <div style="float:left;">
+    <div style="margin-top: 1%">
 
-    <button onclick="javascript:fbsahre();" class="btn btn-primary myButton"><i class="fa fa-facebook"></i>&nbsp;Facebook</button> <button onclick="javascript:gplusshare();" class="btn btn-danger myButton"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
-    <?php
-    echo " <button onclick=\"javascript:tweetclick();\" class=\"btn btn-info myButton\" ><a class=\"twitter-share-button\" id=\"tweetshare\" href=\"https://twitter.com/intent/tweet?url=$base\"><i class=\"fa fa-twitter\"></i>&nbsp;Twitter</a>
-            </button>";
-    echo " <button onclick=\"javascript:x();\" class=\"btn btn-success myButton clipboarddata\" data-clipboard-target=\"#clipboarddataactual\">Copy Url</button>";
-    ?>
-    <button onclick="javascript:sendemail();" class="btn btn-warning myButton"> <a href="<?php echo $alldata[0]["original_url"]; ?>" target="_blank">Orginal</a></button>
-        <!-- Target -->
+    <button onclick="javascript:fbsahre();" class="btn btn-primary myButton col-lg-3 col-sm-10" style="margin-right: 1%;margin-bottom: 1%"><i class="fa fa-facebook"></i>&nbsp;Facebook</button>
+    <button onclick="javascript:gplusshare();" class="btn btn-danger myButton col-lg-3 col-sm-10" style="margin-right: 1%;margin-bottom: 1%"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
+    <button class="btn btn-info myButton col-lg-3 col-sm-10"><a class="twitter-share-button" id="tweetshare" href="https://twitter.com/intent/tweet?url=<?php echo $base?>"><i class="fa fa-twitter"></i>&nbsp;Twitter</a></button>
+    </div>
+            <!-- Target -->
 
 
 
-</div>
+
 </div>
 <!-- 79756445930e9657e9571088720e77c7a5c79b57-->
 </div>
@@ -225,10 +235,14 @@ if($alldata[0]["video"]!=""){
     <?php
     if(isset($alldata[0]["title"])){
 
-    echo "<h1>".$alldata[0]["title"]."</h1>";
+    echo "<h1 id=\"caption\">".$alldata[0]["title"]."</h1>";
     }
     ?>
-
+    <div id="des" hidden>
+        <?php
+        echo $alldata[0]["display_content"];
+        ?>
+    </div>
     <div class="readContent" style="overflow-y:scroll; height: 50%">
     <?php
 
