@@ -228,13 +228,12 @@
                 Learn More
             </div>
         </div>
-
         <?php
         if ($this->session->userdata('username') != NULL) {
             ?>
-            <a href="auth/authenticate"><div id="logged_in" class="ui grey button" style="width: 100%">
+            <div id="logged_in" onclick="location.href='auth/authenticate'" class="btn btn-primary" style="width: 100%;margin-left: 10px; background-color: #767676">
                 Admin Panel
-            </div></a>
+            </div>
             <?php
         } else {
             ?>
