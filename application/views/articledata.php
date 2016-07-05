@@ -207,9 +207,9 @@ if($alldata[0]["video"]!=""){
 <div class="col-lg-12" >
     <div class="input-group" style="margin-bottom: 1%">
         <span class="input-group-addon" id="basic-addon3">Article URL: </span>
-        <input type="text" id="clipboarddataactual" class="form-control" value="<?php echo $alldata[0]["original_url"]; ?>" aria-describedby="basic-addon3">
+        <input type="text" id="clipboarddataactual" class="form-control" value="<?php echo "http://ajax.vivawebhost.com/~loudhorn/welcome/article/".$arid ?>" aria-describedby="basic-addon3">
     </div>
-    <button onclick="javascript:x();" class="btn btn-success myButton clipboarddata" style="margin-right: 1%;margin-bottom: 2%" data-clipboard-target="#clipboarddataactual">Copy Url</button>
+    <button onclick="javascript:x();" class="btn btn-success myButton clipboarddata" style="margin-right: 1%;margin-bottom: 2%" data-clipboard-target="#clipboarddataactual">Copy URL</button>
 
     <button class="btn btn-warning myButton" style="margin-bottom: 2%"> <a href="<?php echo $alldata[0]["original_url"]; ?>" target="_blank">Orginal</a></button>
 
