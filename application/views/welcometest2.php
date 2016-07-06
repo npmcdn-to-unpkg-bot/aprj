@@ -422,8 +422,8 @@
         // $("html, body").animate({ scrollTop: 0 }, 1);
 
         $('.filterlinks').on('click', function(e){
-            $("#grid").css("width",'108%');
-            setTimeout(changewidth, 1000);
+            //$("#grid").css("width",'108%');
+            //setTimeout(changewidth, 1000);
 
         });
         $('#submit').on('click', function(e){
