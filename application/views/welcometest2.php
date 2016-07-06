@@ -62,10 +62,12 @@
         max-width: 1000px;
         margin: 20px auto;
     }
-    .mytitle h3 {
-        font: bold 22px/22px Calibri, sans-serif;
-        color: grey;
-        margin: 0;
+    .mytitle strong {
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 20px;
+        color: #5b6c76;
+        font-weight: 700;
+        margin: 0 0 11px;
         padding: 10px;
         padding-bottom: 5px;
         line-height: 1.1 !important;
@@ -73,11 +75,10 @@
     /*//width:250px;*/
     }
     .mytitle p {
-        font: 12px/18px Arial, sans-serif;
-        color: grey;
+        font: 12px/18px sans-serif !important;
+        color: #5b6c76;
         margin: 0;
         padding: 10px;
-        padding-bottom: 15px;
         display: block;
 
     }
@@ -172,6 +173,53 @@
 
     function togglelogin(){
         $("#login-content").toggle();
+    }
+
+    function subscribeNewsLetter()
+    {
+        if (document.cookie.indexOf('visited=false') == -1) {
+            var fifteenDays = 1000 * 60 * 60 * 24 * 1;
+            var expires = new Date((new Date()).valueOf() + fifteenDays);
+            document.cookie = "visited=true;expires=" + expires.toUTCString();
+            $('#myModal').modal('show');
+        }
+
+//        $('#myModal').modal('show');
+
+    }
+    function ValidateEmail() {
+        var re = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+        if (re.test($('#emailNewsletter').val())) {
+            $('#subscribe_submit').removeClass('disabled');
+        }
+        else {
+            if (!$('#subscribe_submit').hasClass('disabled')) {
+                $('#subscribe_submit').addClass('disabled');
+            }
+        }
+    }
+
+    setTimeout(function () {
+        subscribeNewsLetter();
+    }, 6000);
+
+    function subcribeEmail (){
+
+        $.ajax({
+            url: 'article/subscribeNewsletter',
+            data: {
+                email: $('#emailNewsletter').val()
+            },
+            success: function (data) {
+                console.log("subscnewsteller");
+                console.log(data);
+                console.log("/subscnewsteller");
+
+                $('#newsletterthankyou').modal('show');
+            },
+            async: true,
+            type: "POST"
+        });
     }
 
 </script>
@@ -273,7 +321,38 @@
     <div class="item" id="mobileMenu"></div>
 </div>
 <br>
+<div id="newsletterthankyou" class="modal fade" style="vertical-align: middle; margin-top: 10%">
+    <div class="modal-dialog" >
+    <div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <b>Thank You for Subscribing for Loud Horn Marketing Morning Newsletters</b>
+    </div>
+    </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade" style="vertical-align: middle; margin-top: 10%">
+    <div class="modal-dialog" >
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sign up for the morning newsletter</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please enter your email address to receive our morning newsletter</p>
+                <input class="form-control" placeholder="Email Address" id="emailNewsletter" name="emailNewsletter" type="email"  onkeyup="ValidateEmail();">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No Thanks</button>
+                <button type="button" id="subscribe_submit" class="btn btn-success disabled" data-dismiss="modal" onclick="subcribeEmail();">Submit <i class="checkmark icon"></i></button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 
 
 
@@ -325,7 +404,7 @@
 
                 $summery=$row->display_content;
                 $rem=$allowelen-$strsize;
-                $summery=str_pad($summery, $allowelen,"-");
+                $summery=str_pad($summery, $allowelen," ");
             }
             $thumbnail=str_replace ( "\\" , "/" , $row->thumbnail );
             //$thumbnail= $row->thumbnail ;
@@ -340,7 +419,7 @@
                 "<div data-thumbnail=\" $thumbnail\" style=\"background-color: white\"></div>".
 
                 "</div></a>".
-                "<div class=\"media-box-title mytitle\"><h3 >$title</h3></div>".
+                "<div class=\"media-box-title mytitle\"><strong>$title</strong></div>".
                 "<div class=\"media-box-title mytitle\"><p>".
                 $summery.
                 "</p><h6 class=\"articledate\">$row->date</h6></div>".

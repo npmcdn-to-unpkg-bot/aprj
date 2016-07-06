@@ -18,24 +18,28 @@
 </head>
 <style>
     html{
-        font-family: Calibri
+        font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
     }
 
     h1 {
-        font: bold 28px/28px Calibri, sans-serif;
-        color: grey;
-        margin: 0;
-        padding: 10px;
+        font-family: Arial, Helvetica, sans-serif !important;
+        font-size: 28px;
+        color: #5b6c76;
+        font-weight: 700;
+        margin: 0 0 12px;
+        /*padding: 10px;*/
         padding-bottom: 5px;
         line-height: 1.1 !important;
         display:block;
     //width:250px;
     }
     .readContent {
-        font: 16px/22px Arial, sans-serif;
-        color: grey;
-        margin: 0;
-        padding: 10px;
+        font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; !important;
+        font-size: 15px;
+        color: #5b6c76;
+        font-weight: 200;
+        margin: 0 0 12px;
+        /*padding: 10px;*/
         padding-bottom: 15px;
         display: block;
     }
@@ -107,7 +111,7 @@
 
 <body bgcolor="black;">
 
-<div style='background-color: #ffffff;width:90%;min-width: 50%; margin:0 auto; min-height: 70%; padding: 1%;'>
+<div style='background-color: #ffffff;width:90%;min-width: 50%; margin:0 auto; min-height: 70%; padding: 5px;'>
 
 <?php
 //<<<<<<< HEAD
@@ -137,7 +141,7 @@ echo "<a id=\"gplusshare\" href=\"https://plus.google.com/share?url=$base\" oncl
   '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img
         src=\"https://www.gstatic.com/images/icons/gplus-64.png\" alt=\"Share on Google+\" hidden/></a>";
 echo "<div class=\"modal-body row\">";
-echo "<div class=\"col-lg-5 col-md-5 col-sm-5\">";
+echo "<div class=\"col-lg-5 col-md-5 col-sm-5\" style=\"height: 80%\">";
 echo "<div style=\"display:none;\" class=\"html5gallery\" data-responsive=\"true\" data-skin=\"light\">";
 
 if($alldata[0]["image"]!=""){
@@ -207,8 +211,8 @@ if($alldata[0]["video"]!=""){
 <br>
 
 <!--<br>-->
-<div class="col-lg-12" >
-    <div class="input-group" style="margin-bottom: 1%">
+<div class="col-lg-12" style="position: absolute; bottom: 0;">
+    <div class="input-group" style="margin-bottom: 2%; margin-right: 3%">
         <span class="input-group-addon" id="basic-addon3">Article URL: </span>
         <input type="text" id="clipboarddataactual" class="form-control" value="<?php echo "http://ajax.vivawebhost.com/~loudhorn/welcome/article/".$arid ?>" aria-describedby="basic-addon3">
     </div>
@@ -216,13 +220,12 @@ if($alldata[0]["video"]!=""){
 
     <button class="btn btn-warning myButton" style="margin-bottom: 2%"> <a href="<?php echo $alldata[0]["original_url"]; ?>" target="_blank">Orginal</a></button>
 
-    <br>
-    Share this article on,
-
-    <div style="margin-top: 1%">
-
-    <button onclick="javascript:fbsahre();" class="btn btn-primary myButton col-lg-3 col-sm-10" style="margin-right: 1%;margin-bottom: 1%"><i class="fa fa-facebook"></i>&nbsp;Facebook</button>
-    <button onclick="javascript:gplusshare();" class="btn btn-danger myButton col-lg-3 col-sm-10" style="margin-right: 1%;margin-bottom: 1%"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
+    <div>
+        <br><br>
+        Share this article on,
+        <br><br>
+    <button onclick="javascript:fbsahre();" class="btn btn-primary myButton col-lg-3 col-sm-10" style="margin-right: 1%;"><i class="fa fa-facebook"></i>&nbsp;Facebook</button>
+    <button onclick="javascript:gplusshare();" class="btn btn-danger myButton col-lg-3 col-sm-10" style="margin-right: 1%;"><i class="fa fa-google-plus"></i>&nbsp;Google+</button>
     <button class="btn btn-info myButton col-lg-3 col-sm-10"><a class="twitter-share-button" id="tweetshare" href="https://twitter.com/intent/tweet?url=<?php echo $base?>"><i class="fa fa-twitter"></i>&nbsp;Twitter</a></button>
     </div>
             <!-- Target -->
@@ -234,7 +237,7 @@ if($alldata[0]["video"]!=""){
 <!-- 79756445930e9657e9571088720e77c7a5c79b57-->
 </div>
 
-<div class="col-lg-7 col-md-7 col-sm-7 readContent">
+<div class="col-lg-7 col-md-7 col-sm-7 readContent" style="height: 80%">
     <?php
     if(isset($alldata[0]["title"])){
 
@@ -246,7 +249,7 @@ if($alldata[0]["video"]!=""){
         echo $alldata[0]["display_content"];
         ?>
     </div>
-    <div class="readContent" style="overflow-y:scroll; height: 50%">
+    <div class="readContent" style="overflow-y:scroll; height: 68%">
     <?php
 
 //hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
@@ -256,7 +259,7 @@ if($alldata[0]["video"]!=""){
 
     </div>
     <br>
-    <div><a href="<?php echo $ad['ad_url'] ?>"><img src="<?php echo "AdvertisementImages/ad2Main.jpg";//$ad['main_ad_image']?>" class="img-responsive" width="auto" height="50px"></a>
+    <div style="position: absolute; bottom: 0; margin-right: 15px;"><a href="<?php echo $ad['ad_url'] ?>"><img src="<?php echo "AdvertisementImages/ad2Main.jpg";//$ad['main_ad_image']?>" class="img-responsive" width="auto" height="50px"></a>
 
     </div>
     </div>
