@@ -51,7 +51,9 @@
 
 <body style="background-image: url('bgimages/tiledBg.png')">
 <style>
-
+    html{
+        font-family: Calibri
+    }
     .white-popup {
         position: relative;
         background: #FFF;
@@ -278,7 +280,7 @@
 <!-- The grid with media boxes -->
 <div style="justify-content: center;position: relative;">
 
-<div id="grid" style="width: auto; margin-top: 40px; margin-right: 35px;">
+<div id="grid" style="width: 100%; margin-top: 40px; margin-right: 35px;">
 
     <?php
 
@@ -534,18 +536,21 @@
         });
 
     $("#grid").css("margin-left",'30px');
-    $("#grid").css("width",'100%');
+    $("#grid").css("width",'auto');
     //setTimeout(changewidth, 10000);
 
 
     setTimeout(changewidth, 1000);
     function changewidth() {
         $("#grid").css("width", 'auto');
-        $("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
+       //$("html, body").animate({ scrollTop: $(document).height()+$(document).height() }, 200);
         //alert("Patta");
-        setTimeout($("html, body").animate({ scrollTop: 0 }, 1), 1000);
-
+        //setTimeout($("html, body").animate({ scrollTop: 0 }, 1), 1000);
+        //console.log($(window).change(10,10));
+        //console.log($(window));
     }
+
+
     $('.articledate').each(function(i, obj) {
         //test
         //console.log($(obj).text());

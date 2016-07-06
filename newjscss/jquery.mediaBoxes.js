@@ -275,7 +275,7 @@
         function setColumnWidth(container, columnWidth, columns){
             var mediaBoxes = container.find(itemSelector);
             var newWidth;
-            var percentage = false;
+            var percentage = true;
 
             if( columnWidth == 'auto' ){
                 if(percentage){

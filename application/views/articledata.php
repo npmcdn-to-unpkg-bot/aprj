@@ -17,6 +17,9 @@
 <!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
 </head>
 <style>
+    html{
+        font-family: Calibri
+    }
 
     h1 {
         font: bold 28px/28px Calibri, sans-serif;
