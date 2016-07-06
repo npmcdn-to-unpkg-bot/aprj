@@ -161,7 +161,7 @@
         $("#login-content").hide();
         $("#search").toggle('show');
         if($("#search").is(":visible")){
-            $("#grid").css("width",'108%');
+            //$("#grid").css("width",'108%');
         }
         else{
             $("#grid").css("width", 'auto');
