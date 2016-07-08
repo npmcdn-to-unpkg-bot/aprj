@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="newjscss/bootstrap.min.css">
 
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="When Great Minds Don’t Think Alike" />
-    <meta property="og:description" content="How much does culture influence creative thinking?" />
+    <meta property="og:title" content="<?php echo $alldata[0]["title"] ?>" />
+    <meta property="og:description" content="<?php echo $alldata[0]["display_content"] ?>" />
 <!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
 </head>
+
 <style>
     html{
         font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
