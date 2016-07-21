@@ -177,7 +177,7 @@
 
     function subscribeNewsLetter()
     {
-        if (document.cookie.indexOf('visited=false') == -1) {
+        if (document.cookie.indexOf('visited=true') == -1) {
             var fifteenDays = 1000 * 60 * 60 * 24 * 1;
             var expires = new Date((new Date()).valueOf() + fifteenDays);
             document.cookie = "visited=true;expires=" + expires.toUTCString();
@@ -650,5 +650,16 @@
     }
 </script>
 
-
+<script language="javascript">
+    document.onmousedown=disableclick;
+    status="Right Click Disabled";
+    function disableclick(event)
+    {
+        if(event.button==2)
+        {
+            alert(status);
+            return false;
+        }
+    }
+</script>
 </body>

@@ -230,7 +230,7 @@ class article extends CI_Controller {
         $imgArticleId = $this->input->post("imgArticleId");
         //svar_dump('answeridimage '.$answeridimage);
         $this->load->model('article_m');
-        //var_dump('upload');
+        var_dump('upload');
         if($_FILES['thumbImage']['name']!==''){ 
         $orgImg = $_FILES['thumbImage']['name'];
         $extension = explode(".", $orgImg);
@@ -407,11 +407,11 @@ class article extends CI_Controller {
 
     public function addArticle() {
         $output = $this->input->post();
-        //var_dump($output);
+        var_dump($output);
         $title = $output['article_title'];
         $preview = $output['article_preview'];
         $thumbnail = $output['article_thumbnai'];
-
+//        var_dump($thumbnail);
         $cat = $output['article_category'];
         $content = $output['article_content'];
         $image = $output['article_image'];

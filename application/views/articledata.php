@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="newjscss/bootstrap.min.css">
 
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="<?php echo $alldata[0]["title"] ?>" />
-    <meta property="og:description" content="<?php echo $alldata[0]["display_content"] ?>" />
+    <meta property="og:headline" content="When Great Minds Don’t Think Alike2" />
+    <meta property="og:description" content="How much does culture influence creative thinking?" />
+
 <!--    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
 </head>
-
 <style>
     html{
         font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
@@ -62,7 +62,7 @@
 </style>
 <script src="//connect.facebook.net/en_US/all.js#xfbml=1&version=v2.6&appId=101681440262813"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js"></script>
 
 <script src="//cdn.jsdelivr.net/whatsapp-sharing/1.3.3/whatsapp-button.js"></script>
 <script>
@@ -139,7 +139,7 @@ $arid=$alldata[0]["article_id"];
 $base="http://ajax.vivawebhost.com/~loudhorn/"."welcome/article/".$arid;
 echo "<a href=\"$base\" id='selflink' hidden></a>";
 echo "<a id=\"gplusshare\" href=\"https://plus.google.com/share?url=$base\" onclick=\"javascript:window.open(this.href,
-  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img
+  '', 'menubar=no, toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;\"><img
         src=\"https://www.gstatic.com/images/icons/gplus-64.png\" alt=\"Share on Google+\" hidden/></a>";
 echo "<div class=\"modal-body row\">";
 echo "<div class=\"col-lg-5 col-md-5 col-sm-5\" style=\"height: 80%\">";

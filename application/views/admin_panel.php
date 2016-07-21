@@ -592,6 +592,7 @@
                         };
                     }
                     else {
+                        alert("****");
                         URL = "article/addArticle";
                         data_json = {
                             article_image: image_path,

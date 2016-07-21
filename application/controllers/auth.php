@@ -110,7 +110,7 @@ class Auth extends CI_Controller {
                 $this->load->view('admin_panel', $data);
             } else {
                 $data['logged_username'] = "@@invalid";
-                $this->load->view('welcome_message', $data);
+                $this->load->view('welcome_message2', $data);
             }
         }
         else{
