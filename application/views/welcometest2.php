@@ -47,6 +47,9 @@
     <script src="js/date.js" type="text/javascript"></script>
 
     <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.js"></script>
+
+    <link href="newjscss/sweetalert.css" rel="stylesheet">
+    <script src="newjscss/sweetalert.min.js"></script>
 </head>
 
 <body style="background-image: url('bgimages/tiledBg.png')">
@@ -177,11 +180,52 @@
 
     function subscribeNewsLetter()
     {
+        //swal({   title: "HTML <small>Title</small>!",   text: "A custom <span style="color:#F8BB86">html<span> message.",   html: true });
+        //swal("Here's a message!");
+
+
         if (document.cookie.indexOf('visited=true') == -1) {
             var fifteenDays = 1000 * 60 * 60 * 24 * 1;
             var expires = new Date((new Date()).valueOf() + fifteenDays);
             document.cookie = "visited=true;expires=" + expires.toUTCString();
-            $('#myModal').modal('show');
+            //$('#myModal').modal('show');
+
+            swal({   title: "Sign up for the morning newsletter",
+                    text: "Please enter your email address to receive our morning newsletter:",
+                    type: "input",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+
+                    inputPlaceholder: "Enter your Email" },
+                function(inputValue){
+                    if (inputValue === false) return false;
+                    if (inputValue === "") {
+                        swal.showInputError("You need to enter Email address");
+                        return false
+                    }
+                    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+                    if(!re.test(inputValue)){
+                        swal.showInputError("Invalid Email address");
+                        return false;
+                    }
+                    else{
+                        $.ajax({
+                            url: 'article/subscribeNewsletter',
+                            data: {
+                                email: inputValue
+                            },
+                            success: function (data) {
+                                console.log("subscnewsteller");
+                                console.log(data);
+                                console.log("/subscnewsteller");
+                            },
+                            async: true,
+                            type: "POST"
+                        });
+                    }
+                    swal("Done", "Your subscription is complete for email " + inputValue, "success"); });
+
         }
 
 //        $('#myModal').modal('show');
