@@ -176,7 +176,7 @@ echo $this->email->print_debugger();
         echo 'rt';
 //        $this->email->attach('/EasyAL/images/easyallogo.jpg');
 //        
-//        $data["body"] = '<b><img src="cid:/EasyAL/images/easyallogo.jpg" />';
+//        $data["body"] = '<b><img droparea="cid:/EasyAL/images/easyallogo.jpg" />';
 //        $this->email->attach(getcwd() . '/easyallogo.jpg');
 
         $this->email->message('Please use the below given password to login to the system. Password :- ');

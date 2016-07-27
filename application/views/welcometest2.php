@@ -323,7 +323,7 @@
             </div>
         </div>
         <?php
-        if ($this->session->userdata('username') != NULL) {
+        if ($islogged) {
             ?>
             <div id="logged_in" onclick="location.href='auth/authenticate'" class="btn btn-primary" style="width: 100%;margin-left: 10px; background-color: #767676">
                 Admin Panel
@@ -695,7 +695,7 @@
 </script>
 
 <script language="javascript">
-    document.onmousedown=disableclick;
+   // document.onmousedown=disableclick;
     status="Right Click Disabled";
     function disableclick(event)
     {

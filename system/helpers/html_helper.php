@@ -201,7 +201,7 @@ if ( ! function_exists('img'))
 	{
 		if ( ! is_array($src) )
 		{
-			$src = array('src' => $src);
+			$src = array('droparea' => $src);
 		}
 
 		// If there is no alt attribute defined, set it to an empty string
@@ -215,17 +215,17 @@ if ( ! function_exists('img'))
 		foreach ($src as $k=>$v)
 		{
 
-			if ($k == 'src' AND strpos($v, '://') === FALSE)
+			if ($k == 'droparea' AND strpos($v, '://') === FALSE)
 			{
 				$CI =& get_instance();
 
 				if ($index_page === TRUE)
 				{
-					$img .= ' src="'.$CI->config->site_url($v).'"';
+					$img .= ' droparea="'.$CI->config->site_url($v).'"';
 				}
 				else
 				{
-					$img .= ' src="'.$CI->config->slash_item('base_url').$v.'"';
+					$img .= ' droparea="'.$CI->config->slash_item('base_url').$v.'"';
 				}
 			}
 			else

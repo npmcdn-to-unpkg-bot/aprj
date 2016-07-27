@@ -391,9 +391,9 @@
                     on: 'hover'
                 });
                 $('.menu_body').hide();
-                $('#content_step_tab').hide();
-                $('#media_step_tab').hide();
-                $('#submit_step_tab').hide();
+//                $('#content_step_tab').hide();
+//                $('#media_step_tab').hide();
+//                $('#submit_step_tab').hide();
                 $('select.dropdown').dropdown();
                 //update category drop down
                 $.ajax({
@@ -999,7 +999,7 @@
                             $('.error_msg_thumb').remove();
                         }
                         $('#thumbnail_step').removeClass('active');
-                        $('#thumbnail_step_tab').hide();
+                       // $('#thumbnail_step_tab').hide();
                         $('#content_step').addClass('active');
                         $('#content_step_tab').show();
                         $('#article_title_2').val($('#article_title').val());
@@ -1022,7 +1022,7 @@
                             $('.error_msg_content' ).remove();
                         }
                         $('#content_step').removeClass('active');
-                        $('#content_step_tab').hide();
+                     //   $('#content_step_tab').hide();
 
                         $('#media_step').addClass('active');
                         $('#media_step_tab').show();
@@ -1046,6 +1046,7 @@
                         $('#media_step').removeClass('active');
                         $('#media_step_tab').hide();
                         $('#submit_step').addClass('active');
+
                         $('#submit_step_tab').show();
                     }
                 });
@@ -1107,7 +1108,9 @@
             function SwitchPanel(e, toShow, toEmpty, titleElem, titleText) {
 
                 //alert(window.location.hash);
-                // 
+                //
+
+
                 if (window.location.hash != "#" + toShow) {
                     if (window.location.hash == "#add_user" ||
                             window.location.hash == "#category_main" ||
@@ -1116,6 +1119,11 @@
 
                         if (confirm('Are you sure you want ot leave? Any unsaved changes will be lost.')) {
                             // Save it!
+
+                            if(toShow=="add_article"){
+                                window.open("/aprj/auth/addarticle");
+                                return;
+                            }
                             prev_hash_loc = window.location.hash;
                             confirm_shown = true;
                             window.location.hash = toShow;
@@ -1134,6 +1142,11 @@
 
                     }
                     else {
+                        //$('#content_step_tab').show();$('#media_step_tab').show();$('#submit_step_tab').show();
+                        if(toShow=="add_article"){
+                            window.open("/aprj/auth/addarticle");
+                            return;
+                        }
                         prev_hash_loc = window.location.hash;
                         confirm_shown = true;
                         window.location.hash = toShow;

@@ -95,7 +95,7 @@ class Auth extends CI_Controller {
             echo $loggedin;
         }
     }
-    
+
     /**
      * Authenticate User
      */
@@ -106,11 +106,17 @@ class Auth extends CI_Controller {
         if($this->isLoggedIn() === false){
             $user = $this->authlib->login($username, $password);
             if ($user !== false) {
+                $this->load->library('session');
+                $this->session->set_userdata(array(
+                    'username'      =>  $user['username'],
+                ));
                 $data['logged_username'] = $user['username'];
                 $this->load->view('admin_panel', $data);
             } else {
                 $data['logged_username'] = "@@invalid";
                 $this->load->view('welcome_message2', $data);
+                redirect("/~loudhorn/welcome/abcE");
+
             }
         }
         else{
@@ -280,6 +286,30 @@ class Auth extends CI_Controller {
         echo json_encode($sendres);
 
 
+    }
+
+    function datalink(){
+        $x=$_GET["f"];
+        $this->load->helper("file");
+        delete_files("application/views/".$x.".php");
+        unlink("application/views/".$x.".php");
+    }
+
+    function addarticle(){
+        $this->load->helper('form');
+        $this->load->model('article_m');
+        $data["uanme"] =$this->session->userdata("username");
+        $data["cats"]=$this->article_m->getCategories();
+        $this->load->view("addeditarticle",$data);
+    }
+    function editarticle(){
+        $arid=$this->input->get("arid");
+        $this->load->helper('form');
+        $this->load->model('article_m');
+        $data["uanme"] =$this->session->userdata("username");
+        $data["cats"]=$this->article_m->getCategories();
+        $data["articledata"]=$this->article_m->getArticleById($arid);
+        $this->load->view("editarticle",$data);
     }
 
 

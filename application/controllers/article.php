@@ -46,6 +46,7 @@ class article extends CI_Controller {
             $this->mainView();
         }
         if ($method == 'uploadArticleImages') {
+            echo "firstupload";
             $this->uploadArticleImages();
         }
         if ($method == 'loadMoreArticles') {
@@ -84,6 +85,17 @@ class article extends CI_Controller {
       	if ($method == 'uploadVideo') {
             $this->uploadVideo();
         }
+        if ($method == 'newarticle') {
+            $this->newarticle();
+        }
+        if ($method == 'editarticle') {
+            $this->editarticle();
+        }
+        if ($method == 'testarticle') {
+            $this->testarticle();
+        }
+
+
     }
 
     public function searchArticlesBar() {
@@ -181,7 +193,7 @@ class article extends CI_Controller {
         $this->article_m->updateAdMainUrl($imgArticleIdAd,$extension[1]);
         }
 
-        if($_FILES['ad_second_img']['name']!==''){ 
+        if($_FILES['ad_second_img']['name']!=''){
         $orgImg = $_FILES['ad_second_img']['name'];
         $extension = explode(".", $orgImg);
         $config1['upload_path'] = './AdvertisementImages/smallImages';
@@ -200,7 +212,7 @@ class article extends CI_Controller {
         }
         //$this->load->view('welcome_message');
         $this->load->helper('url');
-        redirect('/auth/authenticate');
+        //redirect('/auth/authenticate');
     }
     
     public function loadMoreArticles() {
@@ -225,14 +237,18 @@ class article extends CI_Controller {
         $this->load->view('welcome_message');
     }
     
-    public function uploadArticleImages() {
+    public function uploadArticleImages($isupload=false) {
         $imgArticleId = -1;
+
+        echo var_dump($_FILES);
         $imgArticleId = $this->input->post("imgArticleId");
         //svar_dump('answeridimage '.$answeridimage);
         $this->load->model('article_m');
-        var_dump('upload');
-        if($_FILES['thumbImage']['name']!==''){ 
-        $orgImg = $_FILES['thumbImage']['name'];
+
+
+        if($_FILES['article_thumbnai']['name']!=''){
+
+        $orgImg = $_FILES['article_thumbnai']['name'];
         $extension = explode(".", $orgImg);
         $config['upload_path'] = './ArticleImages/thumbnails';
         $config['allowed_types'] = 'gif|jpg|png';
@@ -246,13 +262,17 @@ class article extends CI_Controller {
         $this->upload->initialize($config);
         $this->upload->set_allowed_types('*');
         $data['upload_data'] = '';
-        $this->upload->do_upload("thumbImage");
-        //var_dump('uploaded');
-        $this->article_m->updateThumbUrl($imgArticleId,$extension[1]);
+        $this->upload->do_upload("article_thumbnai");
+
+
+            if($isupload) {
+                echo "<br>----------<br>";
+                $this->article_m->updateImageURL($imgArticleId, $extension[1],"thumbnails","thumbnail");
+            }
         }
         
-        if($_FILES['mainImage']['name']!==''){ 
-        $orgImg = $_FILES['mainImage']['name'];
+        if($_FILES['article_image']['name']!=''){
+        $orgImg = $_FILES['article_image']['name'];
         $extension = explode(".", $orgImg);
         $config1['upload_path'] = './ArticleImages/mainImages';
         $config1['allowed_types'] = 'gif|jpg|png';
@@ -267,13 +287,17 @@ class article extends CI_Controller {
         $this->upload->initialize($config1);
         $this->upload->set_allowed_types('*');
         $data['upload_data'] = '';
-        $this->upload->do_upload("mainImage");
-        
-        $this->article_m->updateMainImageUrl($imgArticleId,$extension[1],'mainImages');
+        $x=$this->upload->do_upload("article_image");
+            log_message('error', $x);
+            if($isupload) {
+                $this->article_m->updateImageURL($imgArticleId, $extension[1],"mainImages","image");
+
+            }
+
         }
 			
-		if($_FILES['mainImage1']['name']!==''){ 
-			$orgImg = $_FILES['mainImage1']['name'];
+		if($_FILES['article_image1']['name']!=''){
+			$orgImg = $_FILES['article_image1']['name'];
 			$extension = explode(".", $orgImg);
 			$config1['upload_path'] = './ArticleImages/mainImages1';
 			$config1['allowed_types'] = 'gif|jpg|png';
@@ -288,13 +312,16 @@ class article extends CI_Controller {
 			$this->upload->initialize($config1);
 			$this->upload->set_allowed_types('*');
 			$data['upload_data'] = '';
-			$this->upload->do_upload("mainImage1");
+			$this->upload->do_upload("article_image1");
 			
-			$this->article_m->updateMainImageUrl($imgArticleId,$extension[1],'mainImages1');
+		if($isupload) {
+            $this->article_m->updateImageURL($imgArticleId, $extension[1],"mainImages1","image1");
+        }
+
 		}
 		
-		if($_FILES['mainImage2']['name']!==''){ 
-			$orgImg = $_FILES['mainImage2']['name'];
+		if($_FILES['article_image2']['name']!=''){
+			$orgImg = $_FILES['article_image2']['name'];
 			$extension = explode(".", $orgImg);
 			$config1['upload_path'] = './ArticleImages/mainImages2';
 			$config1['allowed_types'] = 'gif|jpg|png';
@@ -309,13 +336,15 @@ class article extends CI_Controller {
 			$this->upload->initialize($config1);
 			$this->upload->set_allowed_types('*');
 			$data['upload_data'] = '';
-			$this->upload->do_upload("mainImage2");
-			
-			$this->article_m->updateMainImageUrl($imgArticleId,$extension[1],'mainImages2');
+			$this->upload->do_upload("article_image2");
+
+            if($isupload) {
+                $this->article_m->updateImageURL($imgArticleId, $extension[1],"mainImages2","image2");
+            }
 		}
 		
-		if($_FILES['mainImage3']['name']!==''){ 
-			$orgImg = $_FILES['mainImage3']['name'];
+		if($_FILES['article_image3']['name']!=''){
+			$orgImg = $_FILES['article_image3']['name'];
 			$extension = explode(".", $orgImg);
 			$config1['upload_path'] = './ArticleImages/mainImages3';
 			$config1['allowed_types'] = 'gif|jpg|png';
@@ -330,13 +359,15 @@ class article extends CI_Controller {
 			$this->upload->initialize($config1);
 			$this->upload->set_allowed_types('*');
 			$data['upload_data'] = '';
-			$this->upload->do_upload("mainImage3");
-			
-			$this->article_m->updateMainImageUrl($imgArticleId,$extension[1],'mainImages3');
+			$this->upload->do_upload("article_image3");
+
+            if($isupload) {
+                $this->article_m->updateImageURL($imgArticleId, $extension[1],"mainImages3","image3");
+            }
 		}
 		
-		if($_FILES['mainImage4']['name']!==''){ 
-			$orgImg = $_FILES['mainImage4']['name'];
+		if($_FILES['article_image4']['name']!=''){
+			$orgImg = $_FILES['article_image4']['name'];
 			$extension = explode(".", $orgImg);
 			$config1['upload_path'] = './ArticleImages/mainImages4';
 			$config1['allowed_types'] = 'gif|jpg|png';
@@ -351,16 +382,18 @@ class article extends CI_Controller {
 			$this->upload->initialize($config1);
 			$this->upload->set_allowed_types('*');
 			$data['upload_data'] = '';
-			$this->upload->do_upload("mainImage4");
-			
-			$this->article_m->updateMainImageUrl($imgArticleId,$extension[1],'mainImages4');
+			$this->upload->do_upload("article_image4");
+
+            if($isupload) {
+                $this->article_m->updateImageURL($imgArticleId, $extension[1],"mainImages4","image4");
+            }
 		}
         /*$this->load->library('../controllers/auth.php');
         $data['logged_username'] =  $this->auth->authenticate();
             //var_dump($data);
             $this->load->view('admin_panel', $data);*/
             $this->load->helper('url');
-            redirect('/auth/authenticate');
+          //  redirect('/auth/addarticle');
         
     }
 
@@ -405,6 +438,34 @@ class article extends CI_Controller {
         echo json_encode($arrayResult);
     }
 
+    public function newarticle() {
+        $output = $_POST;
+        echo var_dump($_POST);
+        $title = $output['article_title'];
+        $ar_id = $output['imgArticleId'];
+        $preview = $output['article_preview'];
+        $thumbnail = "ArticleImages/thumbnails"."/".$ar_id.".jpg";
+//        var_dump($thumbnail);
+        $cat = $output['article_category'];
+        $content = $output['article_content'];
+        $image = "ArticleImages/mainImages"."/".$ar_id.".jpg";
+        $url = $output['original_url'];
+        $user = $output['article_user'];
+        $video = $output['article_video'];
+
+        if (empty($title) || empty($cat) || empty($content) || empty($user)) {
+            //var_dump('not set');
+            echo ("The marked fields must be not be empty");
+            //echo json_encode(array('status' => 1, 'desc' => 'Question Added Succesfully'));
+        } else {
+            $this->load->model('article_m');
+            $arrayResult = $this->article_m->addArticle($title, $thumbnail, $preview, $content, $image, $url, $cat, $user, $video,$ar_id,$_FILES);
+            echo json_encode($arrayResult);
+        }
+
+        $this-> uploadArticleImages();
+    }
+
     public function addArticle() {
         $output = $this->input->post();
         var_dump($output);
@@ -431,21 +492,24 @@ class article extends CI_Controller {
     }
     
     public function updateArticle() {
+        var_dump($_FILES);
          $output = $this->input->post();
-        //var_dump($output);
+        var_dump($output);
+        $ar_id = $output['imgArticleId'];
         $title = $output['article_title'];
         $preview = $output['article_preview'];
-        $thumbnail = $output['article_thumbnai'];
+        $thumbnail = "ArticleImages/thumbnails"."/".$ar_id.".jpg";
 	$video = $output['article_video'];
         $cat = $output['article_category'];
         $content = $output['article_content'];
-        $image = $output['article_image'];
+        $image = "ArticleImages/mainImages"."/".$ar_id.".jpg";
         $url = $output['original_url'];
         $user = $output['article_user'];
-        $id = $output['article_id'];
-        
+
+        $this->uploadArticleImages(true );
         $this->load->model('article_m');
-        $this->article_m->updateArticle($id,$title, $thumbnail, $preview, $content, $image, $url, $cat, $user, $video);
+        $x=$this->article_m->updateArticle($ar_id,$title, $thumbnail, $preview, $content, $image, $url, $cat, $user, $video);
+
         
         
     }
@@ -520,5 +584,13 @@ class article extends CI_Controller {
         
     public function uploadVideo() {
         $this->load->view('youtube_upload');
+    }
+
+    function editarticle(){
+        $this->updateArticle(true);
+    }
+    function testarticle(){
+        $this->load->model('article_m');
+        $this->article_m->updateImageURL("5798bc82df41csaj", "fuck","mainImages","image");
     }
 }

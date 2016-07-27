@@ -300,7 +300,7 @@
             $elem.text(applyFormatters($elem, value, "content", settings));
         });
 
-        processElements("data-src", template, data, settings, function ($elem, value) {
+        processElements("data-droparea", template, data, settings, function ($elem, value) {
             $elem.attr("src", applyFormatters($elem, value, "src", settings));
         }, function ($elem) {
             $elem.remove();

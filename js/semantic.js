@@ -8154,7 +8154,7 @@ $.fn.embed.settings = {
   templates: {
     iframe : function(url, parameters) {
       return ''
-        + '<iframe src="' + url + '?' + parameters + '"'
+        + '<iframe droparea="' + url + '?' + parameters + '"'
         + ' width="100%" height="100%"'
         + ' frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
       ;
@@ -8167,7 +8167,7 @@ $.fn.embed.settings = {
         html += '<i class="' + icon + ' icon"></i>';
       }
       if(image) {
-        html += '<img class="placeholder" src="' + image + '">';
+        html += '<img class="placeholder" droparea="' + image + '">';
       }
       return html;
     }
@@ -13455,7 +13455,7 @@ $.fn.search.settings = {
               if(result[fields.image] !== undefined) {
                 html += ''
                   + '<div class="image">'
-                  + ' <img src="' + result[fields.image] + '">'
+                  + ' <img droparea="' + result[fields.image] + '">'
                   + '</div>'
                 ;
               }
@@ -13506,7 +13506,7 @@ $.fn.search.settings = {
           if(result[fields.image] !== undefined) {
             html += ''
               + '<div class="image">'
-              + ' <img src="' + result[fields.image] + '">'
+              + ' <img droparea="' + result[fields.image] + '">'
               + '</div>'
             ;
           }

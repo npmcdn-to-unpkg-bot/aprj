@@ -122,7 +122,7 @@
                 }
 
                 var popupTrigger = boxImage.find('.mb-open-popup').addBack('.mb-open-popup');
-                popupTrigger.attr('data-mfp-src', popupDiv.data('popup')).addClass(type);
+                popupTrigger.attr('data-mfp-droparea', popupDiv.data('popup')).addClass(type);
                 if(popupDiv.attr('title') != undefined){
                     popupTrigger.attr('mfp-title', popupDiv.attr('title'));
                 }
@@ -158,7 +158,7 @@
                 if(thumbTitle == undefined){
                     thumbTitle = thumbSrc;
                 }
-                var imgHTML   = $('<img title="'+ thumbTitle +'" src="'+ thumbSrc +'" />');
+                var imgHTML   = $('<img title="'+ thumbTitle +'" droparea="'+ thumbSrc +'" />');
 
                 if(imagesWithDimensions == true){
                     /* If the dmienssions are specified in the images then ignore them in the imagesLoaded plugin when you insert new items */
@@ -1194,13 +1194,13 @@
             [10] MAGNIFIC POPUP
      * ====================================================================== */
 
-        var delegate = '.mb-open-popup[data-mfp-src]';
+        var delegate = '.mb-open-popup[data-mfp-droparea]';
         
         if(settings.considerFilteringInPopup){
-            delegate = itemSelector+':not(.hidden-media-boxes-by-filter) .mb-open-popup[data-mfp-src], .'+itemHiddenClass+':not(.hidden-media-boxes-by-filter) .mb-open-popup[data-mfp-src]';
+            delegate = itemSelector+':not(.hidden-media-boxes-by-filter) .mb-open-popup[data-mfp-droparea], .'+itemHiddenClass+':not(.hidden-media-boxes-by-filter) .mb-open-popup[data-mfp-droparea]';
         }
         if(settings.showOnlyLoadedBoxesInPopup){
-            delegate = itemSelector+':visible .mb-open-popup[data-mfp-src]';
+            delegate = itemSelector+':visible .mb-open-popup[data-mfp-droparea]';
         }
 
         if(settings.magnificPopup){
@@ -1256,7 +1256,7 @@
 
                             var FullURL             = location.href; // the url of your page
                             var URLWithoutHash      = location.href.replace(location.hash,""); // the url of your page without the hashtag
-                            var imageURL            = item.attr('data-mfp-src'); // the image URL
+                            var imageURL            = item.attr('data-mfp-droparea'); // the image URL
 
                             // which URL do you want to share of the 3 options above?
                             var sharingURL = FullURL;
@@ -1286,7 +1286,7 @@
                         }, 5);
 
                         if(settings.deepLinking){
-                            location.hash   = '#!' + item.attr('data-mfp-src') + '||' + item.parents('.media-boxes-container').attr('id'); /* with the "src" of the image and the "id" of the container */
+                            location.hash   = '#!' + item.attr('data-mfp-droparea') + '||' + item.parents('.media-boxes-container').attr('id'); /* with the "droparea" of the image and the "id" of the container */
                         }
                     },
                     beforeOpen: function() {
@@ -1328,7 +1328,7 @@
 
                 var hashUrl = urlFromHash();
                 if (hashUrl) {
-                    $container.filter('[id="' + hashUrl.id + '"]').find('.mb-open-popup[data-mfp-src="' + hashUrl.src + '"]').trigger('click');
+                    $container.filter('[id="' + hashUrl.id + '"]').find('.mb-open-popup[data-mfp-droparea="' + hashUrl.src + '"]').trigger('click');
                 }
 
                 function doHash() {
@@ -1345,12 +1345,12 @@
                         mp.close();
                     } else if (url) {
                         if ( mp.isOpen && mp.currItem && mp.currItem.el.parents('.media-boxes-container').attr('id') == url.id ) {
-                            if( mp.currItem.el.attr('data-mfp-src') != url.src ){
+                            if( mp.currItem.el.attr('data-mfp-droparea') != url.src ){
                                 // open => only update if necessary
                                 var index = null;
                                 $.each(mp.items, function (i, item) {
                                     var jqItem = item.parsed ? item.el : $(item);
-                                    if (jqItem.attr('data-mfp-src') == url.src) {
+                                    if (jqItem.attr('data-mfp-droparea') == url.src) {
                                         index = i;
                                         return false;
                                     }
@@ -1363,7 +1363,7 @@
                             }
                         }else{
                             // not open or doesn't match the right one => simply click the matching link
-                            $container.filter('[id="' + url.id + '"]').find('.mb-open-popup[data-mfp-src="' + url.src + '"]').trigger('click');
+                            $container.filter('[id="' + url.id + '"]').find('.mb-open-popup[data-mfp-droparea="' + url.src + '"]').trigger('click');
                         }
                     }
                 }

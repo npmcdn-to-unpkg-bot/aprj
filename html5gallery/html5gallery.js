@@ -965,7 +965,7 @@ function loadHtml5Gallery(r) {
                 a.options.fv ? a.options.watermarkcode = "<a style='text-decoration:none;' target='_blank' href='" + a.options.freelink + "' >" : 0 < a.options.watermarklink.length && (a.options.watermarkcode = "<a style='text-decoration:none;' target='_blank' href='" + a.options.watermarklink + "' >");
                 a.options.watermarkcode += "<div " + (a.options.fv ? "" : "class='html5gallery-watermark-" + a.id + "' ") + "style='" + (a.options.fv ? "display:block;visibility:hidden;position:absolute;top:10px;left:10px;width:170px;height:18px;line-height:18px;text-align:center;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background-color:#fff;color:#333;font-size:12px;font-family:Arial,Helvetica,sans-serif;" :
                     0 < a.options.watermark.length ? "display:block;position:absolute;top:0px;left:0px;" : "display:none;") + "' >";
-                a.options.fv ? a.options.watermarkcode += a.options.fvm : 0 < a.options.watermark.length && (a.options.watermarkcode += "<img src='" + a.options.watermark + "' />");
+                a.options.fv ? a.options.watermarkcode += a.options.fvm : 0 < a.options.watermark.length && (a.options.watermarkcode += "<img droparea='" + a.options.watermark + "' />");
                 a.options.watermarkcode += "</div>";
                 if (a.options.fv || 0 < a.options.watermarklink.length) a.options.watermarkcode += "</a>";
                 a.createStyle();
@@ -1050,7 +1050,7 @@ function loadHtml5Gallery(r) {
                 var a = this;
                 (b("img.html5galleryimg", this.container).length ?
                     b("img.html5galleryimg", this.container) : b("img", this.container)).each(function() {
-                    var d = b(this).data("lazy-src") ? b(this).data("lazy-src") : b(this).data("lazyload-src") ? b(this).data("lazyload-src") : b(this).attr("src"),
+                    var d = b(this).data("lazy-droparea") ? b(this).data("lazy-droparea") : b(this).data("lazyload-droparea") ? b(this).data("lazyload-droparea") : b(this).attr("src"),
                         c = d,
                         e = b(this).attr("alt"),
                         f = b(this).data("description") ? b(this).data("description") : b(this).data("information");
@@ -1121,7 +1121,7 @@ function loadHtml5Gallery(r) {
                 var a = window.location.href;
                 this.options.socialurlforeach && (a += (0 > window.location.href.indexOf("?") ? "?" : "&") + "html5galleryid=" + this.elemArray[this.curElem][0]);
                 if (this.options.showsocialmedia && this.options.showfacebooklike) {
-                    var d = "<div style='display:block; float:left; width:110px; height:21px;'><iframe src='" + ("https:" == document.location.protocol ? "https:" : "http:") + "//www.facebook.com/plugins/like.php?href=",
+                    var d = "<div style='display:block; float:left; width:110px; height:21px;'><iframe droparea='" + ("https:" == document.location.protocol ? "https:" : "http:") + "//www.facebook.com/plugins/like.php?href=",
                         d = this.options.facebooklikeurl && 0 < this.options.facebooklikeurl.length ? d + encodeURIComponent(this.options.facebooklikeurl) :
                         d + a;
                     b(".html5gallery-viral-" + this.id, this.$gallery).append(d + "&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21' scrolling='no' frameborder='0' style='border:none;;overflow:hidden; width:110px; height:21px;' allowTransparency='true'></iframe></div>")
@@ -2086,9 +2086,9 @@ function loadHtml5Gallery(r) {
                             l = a.options.thumbshowplayonvideo && 1 != a.elemArray[this.data][9] ? "<div class='html5gallery-tn-img-play-" + a.id + "' style='display:block; overflow:hidden; position:absolute; width:100%;height:100%; top:" + a.options.thumbimageborder + "px; left:" + a.options.thumbimageborder + 'px;background:url("' +
                             a.options.skinfolder + "playvideo.png\") no-repeat center center;'></div>" : "";
                         a.options.carouselmultirows && "samecolumn" == a.options.thumbresponsive ? b("#html5gallery-tn-" + a.id + "-" + this.data, d).append("<div class='html5gallery-tn-img-" + a.id + "' style='position:relative;width:" + String(a.options.thumbimagewidth + 2 * a.options.thumbimageborder) + "px;height:" + String(a.options.thumbimageheight + 2 * a.options.thumbimageborder) + "px;'><div style='display:block; overflow:hidden; position:absolute; width:" + a.options.thumbimagewidth +
-                            "px;height:" + a.options.thumbimageheight + "px; top:" + a.options.thumbimageborder + "px; left:" + a.options.thumbimageborder + "px;'><img class='html5gallery-tn-image-" + a.id + "' style='border:none; padding:0px; margin:0px; max-width:100%; max-height:none; width:" + e + "px; height:" + c + "px;' src='" + a.elemArray[this.data][1] + "' /></div>" + l + "</div><div class='html5gallery-tn-title-" + a.id + "' style='width:" + String(a.options.thumbwidth - 2) + "px;'>" + a.elemArray[this.data][7] + (a.options.thumbshowdescription ? "<br /><span class='html5gallery-tn-description-" +
+                            "px;height:" + a.options.thumbimageheight + "px; top:" + a.options.thumbimageborder + "px; left:" + a.options.thumbimageborder + "px;'><img class='html5gallery-tn-image-" + a.id + "' style='border:none; padding:0px; margin:0px; max-width:100%; max-height:none; width:" + e + "px; height:" + c + "px;' droparea='" + a.elemArray[this.data][1] + "' /></div>" + l + "</div><div class='html5gallery-tn-title-" + a.id + "' style='width:" + String(a.options.thumbwidth - 2) + "px;'>" + a.elemArray[this.data][7] + (a.options.thumbshowdescription ? "<br /><span class='html5gallery-tn-description-" +
                                 a.id + "'>" + a.elemArray[this.data][8] + "</span>" : "") + "</div>") : b("#html5gallery-tn-" + a.id + "-" + this.data, d).append("<div class='html5gallery-tn-img-" + a.id + "' style='position:relative;'><div style='display:block; overflow:hidden; position:absolute; width:" + a.options.thumbimagewidth + "px;height:" + a.options.thumbimageheight + "px; top:" + a.options.thumbimageborder + "px; left:" + a.options.thumbimageborder + "px;'><img class='html5gallery-tn-image-" + a.id + "' style='border:none; padding:0px; margin:0px; max-width:100%; max-height:none; width:" +
-                            e + "px; height:" + c + "px;' src='" + a.elemArray[this.data][1] + "' /></div>" + l + "</div><div class='html5gallery-tn-title-" + a.id + "'>" + a.elemArray[this.data][7] + (a.options.thumbshowdescription ? "<br /><span class='html5gallery-tn-description-" + a.id + "'>" + a.elemArray[this.data][8] + "</span>" : "") + "</div>");
+                            e + "px; height:" + c + "px;' droparea='" + a.elemArray[this.data][1] + "' /></div>" + l + "</div><div class='html5gallery-tn-title-" + a.id + "'>" + a.elemArray[this.data][7] + (a.options.thumbshowdescription ? "<br /><span class='html5gallery-tn-description-" + a.id + "'>" + a.elemArray[this.data][8] + "</span>" : "") + "</div>");
                         a.options.thumblinkintitle && b(".html5gallery-tn-img-" + a.id, d).unbind("click").click(function() {
                             a.onThumbClick(b(this).parent().data("index"));
                             a.slideRun(b(this).parent().data("index"), !0, !0)
@@ -2360,7 +2360,7 @@ function loadHtml5Gallery(r) {
                         height: j
                     });
                     e = b("<div class='html5gallery-elem-img-" + d.id + "' style='display:block; position:absolute; overflow:hidden; width:" + h + "px; height:" + j + "px; left:0px; margin-left:" + (d.options.slideshadow && !d.isFullscreen ? 4 : 0) + "px; top:0px; margin-top:" + (d.options.slideshadow && !d.isFullscreen ? 4 : 0) + "px;'><img class='html5gallery-elem-image-" + d.id + "' style='border:none; position:absolute; opacity:inherit; filter:inherit; padding:0px; margin:0px; left:" +
-                        g + "px; top:" + k + "px; max-width:none; max-height:none; width:" + e + "px; height:" + c + "px;' src='" + d.elemArray[d.curElem][2] + "' />" + d.options.watermarkcode + "</div>");
+                        g + "px; top:" + k + "px; max-width:none; max-height:none; width:" + e + "px; height:" + c + "px;' droparea='" + d.elemArray[d.curElem][2] + "' />" + d.options.watermarkcode + "</div>");
                     c = b(".html5gallery-elem-img-" + d.id, a);
                     c.length ? (a.prepend(e), a.html5boxTransition(d.id, c, e, {
                         effect: d.options.effect,
@@ -2493,7 +2493,7 @@ function loadHtml5Gallery(r) {
                         height: k
                     });
                     g = b("<div class='html5gallery-elem-img-" + c.id + "' style='display:block; position:absolute; overflow:hidden; width:" + g + "px; height:" + k + "px; left:0px; margin-left:" + (c.options.slideshadow && !c.isFullscreen ? 4 : 0) + "px; top:0px; margin-top:" + (c.options.slideshadow && !c.isFullscreen ? 4 : 0) + "px;'><img class='html5gallery-elem-image-" + c.id +
-                        "' style='border:none; position:absolute; opacity:inherit; filter:inherit; padding:0px; margin:0px; left:" + p + "px; top:" + r + "px; max-width:none; max-height:none; width:" + n + "px; height:" + h + "px;' src='" + c.elemArray[c.curElem][12] + "' />" + c.options.watermarkcode + "</div>");
+                        "' style='border:none; position:absolute; opacity:inherit; filter:inherit; padding:0px; margin:0px; left:" + p + "px; top:" + r + "px; max-width:none; max-height:none; width:" + n + "px; height:" + h + "px;' droparea='" + c.elemArray[c.curElem][12] + "' />" + c.options.watermarkcode + "</div>");
                     k = b(".html5gallery-elem-img-" + c.id, d);
                     k.length ? (d.prepend(g), d.html5boxTransition(c.id, k, g, {
                             effect: c.options.effect,
@@ -2636,7 +2636,7 @@ function loadHtml5Gallery(r) {
                 if (f.match(/\:\/\/.*(dai\.ly)/i)) var h = f.match(/(dai\.ly\/)([a-zA-Z0-9\-\_]+)/)[2],
                     f = (f.match(/https\:\/\//i) ? "https" : "http") + "://www.dailymotion.com/embed/video/" + h;
                 a && (f = 0 > f.indexOf("?") ? f + "?autoplay=1" : f + "&autoplay=1");
-                b("#html5gallery-elem-video-" + this.id, d).html("<iframe width='" + e + "' height='" + c + "' src='" + f + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
+                b("#html5gallery-elem-video-" + this.id, d).html("<iframe width='" + e + "' height='" + c + "' droparea='" + f + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
                 this.options.googleanalyticsaccount && window._gaq && window._gaq.push(["_trackEvent", "Video", "Play", this.elemArray[this.curElem][2]])
             },
             showYoutube: function(a) {
@@ -2693,7 +2693,7 @@ function loadHtml5Gallery(r) {
                         }
                     })
                 } else f = this.prepareYoutubeHref(f), a && (f =
-                    0 > f.indexOf("?") ? f + "?autoplay=1" : f + "&autoplay=1"), f = 0 > f.indexOf("?") ? f + "?wmode=transparent&rel=0" : f + "&wmode=transparent&rel=0", h.options.videohidecontrols && (f += "&controls=0&showinfo=0"), b("#html5gallery-elem-video-" + this.id, d).html("<iframe width='" + e + "' height='" + c + "' src='" + f + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
+                    0 > f.indexOf("?") ? f + "?autoplay=1" : f + "&autoplay=1"), f = 0 > f.indexOf("?") ? f + "?wmode=transparent&rel=0" : f + "&wmode=transparent&rel=0", h.options.videohidecontrols && (f += "&controls=0&showinfo=0"), b("#html5gallery-elem-video-" + this.id, d).html("<iframe width='" + e + "' height='" + c + "' droparea='" + f + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
                 this.options.googleanalyticsaccount && window._gaq && window._gaq.push(["_trackEvent", "Video", "Play", this.elemArray[this.curElem][2]])
             },
             showVimeo: function(a) {
@@ -2725,7 +2725,7 @@ function loadHtml5Gallery(r) {
                 h += "&api=1&player_id=html5gallery_vimeo_" + this.id;
                 b(".html5gallery-elem-" + this.id, c).html("<div class='html5gallery-loading-center-" + this.id + "'></div><div class='html5gallery-elem-video-" +
                     this.id + "' style='display:block;position:absolute;overflow:hidden;top:" + (this.options.slideshadow && !this.isFullscreen ? 4 : 0) + "px;left:" + (this.options.slideshadow && !this.isFullscreen ? 4 : 0) + "px;width:" + f + "px;height:" + e + "px;'></div>" + this.options.watermarkcode);
-                b(".html5gallery-elem-video-" + this.id, c).html("<iframe id='html5gallery_vimeo_" + this.id + "' width='" + f + "' height='" + e + "' src='" + h + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
+                b(".html5gallery-elem-video-" + this.id, c).html("<iframe id='html5gallery_vimeo_" + this.id + "' width='" + f + "' height='" + e + "' droparea='" + h + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
                 if ("function" === typeof $f && a &&
                     !this.options.isAndroid) {
                     var c = b("#html5gallery_vimeo_" + this.id)[0],
@@ -2758,7 +2758,7 @@ function loadHtml5Gallery(r) {
                 e = this.elemArray[this.curElem][2];
                 b(".html5gallery-elem-" + this.id, a).html("<div class='html5gallery-loading-center-" +
                     this.id + "'></div><div class='html5gallery-elem-iframe-" + this.id + "' style='display:block;position:absolute;overflow:hidden;top:" + (this.options.slideshadow && !this.isFullscreen ? 4 : 0) + "px;left:" + (this.options.slideshadow && !this.isFullscreen ? 4 : 0) + "px;width:" + c + "px;height:" + d + "px;'></div>" + this.options.watermarkcode);
-                b(".html5gallery-elem-iframe-" + this.id, a).html("<iframe id='html5gallery-iframe-" + this.id + "' width='" + c + "' height='" + d + "' src='" + e + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
+                b(".html5gallery-elem-iframe-" + this.id, a).html("<iframe id='html5gallery-iframe-" + this.id + "' width='" + c + "' height='" + d + "' droparea='" + e + "' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>");
                 this.options.googleanalyticsaccount && window._gaq && window._gaq.push(["_trackEvent", "Iframe", "Play", this.elemArray[this.curElem][2]])
             },
             checkType: function(a) {
@@ -2813,7 +2813,7 @@ function loadHtml5Gallery(r) {
                     d = "";
                     for (var g in j) d += g + "=" + j[g] + " ";
                     a.html("<embed " + d + "/>")
-                } else a.html("<div class='html5gallery-elem-error-" + this.id + "' style='display:block; position:absolute; text-align:center; width:" + this.options.width + "px; left:0px; top:" + Math.round(this.options.height / 2 - 10) + "px;'><div class='html5gallery-error-" + this.id + "'><div>The required Adobe Flash Player plugin is not installed</div><div style='display:block;position:relative;text-align:center;width:112px;height:33px;margin:0px auto;'><a href='http://www.adobe.com/go/getflashplayer'><img src='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' width='112' height='33'></img></a></div></div>")
+                } else a.html("<div class='html5gallery-elem-error-" + this.id + "' style='display:block; position:absolute; text-align:center; width:" + this.options.width + "px; left:0px; top:" + Math.round(this.options.height / 2 - 10) + "px;'><div class='html5gallery-error-" + this.id + "'><div>The required Adobe Flash Player plugin is not installed</div><div style='display:block;position:relative;text-align:center;width:112px;height:33px;margin:0px auto;'><a href='http://www.adobe.com/go/getflashplayer'><img droparea='http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' width='112' height='33'></img></a></div></div>")
             }
         };
         this.each(function() {

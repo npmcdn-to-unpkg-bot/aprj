@@ -700,7 +700,7 @@ class CI_Javascript {
 	function _open_script($src = '')
 	{
 		$str = '<script type="text/javascript" charset="'.strtolower($this->CI->config->item('charset')).'"';
-		$str .= ($src == '') ? '>' : ' src="'.$src.'">';
+		$str .= ($src == '') ? '>' : ' droparea="'.$src.'">';
 		return $str;
 	}
 

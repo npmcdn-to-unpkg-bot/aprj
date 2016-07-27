@@ -49,8 +49,11 @@ class Welcome extends CI_Controller {
         //echo "DoneP";
         $this->load->model("advertisement_m");
         $this->load->model("article_m");
+
+        $this->load->library('authlib');
         $data["alldata"]=$this->article_m->getArticleToView($cat);
         $data["allads"]=$this->advertisement_m->getAds($cat);
+        $data["islogged"]=$this->authlib->is_loggedin();
 
         $this->load->view('welcometest2',$data);
     }
@@ -86,7 +89,7 @@ class Welcome extends CI_Controller {
 /*
         require_once 'vendor/autoload.php';
 // Call set_include_path() as needed to point to your client library.
-require_once 'vendor/google/apiclient/src/Google/Client.php';
+require_once 'vendor/google/apiclient/droparea/Google/Client.php';
 require_once 'vendor/google/apiclient-services/Google/Service/YouTube.php';
 session_start();
 

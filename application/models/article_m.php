@@ -280,6 +280,14 @@ class article_m extends CI_Model {
                 $this->db->update('articlecategories', $data);
             }
     }
+    public function updateImageURL($articleId, $extension,$imagename,$fieldname)
+    {
+
+        $data = array($fieldname => "ArticleImages/".$imagename."/".$articleId.".".$extension);
+        $this->db->where('article_id', $articleId);
+        $x=$this->db->update('article', $data);
+        echo var_dump($x);
+    }
 public function updateArticle($id, $title, $thumbnail, $preview, $content, $image, $url, $category, $creator,$video) {
         //$this->output->enable_profiler(TRUE);
         if($thumbnail === '' &&$image === '' ){
@@ -358,7 +366,8 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
         }
         return $allData;
     }
-   
+
+
    public function getArticlesForAdmin() {
        //$this->output->enable_profiler(TRUE);
 
@@ -394,10 +403,11 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
         return $allData;
     }
 
-    public function addArticle($title, $thumbnail, $preview, $content, $image, $url, $category, $creator, $video) {
+    public function addArticle($title, $thumbnail, $preview, $content, $image, $url, $category, $creator, $video,$ar_id,$files) {
         //$this->output->enable_profiler(true);
         if($video == 'https://www.youtube.com/watch?v=undefined'){
             $Adata = array('title' => $title,
+                'article_id'=>$ar_id,
             'image' => $image,
             'original_url' => $url,
             'content' => $content,
@@ -408,6 +418,7 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
         }
         else{
             $Adata = array('title' => $title,
+                'article_id'=>$ar_id,
             'image' => $image,
             'original_url' => $url,
             'content' => $content,
@@ -417,6 +428,35 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
             'category_id' => $category,
             'video' => $video);
         }
+
+        if($files["article_image"]["name"]!=""){
+            $orgImg = $_FILES['article_image']['name'];
+            $extension = explode(".", $orgImg)[1];
+            $Adata['image']="ArticleImages/mainImages/".$ar_id.".".$extension;
+        }
+
+        if($files["article_image1"]["name"]!=""){
+            $orgImg = $_FILES['article_image1']['name'];
+            $extension = explode(".", $orgImg)[1];
+            $Adata['image1']="ArticleImages/mainImages1/".$ar_id.".".$extension;
+        }
+
+        if($files["article_image2"]["name"]!=""){
+            $orgImg = $_FILES['article_image2']['name'];
+            $extension = explode(".", $orgImg)[1];
+            $Adata['image2']="ArticleImages/mainImages2/".$ar_id.".".$extension;
+        }
+        if($files["article_image3"]["name"]!=""){
+            $orgImg = $_FILES['article_image3']['name'];
+            $extension = explode(".", $orgImg)[1];
+            $Adata['image3']="ArticleImages/mainImages3/".$ar_id.".".$extension;
+        }
+        if($files["article_image4"]["name"]!=""){
+            $orgImg = $_FILES['article_image4']['name'];
+            $extension = explode(".", $orgImg)[1];
+            $Adata['image4']="ArticleImages/mainImages4/".$ar_id.".".$extension;
+        }
+
         
         $this->db->insert('article', $Adata);
         $insert_id = $this->db->insert_id();
@@ -455,19 +495,19 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
     public function updateMainImageUrl($articleId, $extension, $folder)
     {
         if($folder === 'mainImages'){
-		$data = array('image' => '\~loudhorn\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
+		$data = array('image' => '\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
 	}
 	else if($folder === 'mainImages1'){
-		$data = array('image1' => '\~loudhorn\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
+		$data = array('image1' => '\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
 	}
 	else if($folder === 'mainImages2'){
-		$data = array('image2' => '\~loudhorn\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
+		$data = array('image2' => '\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
 	}
 	else if($folder === 'mainImages3'){
-		$data = array('image3' => '\~loudhorn\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
+		$data = array('image3' => '\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
 	}
 	else if($folder === 'mainImages4'){
-		$data = array('image4' => '\~loudhorn\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
+		$data = array('image4' => '\ArticleImages\\'. $folder . '\\' . $articleId . '.' .$extension);
 	}
         //var_dump('\~loudhorn\ArticleImages\mainImages\\'. $articleId . '.gif');
         $this->db->where('article_id', $articleId);
@@ -480,7 +520,7 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
         $this->db->where('ad_id', $adId);
         $this->db->update('advertiesment', $data);
     }
-    
+
     public function updateAdSmalleUrl($adId, $extension)
     {
         $data = array('second_ad_image' => '\~loudhorn\AdvertisementImages\smallImages\\'. $adId . '.' .$extension);
