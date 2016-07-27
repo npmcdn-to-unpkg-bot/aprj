@@ -1651,7 +1651,7 @@
                 $('body').css({'overflow': 'initial'});
             }
 
-            function moreInformation(article_id) {
+            function moreInformation(article_id,isshow=false) {
                 /*
                  if (article_id.split("|")[1] != null)
                  {
@@ -1703,6 +1703,14 @@
                  });
                  */
 
+
+                if(isshow){
+                    window.open("welcome/article/"+article_id);
+                }
+                else{
+                    window.open("auth/editarticle?arid="+article_id);
+                }
+                return;
                 if (article_id.split("|")[1] != null)
                 {
                     //alert(article_id.split("|")[1]);
@@ -2021,7 +2029,7 @@
             <td class="ui form" style="display: none" >
                 <input type="text"  data-value ='article_id' class="ui input" >
             </td>
-            <td data-id='article_id' data-content='title' onclick="moreInformation(this.id)"></td>
+            <td data-id='article_id' data-content='title' onclick="moreInformation(this.id,true)"></td>
 
             <td data-content='creator' ></td>
             <td class = 'ui form'>

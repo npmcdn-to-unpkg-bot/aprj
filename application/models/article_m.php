@@ -290,6 +290,7 @@ class article_m extends CI_Model {
     }
 public function updateArticle($id, $title, $thumbnail, $preview, $content, $image, $url, $category, $creator,$video) {
         //$this->output->enable_profiler(TRUE);
+    $category=intval($category);
         if($thumbnail === '' &&$image === '' ){
             //var_dump('1');
             //var_dump($image . $thumbnail);
@@ -405,6 +406,7 @@ public function updateArticle($id, $title, $thumbnail, $preview, $content, $imag
 
     public function addArticle($title, $thumbnail, $preview, $content, $image, $url, $category, $creator, $video,$ar_id,$files) {
         //$this->output->enable_profiler(true);
+        $category=intval($category);
         if($video == 'https://www.youtube.com/watch?v=undefined'){
             $Adata = array('title' => $title,
                 'article_id'=>$ar_id,

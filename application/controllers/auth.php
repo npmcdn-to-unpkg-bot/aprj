@@ -114,8 +114,8 @@ class Auth extends CI_Controller {
                 $this->load->view('admin_panel', $data);
             } else {
                 $data['logged_username'] = "@@invalid";
-                $this->load->view('welcome_message2', $data);
-                redirect("/~loudhorn/welcome/abcE");
+
+                redirect("/welcome/abcE","refresh");
 
             }
         }
