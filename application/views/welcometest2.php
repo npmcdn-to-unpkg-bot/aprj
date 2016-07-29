@@ -460,7 +460,7 @@
                 "<a href=\"welcome/article/$row->article_id\" class=\"ajax-popup-link\" style=\"background-color: white\" >
 
         <div class=\"media-box-image\" style=\"background-color: white\">".
-                "<div data-thumbnail=\" $thumbnail\" style=\"background-color: white\"></div>".
+                "<div data-thumbnail=\"$thumbnail\" style=\"background-color:white\"></div>".
 
                 "</div></a>".
                 "<div class=\"media-box-title mytitle\"><strong>$title</strong></div>".
@@ -484,7 +484,7 @@
                     "<a href=\"$adurl\"  style=\"background-color: white\" >
 
         <div class=\"media-box-image\" style=\"background-color: white\">".
-                    "<div data-thumbnail=\" $thumb \" style=\"background-color: white\"></div>".
+                    "<div data-thumbnail=\"$thumb\" style=\"background-color: white\"></div>".
 
                     "</div></a>".
                     "<div class=\"media-box-title\"></div>".
@@ -650,12 +650,16 @@
             console.log('all images successfully loaded');
 
         })
-        .fail( function() {
+        .fail( function(instance,image) {
             console.log('all images loaded, at least one is broken');
+            console.log(instance);
+            console.log(image);
         })
         .progress( function( instance, image ) {
             var result = image.isLoaded ? 'loaded' : 'broken';
-            console.log( 'image is ' + result + ' for ' + image.img.src );
+            console.log( 'image is ' + result + ' for '  );
+
+            console.log(image.img);
         });
 
     $("#grid").css("margin-left",'30px');

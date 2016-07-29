@@ -101,7 +101,7 @@ foreach ($cats as $acat) {
     Article Video
     <input type="text" name="article_video" value="<?php
     echo $articledata[0]["video"];
-    ?>"><br>
+    ?>"><div onclick="OpenYT();"><img src="newjscss/icons/videodownload.jpg">UPLOAD VIDEO</div><br>
 
     <input type="hidden" id="imgArticleId" name="imgArticleId" value="<?php
     echo $articledata[0]["article_id"];
@@ -271,5 +271,8 @@ foreach ($cats as $acat) {
 
 
     });
-
+    function OpenYT() {
+        var url = '<?php echo site_url('article/uploadVideo') ?>';
+        var UploadWindow = window.open(url, 'name', 'width=600,height=400');
+    }
 </script>

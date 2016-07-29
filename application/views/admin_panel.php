@@ -1651,7 +1651,7 @@
                 $('body').css({'overflow': 'initial'});
             }
 
-            function moreInformation(article_id,isshow=false) {
+            function moreInformation(article_id,data=0) {
                 /*
                  if (article_id.split("|")[1] != null)
                  {
@@ -1704,10 +1704,10 @@
                  */
 
 
-                if(isshow){
+                if(data==1){
                     window.open("welcome/article/"+article_id);
                 }
-                else{
+                else if(data==0){
                     window.open("auth/editarticle?arid="+article_id);
                 }
                 return;
@@ -2029,7 +2029,7 @@
             <td class="ui form" style="display: none" >
                 <input type="text"  data-value ='article_id' class="ui input" >
             </td>
-            <td data-id='article_id' data-content='title' onclick="moreInformation(this.id,true)"></td>
+            <td data-id='article_id' data-content='title' onclick="moreInformation(this.id,1)"></td>
 
             <td data-content='creator' ></td>
             <td class = 'ui form'>
@@ -2049,7 +2049,7 @@
 
     <script type="text/html" id="all_articles_tbl_row">
         <tr>
-            <td data-id='article_id' data-content='title' onclick="moreInformation(this.id)"></td>
+            <td data-id='article_id' data-content='title' onclick="moreInformation(this.id,1)"></td>
 
             <td data-content='creator' ></td>
             <td data-content='category' ></td>
@@ -2058,7 +2058,7 @@
                 <i data-id="article_id" class="large remove icon" onclick="ShowRemoveArticleModal(this)" ></i>
             </td>
             <td> 
-                <i data-id="article_id" class="large edit icon" onclick="GoToEditMode('add_article', 'dashboard_main', 'add_art_title', 'Edit Article', this.id);" ></i>
+                <i data-id="article_id" class="large edit icon" onclick="moreInformation(this.id,0);" ></i>
             </td>
             <td data-id='article_id' data-content='status' ></td>
         </tr>

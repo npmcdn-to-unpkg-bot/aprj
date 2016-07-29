@@ -82,7 +82,7 @@ foreach ($cats as $acat) {
     echo  $uanme;
     ?>"><br>
     Article Video
-    <input type="text" name="article_video"><br>
+    <input type="text" name="article_video"/><div onclick="OpenYT();"><img src="newjscss/icons/videodownload.jpg">UPLOAD VIDEO</div><br>
 
     <input type="hidden" id="imgArticleId" name="imgArticleId" value="<?php
     echo uniqid().$uanme;
@@ -225,5 +225,9 @@ foreach ($cats as $acat) {
         });
 
     });
+    function OpenYT() {
+        var url = '<?php echo site_url('article/uploadVideo') ?>';
+        var UploadWindow = window.open(url, 'name', 'width=600,height=400');
+    }
 
 </script>
